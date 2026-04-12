@@ -1,596 +1,1047 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Organización por Días — Disney Wish 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Disney Wish 2026 — Yosh & Joss</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#1c1b18;--ink2:#56544e;--ink3:#9b9890;--paper:#f5f3ee;--paper2:#eceae3;--paper3:#e2dfd6;--white:#ffffff;--accent:#c0562a;--accent-bg:#fdf0ea;--teal:#1a7a5e;--teal-bg:#e6f5f0;--gold:#b07a1a;--gold-bg:#fdf4e0;--blue:#1a5a8a;--blue-bg:#e6f0f8;--r:10px;--rl:14px}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh}
-.top-header{background:var(--ink);color:var(--paper);padding:14px 20px 12px;position:sticky;top:0;z-index:200}
-.top-header h1{font-family:'Instrument Serif',serif;font-size:19px;font-weight:400;letter-spacing:-.02em}
-.top-header p{font-size:11px;color:#9b9890;margin-top:2px}
-.header-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px}
-.header-right{display:flex;align-items:center;gap:14px}
-.prog-val{font-size:19px;font-weight:300;color:var(--paper)}
-.prog-sub{font-size:10px;color:#9b9890}
-.sync-badge{font-size:10px;padding:3px 8px;border-radius:10px;border:1px solid rgba(255,255,255,0.2);color:#9b9890;display:flex;align-items:center;gap:4px}
-.sync-dot{width:6px;height:6px;border-radius:50%;background:#9b9890;transition:background .3s}
-.sync-dot.ok{background:#4ade80}
-.sync-dot.saving{background:#fbbf24}
-.sync-dot.err{background:#f87171}
-.pbar{height:3px;background:rgba(255,255,255,0.15);border-radius:2px;overflow:hidden}
-.pbar-fill{height:100%;background:#c0562a;border-radius:2px;transition:width .4s}
-.legend{display:flex;gap:10px;flex-wrap:wrap;padding:9px 20px;background:var(--paper2);border-bottom:1px solid var(--paper3);font-size:11px}
-.leg-item{display:flex;align-items:center;gap:5px;color:var(--ink2)}
-.leg-dot{width:9px;height:9px;border-radius:2px;flex-shrink:0}
-.leg-s{background:#b5d4f4}.leg-m{background:#9fe1cb}.leg-l{background:#fac775}
-.main{max-width:880px;margin:0 auto;padding:16px 14px 40px}
-.toolbar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
-.toolbar-lbl{font-size:11px;color:var(--ink3);margin-right:2px}
-.ftab{font-size:12px;padding:5px 12px;border-radius:20px;border:1px solid var(--paper3);background:var(--white);color:var(--ink2);cursor:pointer;transition:all .15s;font-family:inherit}
-.ftab:hover{border-color:var(--paper3);background:var(--paper2)}
-.ftab.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.sep{width:1px;height:20px;background:var(--paper3);margin:0 4px}
-.abtn{font-size:11px;padding:5px 11px;border-radius:var(--r);border:1px solid var(--paper3);background:var(--white);color:var(--ink2);cursor:pointer;font-family:inherit;transition:all .15s}
-.abtn:hover{background:var(--paper2);color:var(--ink)}
-.abtn.danger{color:#a32d2d}
-.abtn.danger:hover{background:#fcebeb;border-color:#f09595}
-.maleta-section{margin-bottom:20px}
-.maleta-head{display:flex;align-items:center;gap:8px;padding:11px 14px;background:var(--white);border:1px solid var(--paper3);border-radius:var(--rl);cursor:pointer;user-select:none;transition:background .15s}
-.maleta-head:hover{background:var(--paper2)}
-.maleta-head.open{border-radius:var(--rl) var(--rl) 0 0;border-bottom-color:var(--paper3)}
-.maleta-icon{font-size:18px;flex-shrink:0}
-.maleta-title{font-family:'Instrument Serif',serif;font-size:16px;font-weight:400;flex:1}
-.maleta-meta{display:flex;align-items:center;gap:8px}
-.maleta-stats{display:flex;gap:6px}
-.mstat{font-size:11px;color:var(--ink2);background:var(--paper2);padding:2px 7px;border-radius:10px}
-.mstat.done-all{background:#e6f5f0;color:#085041}
-.mchev{font-size:10px;color:var(--ink3);transition:transform .2s;flex-shrink:0}
-.mchev.open{transform:rotate(180deg)}
-.maleta-body{border:1px solid var(--paper3);border-top:none;border-radius:0 0 var(--rl) var(--rl);padding:12px;background:var(--paper2)}
+/* ── DESIGN TOKENS ── */
+:root{
+  --bg:#f5f3ee;--surface:#fff;--surface2:#eceae3;--surface3:#e2dfd6;
+  --ink:#1c1b18;--ink2:#56544e;--ink3:#9b9890;
+  --accent:#c0562a;--accent-bg:#fdf0ea;--accent-border:#f0c4ae;
+  --teal:#1a7a5e;--teal-bg:#e6f5f0;--teal-border:#9fe1cb;
+  --gold:#9a6810;--gold-bg:#fdf4e0;
+  --blue:#1a5a8a;--blue-bg:#e6f0f8;
+  --purple-bg:#eeedfe;--purple:#3c3489;
+  --green-bg:#e1f5ee;--green:#085041;
+  --red:#a32d2d;--red-bg:#fcebeb;--red-border:#f09595;
+  --shadow:rgba(0,0,0,0.06);
+  --r:10px;--rl:14px;--rxl:18px;
+  --tag-s-bg:#b5d4f4;--tag-s-c:#0c447c;
+  --tag-m-bg:#9fe1cb;--tag-m-c:#085041;
+  --tag-l-bg:#fac775;--tag-l-c:#633806;
+  --nav-h:56px;
+  --toolbar-h:48px;
+}
+[data-theme="dark"]{
+  --bg:#141413;--surface:#1e1d1a;--surface2:#272521;--surface3:#302e2a;
+  --ink:#f0ede6;--ink2:#b8b4ac;--ink3:#6b6860;
+  --accent:#e0724a;--accent-bg:#2a1a10;--accent-border:#5a2e18;
+  --teal:#2fb584;--teal-bg:#0a2a1e;--teal-border:#1a5a40;
+  --gold:#d4a040;--gold-bg:#2a2010;
+  --blue:#4a8ac0;--blue-bg:#0a1a2a;
+  --purple-bg:#1e1a3a;--purple:#a090f0;
+  --green-bg:#0a2a1a;--green:#4ae090;
+  --red:#e06060;--red-bg:#2a1010;--red-border:#5a2020;
+  --shadow:rgba(0,0,0,0.3);
+  --tag-s-bg:#0c2a4a;--tag-s-c:#6ab0f0;
+  --tag-m-bg:#0a2a1e;--tag-m-c:#4ae0a0;
+  --tag-l-bg:#2a1e06;--tag-l-c:#e0a040;
+}
+
+/* ── RESET & BASE ── */
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;transition:background .25s,color .25s;padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom))}
+
+/* ── TOP HEADER ── */
+.app-header{background:var(--ink);color:var(--bg);padding:12px 16px 10px;padding-top:calc(12px + env(safe-area-inset-top))}
+.app-header-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.app-title{font-family:'Instrument Serif',serif;font-size:18px;font-weight:400;letter-spacing:-.02em;flex:1}
+.app-subtitle{font-size:10px;color:var(--ink3);margin-top:1px}
+.header-controls{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.sync-pill{display:flex;align-items:center;gap:4px;font-size:10px;padding:3px 8px;border-radius:20px;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5)}
+.sdot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.3);flex-shrink:0;transition:background .3s}
+.sdot.ok{background:#4ade80}.sdot.saving{background:#fbbf24}.sdot.err{background:#f87171}
+.prog-wrap{text-align:right}
+.prog-val{font-size:18px;font-weight:300;line-height:1}
+.prog-lbl{font-size:9px;color:var(--ink3);margin-top:1px}
+.dark-btn{background:none;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);border-radius:8px;padding:5px 8px;cursor:pointer;font-size:13px;line-height:1;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.dark-btn:hover{background:rgba(255,255,255,0.1)}
+.user-pill{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:4px 10px;cursor:pointer;font-size:11px;font-weight:500;color:rgba(255,255,255,0.85);transition:all .15s}
+.user-pill:hover{background:rgba(255,255,255,0.18)}
+.user-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.pbar{height:3px;background:rgba(255,255,255,0.12);border-radius:2px;overflow:hidden}
+.pbar-fill{height:100%;background:var(--accent);border-radius:2px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+
+/* ── BOTTOM NAV ── */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:300;background:var(--surface);border-top:1px solid var(--surface3);display:flex;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -2px 12px var(--shadow)}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:8px 4px;cursor:pointer;border:none;background:none;color:var(--ink3);font-family:inherit;font-size:9px;font-weight:500;transition:color .15s;min-height:var(--nav-h);position:relative}
+.nav-item.active{color:var(--accent)}
+.nav-item.active::after{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:24px;height:2px;background:var(--accent);border-radius:0 0 2px 2px}
+.nav-icon{font-size:20px;line-height:1}
+.nav-badge{position:absolute;top:6px;right:calc(50% - 18px);background:var(--accent);color:#fff;font-size:8px;font-weight:700;min-width:14px;height:14px;border-radius:7px;display:flex;align-items:center;justify-content:center;padding:0 3px}
+
+/* ── PAGES ── */
+.page{display:none;animation:fadeIn .18s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.page-inner{max-width:880px;margin:0 auto;padding:14px 14px 20px}
+
+/* ── SECTION ACCORDION ── */
+.sec-wrap{margin-bottom:12px}
+.sec-head{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--surface);border:1px solid var(--surface3);border-radius:var(--rl);cursor:pointer;user-select:none;transition:background .15s}
+.sec-head:hover{background:var(--surface2)}
+.sec-head.open{border-radius:var(--rl) var(--rl) 0 0}
+.sec-icon{font-size:18px;flex-shrink:0}
+.sec-title{font-family:'Instrument Serif',serif;font-size:16px;font-weight:400;flex:1;min-width:0}
+.sec-right{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.sec-stat{font-size:11px;padding:2px 8px;border-radius:10px;background:var(--surface2);color:var(--ink2);white-space:nowrap}
+.sec-stat.complete{background:var(--teal-bg);color:var(--teal)}
+.sec-pct{font-size:11px;padding:2px 8px;border-radius:10px;background:var(--surface2);color:var(--ink2)}
+.sec-chev{font-size:10px;color:var(--ink3);transition:transform .2s;flex-shrink:0}
+.sec-chev.open{transform:rotate(180deg)}
+.sec-body{border:1px solid var(--surface3);border-top:none;border-radius:0 0 var(--rl) var(--rl);background:var(--surface2);padding:12px}
+
+/* ── FILTER BAR ── */
+.filter-bar{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--surface3);padding:8px 14px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.filter-bar::-webkit-scrollbar{display:none}
+.filter-bar-inner{display:flex;gap:6px;align-items:center;min-width:max-content}
+.ftab{font-size:12px;padding:6px 14px;border-radius:20px;border:1px solid var(--surface3);background:var(--surface);color:var(--ink2);cursor:pointer;transition:all .15s;font-family:inherit;white-space:nowrap;min-height:34px}
+.ftab:active{transform:scale(.96)}
+.ftab.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+[data-theme="dark"] .ftab.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.fsep{width:1px;height:20px;background:var(--surface3);flex-shrink:0;margin:0 2px}
+.faction{font-size:11px;padding:6px 12px;border-radius:var(--r);border:1px solid var(--surface3);background:var(--surface);color:var(--ink2);cursor:pointer;font-family:inherit;white-space:nowrap;min-height:34px;transition:all .15s}
+.faction:active{transform:scale(.96)}
+.faction.red{color:var(--red)}
+.faction.red:hover{background:var(--red-bg);border-color:var(--red-border)}
+
+/* ── DAY CARDS GRID ── */
 .days-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:10px}
-.day-card{background:var(--white);border:1px solid var(--paper3);border-radius:var(--rl);overflow:hidden;transition:opacity .2s}
-.day-card.done{opacity:.55}
-.day-head{padding:8px 11px 7px;display:flex;align-items:flex-start;justify-content:space-between;gap:6px;border-bottom:1px solid var(--paper3);background:var(--paper2)}
+@media(max-width:540px){.days-grid{grid-template-columns:1fr}}
+.day-card{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--rl);overflow:hidden;transition:opacity .25s}
+.day-card.done{opacity:.5}
+.day-card-head{padding:9px 12px 8px;display:flex;align-items:flex-start;justify-content:space-between;gap:6px;background:var(--surface2);border-bottom:1px solid var(--surface3)}
 .day-date{font-size:9px;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em}
-.day-label{font-size:12px;font-weight:500;color:var(--ink);margin-top:1px;line-height:1.25}
-.day-badge{font-size:9px;font-weight:500;padding:2px 6px;border-radius:7px;flex-shrink:0;margin-top:1px;white-space:nowrap}
-.badge-crucero{background:var(--teal-bg);color:var(--teal)}
-.badge-pirata{background:#2a1a0e;color:#fac775}
-.badge-halloween{background:#1a0a2e;color:#c9a0f8}
-.badge-playa{background:var(--teal-bg);color:var(--teal)}
-.badge-regreso{background:var(--paper2);color:var(--ink2)}
-.badge-viaje{background:var(--gold-bg);color:var(--gold)}
-.day-bags{padding:8px 10px 10px;display:flex;flex-direction:column;gap:7px}
-.bag-block{border:1px solid var(--paper3);border-radius:8px;overflow:hidden;transition:opacity .2s}
-.bag-block-done{opacity:.5}
-.bag-block-head{display:flex;align-items:center;gap:7px;padding:5px 9px;background:var(--paper2);border-bottom:1px solid var(--paper3)}
-.bag-tag{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:2px 5px;border-radius:4px;flex-shrink:0;min-width:22px;text-align:center}
-.tag-s{background:#b5d4f4;color:#0c447c}.tag-m{background:#9fe1cb;color:#085041}.tag-l{background:#fac775;color:#633806}.tag-libre{background:var(--paper3);color:var(--ink3);font-size:7px}
-.bag-who-lbl{font-size:10px;font-weight:500;color:var(--ink2);flex:1}
-.bag-counter-lbl{font-size:10px;font-weight:500;color:var(--ink3);background:var(--white);padding:1px 6px;border-radius:8px;flex-shrink:0}
-.bag-items-list{padding:3px 0}
-.item-row{display:flex;align-items:flex-start;gap:8px;padding:5px 9px;cursor:pointer;transition:background .1s;user-select:none}
-.item-row:hover{background:var(--paper2)}
-.item-row.item-done{opacity:.5}
-.item-cb{width:15px;height:15px;min-width:15px;border-radius:3px;border:1.5px solid var(--paper3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;transition:all .12s}
-.item-cb-done{background:var(--teal);border-color:var(--teal)}
-.item-ck{font-size:9px;font-weight:700;color:white;line-height:1}
-.item-label{font-size:12px;color:var(--ink2);line-height:1.4}
-.item-row.item-done .item-label{color:var(--ink3)}
-.bag-counter-section{margin-bottom:16px}
-.bag-counter{background:var(--white);border:1px solid var(--paper3);border-radius:var(--rl);overflow:hidden}
-.bag-counter-head{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;cursor:pointer;user-select:none}
-.bag-counter-head:hover{background:var(--paper2)}
-.bag-counter-head h3{font-family:'Instrument Serif',serif;font-size:14px;font-weight:400}
-.bag-counter-body{padding:14px;border-top:1px solid var(--paper3)}
+.day-label{font-size:12px;font-weight:500;margin-top:1px;line-height:1.25}
+.day-badge{font-size:9px;font-weight:500;padding:2px 7px;border-radius:7px;flex-shrink:0;margin-top:1px;white-space:nowrap}
+.b-crucero{background:var(--teal-bg);color:var(--teal)}
+.b-pirata{background:#2a1a0e;color:#fac775}
+.b-halloween{background:#1a0a2e;color:#c9a0f8}
+.b-playa{background:var(--teal-bg);color:var(--teal)}
+.b-regreso{background:var(--surface2);color:var(--ink2)}
+.b-viaje{background:var(--gold-bg);color:var(--gold)}
+.day-card-body{padding:8px 10px 10px;display:flex;flex-direction:column;gap:7px}
+
+/* ── BAG BLOCKS ── */
+.bag-block{border:1px solid var(--surface3);border-radius:9px;overflow:hidden}
+.bag-block.all-done{opacity:.45}
+.bag-head{display:flex;align-items:center;gap:7px;padding:6px 10px;background:var(--surface2);border-bottom:1px solid var(--surface3)}
+.bag-tag{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:2px 6px;border-radius:4px;flex-shrink:0;min-width:22px;text-align:center}
+.tag-S{background:var(--tag-s-bg);color:var(--tag-s-c)}
+.tag-M{background:var(--tag-m-bg);color:var(--tag-m-c)}
+.tag-L{background:var(--tag-l-bg);color:var(--tag-l-c)}
+.tag-x{background:var(--surface3);color:var(--ink3);font-size:7px}
+.bag-who{font-size:10px;font-weight:500;color:var(--ink2);flex:1}
+.bag-ctr{font-size:10px;font-weight:500;color:var(--ink3);background:var(--surface);padding:1px 7px;border-radius:8px;flex-shrink:0}
+
+/* ── ITEM ROWS ── */
+.items-list{padding:2px 0}
+.item-row{display:flex;align-items:flex-start;gap:0;padding:0;cursor:pointer;user-select:none;position:relative}
+/* Large tap target */
+.item-tap{display:flex;align-items:flex-start;gap:8px;padding:7px 10px;flex:1;min-height:44px;transition:background .1s;border-radius:4px}
+.item-row:hover .item-tap{background:var(--surface2)}
+.item-row.done-item .item-tap{opacity:.5}
+.item-cb{width:18px;height:18px;min-width:18px;border-radius:4px;border:1.5px solid var(--surface3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;transition:all .15s}
+.item-cb.checked{background:var(--teal);border-color:var(--teal)}
+.item-ck{font-size:10px;font-weight:700;color:white;line-height:1;opacity:0;transform:scale(.5);transition:all .15s}
+.item-cb.checked .item-ck{opacity:1;transform:scale(1)}
+.item-txt{font-size:12px;color:var(--ink2);line-height:1.45;flex:1}
+.done-item .item-txt{text-decoration:line-through;color:var(--ink3)}
+.who-tag{font-size:9px;padding:1px 5px;border-radius:4px;margin-left:6px;flex-shrink:0;vertical-align:middle;font-weight:500}
+.who-yosh{background:var(--purple-bg);color:var(--purple)}
+.who-joss{background:var(--green-bg);color:var(--green)}
+
+/* ── USER MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s}
+.modal-overlay.show{opacity:1;pointer-events:all}
+.modal{background:var(--surface);border-radius:var(--rxl);padding:24px;max-width:320px;width:100%;transform:scale(.95);transition:transform .2s}
+.modal-overlay.show .modal{transform:scale(1)}
+.modal h2{font-family:'Instrument Serif',serif;font-size:20px;font-weight:400;margin-bottom:6px}
+.modal p{font-size:13px;color:var(--ink2);margin-bottom:20px;line-height:1.5}
+.user-opts{display:flex;flex-direction:column;gap:8px}
+.user-opt{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:var(--rl);border:1.5px solid var(--surface3);cursor:pointer;transition:all .15s;background:var(--surface)}
+.user-opt:hover{border-color:var(--accent);background:var(--accent-bg)}
+.user-opt-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0}
+.user-opt-dot.yosh{background:#7f77dd}
+.user-opt-dot.joss{background:#1D9E75}
+.user-opt-name{font-weight:500;font-size:15px}
+.user-opt-sub{font-size:12px;color:var(--ink2)}
+
+/* ── SKELETON LOADER ── */
+.skeleton{display:flex;flex-direction:column;gap:10px;padding:12px}
+.skel-card{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--rl);padding:16px;display:flex;flex-direction:column;gap:10px}
+.skel-line{background:var(--surface3);border-radius:4px;animation:pulse 1.4s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* ── DATES PAGE ── */
+.dates-intro{font-size:13px;color:var(--ink2);margin-bottom:16px;line-height:1.6;padding:12px 14px;background:var(--blue-bg);border-radius:var(--rl);border:1px solid var(--surface3)}
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-group{margin-bottom:20px}
+.tl-group-title{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--ink3);margin-bottom:8px;padding:0 2px}
+.tl-item{display:flex;gap:12px;padding:11px 14px;background:var(--surface);border:1px solid var(--surface3);border-radius:var(--rl);margin-bottom:6px;cursor:pointer;user-select:none;transition:all .15s;position:relative;overflow:hidden}
+.tl-item:hover{background:var(--surface2)}
+.tl-item.tl-done{opacity:.5}
+.tl-item.tl-done .tl-title{text-decoration:line-through}
+.tl-item.urgent{border-left:3px solid var(--accent)}
+.tl-item.urgent .tl-date-badge{background:var(--accent-bg);color:var(--accent);border-color:var(--accent-border)}
+.tl-item.done-item{border-left:3px solid var(--teal)}
+.tl-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:52px}
+.tl-date-badge{background:var(--surface2);border:1px solid var(--surface3);border-radius:8px;padding:4px 6px;text-align:center;font-size:9px;font-weight:600;color:var(--ink2);line-height:1.2}
+.tl-days-left{font-size:9px;color:var(--ink3);margin-top:3px;text-align:center}
+.tl-days-left.urgent{color:var(--accent);font-weight:600}
+.tl-days-left.past{color:var(--teal)}
+.tl-content{flex:1;min-width:0}
+.tl-title{font-size:13px;font-weight:500;margin-bottom:2px;line-height:1.3}
+.tl-desc{font-size:11px;color:var(--ink2);line-height:1.4}
+.tl-cb{width:20px;height:20px;border-radius:50%;border:2px solid var(--surface3);display:flex;align-items:center;justify-content:center;flex-shrink:0;align-self:center;transition:all .15s}
+.tl-item:hover .tl-cb{border-color:var(--teal)}
+.tl-cb.done{background:var(--teal);border-color:var(--teal);color:#fff;font-size:11px;font-weight:700}
+
+/* ── COMPRAS PAGE ── */
+.buy-section{margin-bottom:20px}
+.buy-section-title{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);margin-bottom:8px;padding:0 2px}
+.buy-item{display:flex;align-items:center;gap:0;background:var(--surface);border:1px solid var(--surface3);border-radius:var(--rl);margin-bottom:6px;overflow:hidden;cursor:pointer;transition:all .15s}
+.buy-item:hover{background:var(--surface2)}
+.buy-item.bought{opacity:.45}
+.buy-tap{display:flex;align-items:center;gap:12px;padding:12px 14px;flex:1;min-height:52px}
+.buy-cb{width:20px;height:20px;min-width:20px;border-radius:50%;border:2px solid var(--surface3);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
+.buy-cb.done{background:var(--teal);border-color:var(--teal);color:#fff;font-size:11px;font-weight:700}
+.buy-item:hover .buy-cb{border-color:var(--teal)}
+.buy-info{flex:1;min-width:0}
+.buy-name{font-size:13px;font-weight:500;line-height:1.3}
+.buy-item.bought .buy-name{text-decoration:line-through}
+.buy-note{font-size:11px;color:var(--ink2);margin-top:1px;line-height:1.35}
+.buy-price{font-size:12px;font-weight:500;color:var(--ink2);flex-shrink:0;padding-right:14px}
+.buy-price.done{color:var(--teal)}
+.buy-priority{font-size:9px;font-weight:600;padding:2px 7px;border-radius:6px;flex-shrink:0}
+.pri-alta{background:var(--accent-bg);color:var(--accent)}
+.pri-media{background:var(--gold-bg);color:var(--gold)}
+.pri-baja{background:var(--surface2);color:var(--ink2)}
+
+/* ── GUIA PAGE ── */
+.guide-day{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--rl);margin-bottom:12px;overflow:hidden}
+.guide-day-head{padding:13px 16px;display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;transition:background .15s}
+.guide-day-head:hover{background:var(--surface2)}
+.guide-day-head.open{border-bottom:1px solid var(--surface3)}
+.guide-day-icon{font-size:24px;flex-shrink:0}
+.guide-day-info{flex:1}
+.guide-day-name{font-family:'Instrument Serif',serif;font-size:16px;font-weight:400}
+.guide-day-sub{font-size:11px;color:var(--ink2);margin-top:1px}
+.guide-day-badge{font-size:10px;font-weight:500;padding:3px 9px;border-radius:8px;flex-shrink:0}
+.guide-day-body{padding:14px 16px;background:var(--surface2)}
+.guide-tips{display:flex;flex-direction:column;gap:8px}
+.tip-row{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;background:var(--surface);border-radius:var(--r);border:1px solid var(--surface3)}
+.tip-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.tip-text{font-size:12px;line-height:1.5;color:var(--ink2);flex:1}
+.tip-text strong{color:var(--ink);font-weight:500}
+.tip-row.highlight{border-color:var(--accent-border);background:var(--accent-bg)}
+.tip-row.highlight .tip-text{color:var(--ink)}
+
+/* ── VACBIRD CARD ── */
+.vcounter{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--rl);margin-top:16px;overflow:hidden}
+.vcounter-head{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;cursor:pointer;user-select:none}
+.vcounter-head:hover{background:var(--surface2)}
+.vcounter-head h3{font-family:'Instrument Serif',serif;font-size:14px;font-weight:400}
+.vcounter-body{padding:14px;border-top:1px solid var(--surface3)}
 .counter-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media(max-width:400px){.counter-grid{grid-template-columns:repeat(2,1fr)}}
 .counter-cell{text-align:center}
-.counter-size{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:3px 0;border-radius:5px;margin-bottom:3px}
-.cs-s{background:#b5d4f4;color:#0c447c}.cs-m{background:#9fe1cb;color:#085041}.cs-l{background:#fac775;color:#633806}
-.counter-dims{font-size:9px;color:var(--ink3);margin-bottom:4px}
-.counter-mal{font-size:10px;color:var(--ink2);display:flex;flex-direction:column;gap:1px}
-.counter-total{font-size:17px;font-weight:500;color:var(--ink);margin-top:3px}
-.counter-sub{font-size:9px;color:var(--ink3)}
-.rec-box{background:var(--accent-bg);border:1px solid #f0c4ae;border-radius:var(--r);padding:10px 14px;margin-top:10px;font-size:12px;color:var(--ink2);line-height:1.5}
+.csz{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:3px 0;border-radius:5px;margin-bottom:3px}
+.csz-s{background:var(--tag-s-bg);color:var(--tag-s-c)}
+.csz-m{background:var(--tag-m-bg);color:var(--tag-m-c)}
+.csz-l{background:var(--tag-l-bg);color:var(--tag-l-c)}
+.cdims{font-size:9px;color:var(--ink3);margin-bottom:3px}
+.cmal{font-size:10px;color:var(--ink2);display:flex;flex-direction:column;gap:1px}
+.ctotal{font-size:18px;font-weight:500;margin-top:3px}
+.csub{font-size:9px;color:var(--ink3)}
+.rec-box{background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:var(--r);padding:10px 14px;margin-top:10px;font-size:12px;color:var(--ink2);line-height:1.5}
 .rec-box strong{color:var(--accent)}
-.footer{text-align:center;font-size:11px;color:var(--ink3);padding:20px 16px 32px}
-@media(max-width:500px){.counter-grid{grid-template-columns:repeat(2,1fr)}.days-grid{grid-template-columns:1fr}.toolbar{gap:4px}}
+
+/* ── LEGEND STRIP ── */
+.legend-strip{display:flex;gap:10px;flex-wrap:wrap;padding:8px 14px;background:var(--surface2);border-bottom:1px solid var(--surface3);font-size:10px;color:var(--ink2)}
+.l-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+
+/* ── PROGRESS RINGS on header ── */
+.rings-row{display:flex;gap:6px;padding:8px 16px;overflow-x:auto;scrollbar-width:none}
+.rings-row::-webkit-scrollbar{display:none}
+.ring-item{display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0}
+.ring-label{font-size:9px;color:rgba(255,255,255,.5);white-space:nowrap}
+.ring-val{font-size:10px;font-weight:500;color:rgba(255,255,255,.8)}
+
+/* ── MISC ── */
+.empty-state{text-align:center;padding:40px 20px;color:var(--ink3);font-size:13px}
+.footer{text-align:center;font-size:10px;color:var(--ink3);padding:16px;margin-top:8px}
 </style>
 </head>
 <body>
 
-<div class="top-header">
-  <div class="header-row">
+<!-- USER MODAL -->
+<div class="modal-overlay" id="user-modal">
+  <div class="modal">
+    <h2>¿Quién eres?</h2>
+    <p>Selecciona tu nombre para identificar quién marcó cada ítem en el checklist compartido.</p>
+    <div class="user-opts">
+      <div class="user-opt" onclick="selectUser('yosh')">
+        <div class="user-opt-dot yosh"></div>
+        <div><div class="user-opt-name">Yosh</div><div class="user-opt-sub">Adulto 1 · 44 años</div></div>
+      </div>
+      <div class="user-opt" onclick="selectUser('joss')">
+        <div class="user-opt-dot joss"></div>
+        <div><div class="user-opt-name">Joss</div><div class="user-opt-sub">Adulto 2 · 41 años</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- APP HEADER -->
+<header class="app-header">
+  <div class="app-header-row">
     <div>
-      <h1>Disney Wish · Organización por días</h1>
-      <p>Oct 28 – Nov 4, 2026 · Yosh · Joss · Emma · Nina</p>
+      <div class="app-title">Disney Wish 2026</div>
+      <div class="app-subtitle">Oct 28 – Nov 4 · Yosh · Joss · Emma · Nina</div>
     </div>
-    <div class="header-right">
-      <div class="sync-badge"><span class="sync-dot" id="sdot"></span><span id="slbl">conectando...</span></div>
-      <div style="text-align:right">
-        <div class="prog-val"><span id="packed-count">0</span><span style="font-size:12px;color:#9b9890"> / <span id="packed-total">0</span></span></div>
-        <div class="prog-sub">ítems listos</div>
+    <div class="header-controls">
+      <div class="sync-pill"><span class="sdot" id="sdot"></span><span id="slbl">···</span></div>
+      <button class="dark-btn" onclick="toggleDark()" id="dark-btn" title="Modo oscuro">☀</button>
+      <div class="user-pill" onclick="showUserModal()" id="user-pill">
+        <div class="user-dot" id="user-dot" style="background:#9b9890"></div>
+        <span id="user-name-lbl">?</span>
       </div>
     </div>
   </div>
-  <div class="pbar"><div class="pbar-fill" id="main-pbar" style="width:0%"></div></div>
-</div>
-
-<div class="legend">
-  <span style="font-weight:500;color:#9b9890;margin-right:2px">Vacbird:</span>
-  <span class="leg-item"><span class="leg-dot leg-s"></span> S · 18.5×25.2"</span>
-  <span class="leg-item"><span class="leg-dot leg-m"></span> M · 21.2×29.1"</span>
-  <span class="leg-item"><span class="leg-dot leg-l"></span> L · 24×33"</span>
-  <span class="leg-item" style="color:#9b9890">⊘ = sin bolsa de vacío</span>
-</div>
-
-<div class="main">
-
-  <div class="toolbar">
-    <span class="toolbar-lbl">Ver:</span>
-    <button class="ftab active" onclick="setFilter('all',this)">Todo</button>
-    <button class="ftab" onclick="setFilter('mal1',this)">🧳 Maleta 1</button>
-    <button class="ftab" onclick="setFilter('mal2',this)">🧳 Maleta 2</button>
-    <button class="ftab" onclick="setFilter('carry',this)">🎒 Carry-on</button>
-    <button class="ftab" onclick="setFilter('mochilas',this)">👜 Mochilas</button>
-    <button class="ftab" onclick="setFilter('panialera',this)">🍼 Pañalera</button>
-    <button class="ftab" onclick="setFilter('sueltos',this)">🧴 Neceser</button>
-    <div class="sep"></div>
-    <button class="abtn" onclick="expandAll()">Expandir todo</button>
-    <button class="abtn" onclick="collapseAll()">Colapsar todo</button>
-    <button class="abtn danger" onclick="confirmReset()">Reiniciar todo</button>
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+    <div style="flex:1">
+      <div class="pbar"><div class="pbar-fill" id="main-pbar" style="width:0%"></div></div>
+    </div>
+    <div class="prog-wrap"><div class="prog-val"><span id="pc">0</span><span style="font-size:11px;color:var(--ink3)"> / <span id="pt">0</span></span></div><div class="prog-lbl">ítems</div></div>
   </div>
+</header>
 
-  <div id="sections"></div>
-
-  <div class="bag-counter-section" id="vacbird-section">
-    <div class="bag-counter">
-      <div class="bag-counter-head" onclick="toggleVacbird()">
-        <h3>Bolsas Vacbird — 1 pack de 18 (6S+6M+6L) · $36.98</h3>
-        <span class="mchev open" id="vacbird-chev">▼</span>
-      </div>
-      <div class="bag-counter-body" id="vacbird-body">
-        <div class="counter-grid">
-          <div class="counter-cell">
-            <div class="counter-size cs-s">Small · 29</div>
-            <div class="counter-dims">18.5 × 25.2 pulgadas</div>
-            <div class="counter-mal"><span>Maleta 1: <b>0</b></span><span>Maleta 2: <b>4</b></span></div>
-            <div class="counter-total">4</div>
-            <div class="counter-sub">ropa bebé por días</div>
-          </div>
-          <div class="counter-cell">
-            <div class="counter-size cs-m">Medium · 34</div>
-            <div class="counter-dims">21.2 × 29.1 pulgadas</div>
-            <div class="counter-mal"><span>Maleta 1: <b>4</b></span><span>Maleta 2: <b>2</b></span></div>
-            <div class="counter-total">6</div>
-            <div class="counter-sub">ropa adultos + niña</div>
-          </div>
-          <div class="counter-cell">
-            <div class="counter-size cs-l">Large · 39</div>
-            <div class="counter-dims">24 × 33 pulgadas</div>
-            <div class="counter-mal"><span>Maleta 1: <b>3</b></span><span>Maleta 2: <b>3</b></span></div>
-            <div class="counter-total">6</div>
-            <div class="counter-sub">disfraces, gala, pañales</div>
-          </div>
-        </div>
-        <div class="rec-box"><strong>Total: 16 bolsas</strong> — el pack de 18 alcanza y sobran 2 de backup para el regreso. Bomba inalámbrica recargable incluida. <strong>No van en bolsa de vacío:</strong> máquina ruido blanco, ganchos magnéticos, bañera inflable, organizador puerta, cortina blackout, decoraciones, neceser, botiquín.</div>
-      </div>
+<!-- PAGE: CHECKLIST -->
+<div class="page active" id="page-checklist">
+  <div class="filter-bar">
+    <div class="filter-bar-inner">
+      <button class="ftab active" onclick="setFilter('all',this)">Todos</button>
+      <button class="ftab" onclick="setFilter('mal1',this)">🧳 Maleta 1</button>
+      <button class="ftab" onclick="setFilter('mal2',this)">🧳 Maleta 2</button>
+      <button class="ftab" onclick="setFilter('carry',this)">🎒 Carry-on</button>
+      <button class="ftab" onclick="setFilter('mochilas',this)">👜 Mochilas</button>
+      <button class="ftab" onclick="setFilter('panialera',this)">🍼 Pañalera</button>
+      <button class="ftab" onclick="setFilter('sueltos',this)">🧴 Neceser</button>
+      <div class="fsep"></div>
+      <button class="faction" onclick="expandAll()">↕ Expandir</button>
+      <button class="faction" onclick="collapseAll()">↕ Colapsar</button>
+      <button class="faction red" onclick="confirmReset()">⟳ Reiniciar</button>
     </div>
   </div>
-
-</div>
-
-<div class="footer">Halloween on the High Seas · Nassau · Castaway Cay · Disney Wish</div>
-
-<script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getDatabase, ref, onValue, update, remove, get } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
-
-const firebaseConfig = {
-  apiKey: "AIzaSyC76T8y6Qm3GwcbzDD6qTZGfSSgi4qduAQ",
-  authDomain: "checklist-dc.firebaseapp.com",
-  databaseURL: "https://checklist-dc-default-rtdb.firebaseio.com",
-  projectId: "checklist-dc",
-  storageBucket: "checklist-dc.firebasestorage.app",
-  messagingSenderId: "1058090239983",
-  appId: "1:1058090239983:web:478f28757d9eb0eb76581a"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-const DB_PATH = 'dcl_wish_oct2026';
-
-let packed = {};
-let saveTimer = null;
-let currentFilter = 'all';
-let sectionCollapsed = {};
-
-function setSyncStatus(s, txt) {
-  const dot = document.getElementById('sdot');
-  const lbl = document.getElementById('slbl');
-  dot.className = 'sync-dot ' + s;
-  lbl.textContent = txt;
-}
-
-function scheduleSync(key, val) {
-  setSyncStatus('saving', 'guardando...');
-  clearTimeout(saveTimer);
-  saveTimer = setTimeout(async () => {
-    try {
-      if (val === null) {
-        await remove(ref(db, DB_PATH + '/items/' + key));
-      } else {
-        const updates = {};
-        updates[DB_PATH + '/items/' + key] = val;
-        await update(ref(db, '/'), updates);
-      }
-      setSyncStatus('ok', 'sincronizado ✓');
-    } catch(e) {
-      setSyncStatus('err', 'error sync');
-    }
-  }, 600);
-}
-
-const MAL1 = [
-  { date:'Mié 28 – Jue 29 oct', label:'Vuelo GUA→MCO + Pre-crucero', badge:'viaje', bags:[
-    { size:'L', who:'Yosh + Joss', items:['Camisa/blusa casual Yosh (día vuelo)','Pantalón/shorts casual Yosh (día vuelo)','Ropa interior Yosh (2 mudadas)','Calcetines Yosh (2 pares)','Camisa/blusa casual Joss (día vuelo)','Pantalón/shorts casual Joss (día vuelo)','Ropa interior Joss (2 mudadas)','Calcetines Joss (2 pares)','Pijamas Yosh + Joss (1 juego cada uno)']}
-  ]},
-  { date:'Vie 30 oct · Embarque', label:'Día 1 a bordo · Port Canaveral', badge:'crucero', bags:[
-    { size:'L', who:'Yosh + Joss', items:['Outfit embarque Yosh (cómodo para viajar)','Outfit embarque Joss (cómodo para viajar)','Traje de baño Yosh (1er juego)','Traje de baño Joss (1er juego)','Pareo Yosh','Pareo Joss','Outfit cena rotacional casual noche Vie 30']}
-  ]},
-  { date:'Sáb 31 oct · Nassau', label:'Pirate Night + Halloween — misma noche', badge:'pirata', bags:[
-    { size:'L', who:'Disfraz Pirata (ambos)', items:['Disfraz pirata Yosh','Disfraz pirata Joss','Accesorios pirata Yosh (parche, bandana, cinturón)','Accesorios pirata Joss (parche, bandana, cinturón)']},
-    { size:'M', who:'Disfraz Halloween (ambos)', items:['Disfraz Halloween Yosh','Disfraz Halloween Joss','Accesorios Halloween Yosh','Accesorios Halloween Joss']}
-  ]},
-  { date:'Dom 1 nov · Castaway Cay', label:'Día 4 · Isla privada Disney', badge:'playa', bags:[
-    { size:'M', who:'Yosh + Joss', items:['Traje de baño Yosh (2do juego)','Traje de baño Joss (2do juego)','Pareo / cover-up Yosh (2do)','Pareo / cover-up Joss (2do)','Shorts cambio Yosh','Shorts cambio Joss','Outfit cena rotacional casual noche Dom 1']}
-  ]},
-  { date:'Var. noches a bordo', label:'Cena de gala (rotational dining)', badge:'crucero', bags:[
-    { size:'M', who:'Yosh + Joss', items:['Outfit elegante Yosh','Outfit elegante Joss','Zapatos vestir Yosh','Zapatos vestir Joss','Accesorios (joyería, cinturón, etc.)']}
-  ]},
-  { date:'Lun 2 nov · Desembarque', label:'Día 5 · Salida del barco', badge:'regreso', bags:[
-    { size:'M', who:'Yosh + Joss', items:['Ropa desembarque Yosh','Ropa desembarque Joss','Ropa interior limpia Yosh','Ropa interior limpia Joss','Calcetines Yosh','Calcetines Joss']}
-  ]},
-  { date:'Mar 3 – Mié 4 nov', label:'Post-crucero · Orlando → vuelo Mié 4', badge:'regreso', bags:[
-    { size:'M', who:'Yosh + Joss', items:['Outfit casual Mar 3 Yosh + Joss','Outfit vuelo regreso Mié 4 Yosh + Joss','Ropa interior Yosh + Joss (2 mudadas)','Calcetines Yosh + Joss (2 pares)']}
-  ]},
-];
-
-const MAL2 = [
-  { date:'Mié 28 – Jue 29 oct', label:'Vuelo GUA→MCO + Pre-crucero', badge:'viaje', bags:[
-    { size:'M', who:'Emma (7a)', items:['Outfit vuelo niña','Outfit pre-crucero Jue 29 niña','Ropa interior niña (2 mudadas)','Calcetines niña (2 pares)','Pijama niña']},
-    { size:'S', who:'Nina (1a9m)', items:['Onesies / rompers (3-4 mudadas)','Pijama bebé (1 juego)','Baberos (3-4)','Calcetines bebé (2 pares)']}
-  ]},
-  { date:'Vie 30 oct · Embarque', label:'Día 1 a bordo · Port Canaveral', badge:'crucero', bags:[
-    { size:'M', who:'Emma (7a)', items:['Outfit embarque niña','Traje de baño niña (1er juego)','Shorts de cambio niña','Outfit cena rotacional casual noche Vie 30','Ropa interior niña']},
-    { size:'S', who:'Nina (1a9m)', items:['Onesies / rompers bebé (3-4 mudadas)','Traje de baño UPF bebé','Swim diapers día embarque (3-4 uds.)','Baberos (3)']}
-  ]},
-  { date:'Sáb 31 oct · Nassau', label:'Pirate Night + Halloween — misma noche', badge:'pirata', bags:[
-    { size:'L', who:'Emma + Nina · disfraces', items:['Disfraz pirata completo niña','Disfraz Halloween completo niña','Mini disfraz Halloween bebé','Mini accesorios pirata bebé','3 mudadas bebé del día','Ropa interior niña']}
-  ]},
-  { date:'Dom 1 nov · Castaway Cay', label:'Día 4 · Isla privada Disney', badge:'playa', bags:[
-    { size:'L', who:'Emma + Nina · playa', items:['Traje de baño niña (2do juego)','Shorts de cambio niña','Outfit cena rotacional casual noche Dom 1 niña','Ropa UPF bebé (top + bottom)','Swim diapers bebé (5-6 uds.)','Sombrero de sol bebé','Cambio seco bebé']}
-  ]},
-  { date:'Var. noches a bordo', label:'Gala + Royal Gathering — princesa', badge:'crucero', bags:[
-    { size:'L', who:'Emma (7a)', items:['Vestido de princesa (Royal Gathering — reservar 30 sep)','Zapatillas / zapatos de princesa','Outfit cena elegante niña','Accesorios princesa (tiara, guantes, etc.)']}
-  ]},
-  { date:'Lun 2 nov · Desembarque', label:'Día 5 · Salida del barco', badge:'regreso', bags:[
-    { size:'S', who:'Nina (1a9m)', items:['Ropa cómoda desembarque bebé','Mudadas extra bebé (2-3)','Baberos (2-3)']}
-  ]},
-  { date:'Mar 3 – Mié 4 nov', label:'Post-crucero · Orlando', badge:'regreso', bags:[
-    { size:'S', who:'Nina (1a9m)', items:['Onesies / rompers Mar 3 (3-4 mudadas)','Onesies / rompers Mié 4 vuelo (3-4 mudadas)','Pijama bebé (1 juego)','Baberos (4-5)']}
-  ]},
-  { date:'Todo el viaje', label:'Pañales regulares comprimidos', badge:'crucero', bags:[
-    { size:'L', who:'Nina (1a9m)', items:['~60-80 pañales regulares (todo el viaje)','Toallitas húmedas extra (2 paquetes)']}
-  ]},
-  { date:'Maleta 2 — accesorios cabina', label:'Sólidos · sin bolsa de vacío', badge:'viaje', bags:[
-    { size:'⊘', who:'Entre bolsas comprimidas', items:['Máquina de ruido blanco','Ganchos magnéticos (bolsita zip)','Bañera inflable bebé (en empaque)','Organizador de puerta (enrollado)','Cortina blackout (doblada)','Decoraciones magnéticas Disney + Halloween']}
-  ]},
-];
-
-const MAL_CARRY = [
-  { date:'Día viaje → llegada al barco', label:'Ropa de llegada (4 personas)', badge:'viaje', bags:[
-    { size:'⊘', who:'Yosh', items:['Mudada completa Yosh','Ropa interior Yosh','Calcetines Yosh']},
-    { size:'⊘', who:'Joss', items:['Mudada completa Joss','Ropa interior Joss','Calcetines Joss']},
-    { size:'⊘', who:'Emma', items:['Mudada completa niña','Ropa interior niña','Calcetines niña']},
-    { size:'⊘', who:'Nina', items:['2-3 mudadas extra bebé','Swim diapers (3-4) — por si el splash pad llama al embarcar']}
-  ]},
-  { date:'NUNCA en maleta despachada', label:'Documentos y valores', badge:'viaje', bags:[
-    { size:'⊘', who:'Todos', items:['Pasaporte Yosh (Guatemala, vigente)','Pasaporte Joss (Guatemala, vigente)','Pasaporte Emma (Guatemala, vigente)','Pasaporte Nina (Guatemala, vigente)','Acta de nacimiento Emma (copia certificada)','Acta de nacimiento Nina (copia certificada)','Registro de vacunas Nina','MagicBand+ Yosh (cargado antes del viaje)','MagicBand+ Joss (cargado antes del viaje)','Cargador propietario MagicBand+ × 2','Tarjetas del crucero (Key to the World — las dan al embarcar)','Itinerario impreso del crucero','Tickets de vuelo (impreso + digital)','Documentos silla de carro Nina','Tarjetas de crédito / débito','Efectivo USD','Número de emergencia seguro de viaje (impreso)','Póliza seguro de viaje (digital + impresa)']}
-  ]},
-  { date:'Acceso rápido · cabina', label:'Salud y protección solar', badge:'crucero', bags:[
-    { size:'⊘', who:'Familia', items:['Protector solar SPF 50+ (≤100ml para cabina)','Ibuprofeno (adultos + niños)','Antiemético para mareo','Pastillas mareo bebé','Alcohol gel','Tiritas básicas']}
-  ]},
-];
-
-const MAL_MOCHILAS = [
-  { date:'Mochila Yosh', label:'Electrónicos + fotos', badge:'viaje', bags:[
-    { size:'⊘', who:'Yosh carga', items:['Cámara + lentes + accesorios','Power bank cargado','Cargador Yosh (teléfono)','Audífonos Yosh','Lentes de sol Yosh','Gorra Yosh','Disney Ears Yosh','Tumbler / termo Yosh (reutilizable)','Copia física documentos','Cargador multi-puerto USB/USB-C (tipo cubo, sin surge protector) — para el camarote']}
-  ]},
-  { date:'Mochila Joss', label:'Playa + organización', badge:'playa', bags:[
-    { size:'⊘', who:'Joss carga', items:['Gorra Joss','Lentes de sol Joss','Disney Ears Joss','Tumbler / termo Joss (reutilizable)','Libreta de autógrafos Yosh + Joss + Emma + Sharpies','Libreta de autógrafos Nina (para que los personajes firmen a la bebé)','Lanyards porta-tarjeta (3)','Snacks adultos para el vuelo','Protector solar Joss','Bolsa colapsible para playa']}
-  ]},
-  { date:'Mochila Emma (7a)', label:'Sus cosas + snacks', badge:'viaje', bags:[
-    { size:'⊘', who:'Emma carga su mochila', items:['Disney Ears Emma','Tumbler / termo Emma (reutilizable)','Galletas / crackers (sellados de fábrica)','Barras de cereal / granola','Fruta deshidratada','Gomitas / gummies','Nueces o chips de maíz','Juguete o libro favorito','Audífonos Emma','Peluche pequeño','NO frutas frescas — pueden confiscarse en customs MCO']}
-  ]},
-  { date:'Mochila de playa · Castaway Cay', label:'Día de isla privada Disney', badge:'playa', bags:[
-    { size:'⊘', who:'Yosh o Joss carga', items:['Toallas (DCL las provee en el barco)','Botellas de agua reutilizables Yosh + Joss (rellenar a bordo)','Tumbler Emma (rellenar a bordo)','Protector solar extra SPF 50+','Trajes de baño de repuesto','Snacks playa (sellados)','Juguetes de arena para Nina','Parasol / mini tienda de playa para Nina (protección solar bebé)','Bolsa impermeable para toallas mojadas']}
-  ]},
-];
-
-const MAL_PANIALERA = [
-  { date:'Vuelo GUA → PTY → MCO', label:'Leche + alimentación bebé', badge:'viaje', bags:[
-    { size:'⊘', who:'Nina — exención TSA (sin límite 100ml)', items:['Fórmula / leche materna (declarar en seguridad TSA)','Agua purificada para preparar fórmula','Biberones + tetinas (2-3 juegos)','Bolsas de puré bebé (Gerber, HappyBaby)','Puffs / galletas de arroz bebé','Cereales bebé en bolsita','Cucharas + tazón de viaje']}
-  ]},
-  { date:'Vuelo · snacks para las niñas', label:'Alimentos seguros en aduanas EE.UU.', badge:'viaje', bags:[
-    { size:'⊘', who:'Emma + Nina', items:['Crackers / galletas saladas (selladas)','Barras de granola / cereal (selladas)','Cereal en bolsita (sellado)','Uvas pasas (caja sellada)','Chips de maíz (sellados)','NO frutas frescas (confiscación en customs MCO)','NO lácteos frescos ni carnes']}
-  ]},
-  { date:'Todo el viaje · acceso inmediato', label:'Pañales día + emergencias', badge:'crucero', bags:[
-    { size:'⊘', who:'Nina', items:['8-10 pañales regulares para el día','4-5 swim diapers','Toallitas húmedas','Bolsas con aroma para desechar pañales','Crema de pañal','Muda de emergencia bebé','Baberos (3-4)','Swaddle / sábana ligera para vuelo + siestas']}
-  ]},
-];
-
-const MAL_SUELTOS = [
-  { date:'Maleta 1 · neceser adultos', label:'Cuidado personal adultos', badge:'crucero', bags:[
-    { size:'⊘', who:'Neceser de tela (Maleta 1)', items:['Shampoo + acondicionador','Pasta dental + cepillos Yosh + Joss','Desodorante Yosh + Joss','Rasuradora','Crema hidratante','After-sun / aloe vera','Protector solar SPF 50+ extra (Maleta 1)']},
-    { size:'⊘', who:'Bolsa higiene femenina (Maleta 1)', items:['Toallas sanitarias de emergencia','Tampones','Otros productos higiene femenina']}
-  ]},
-  { date:'Maleta 1 · botiquín', label:'Botiquín familiar', badge:'viaje', bags:[
-    { size:'⊘', who:'Bolsa rígida o neceser (Maleta 1)', items:['Ibuprofeno adultos (tabletas)','Ibuprofeno / paracetamol niños (líquido)','Antihistamínico (adultos + niños)','Pastillas para el mareo','Antiácido','Alcohol gel (frasco grande)','Toallitas desinfectantes','Curitas variadas (10-15)','Gasas esterilizadas (3-4)','Cinta adhesiva médica','Termómetro','Tijeras de uñas bebé','Crema de pañal extra (calor Bahamas)']}
-  ]},
-  { date:'Maleta 2 · neceser bebé', label:'Cuidado personal bebé', badge:'crucero', bags:[
-    { size:'⊘', who:'Neceser bebé (Maleta 2)', items:['Champú + jabón bebé','Crema hidratante bebé','Crema de pañal','Cepillo de cabello suave','Cortauñas bebé','Protector solar bebé SPF 50+']}
-  ]},
-  { date:'Maleta 2 · neceser niña', label:'Cuidado personal niña', badge:'crucero', bags:[
-    { size:'⊘', who:'Bolsita niña (Maleta 2)', items:['Cepillo de cabello + ligas + accesorios','Cepillo de dientes Emma','Pasta dental Emma','Shampoo Emma (si prefiere el suyo)']}
-  ]},
-  { date:'Maleta 2 · playa + sol Nina', label:'Protección solar bebé · Castaway Cay', badge:'playa', bags:[
-    { size:'⊘', who:'Entre accesorios Maleta 2', items:['Parasol o mini tienda playa pop-up para Nina','Esterilla o mat de playa pequeña para Nina']}
-  ]},
-  { date:'Maleta 1 · extras sueltos', label:'Accesorios electrónicos + seguro', badge:'viaje', bags:[
-    { size:'⊘', who:'Maleta 1 (entre bolsas comprimidas)', items:['Cargador multi-puerto USB/USB-C tipo cubo (Anker o Baseus, SIN surge protector)','Número emergencia seguro de viaje (impreso en tarjeta para billetera)','Póliza seguro de viaje impresa','Mickey Ears Yosh + Joss (si ya los tienen de WDW)','Mickey Ears Emma']}
-  ]},
-];
-
-const ALL_GRIDS = [
-  { id:'mal1', icon:'🧳', title:'Maleta 1 — Yosh & Joss', subtitle:'7 bolsas · 4M + 3L', data:MAL1 },
-  { id:'mal2', icon:'🧳', title:'Maleta 2 — Emma 7a & Nina 1a9m', subtitle:'9 bolsas · 4S + 2M + 3L', data:MAL2 },
-  { id:'carry', icon:'🎒', title:'Carry-on — cabina (1 bolso grande)', subtitle:'sin bolsas de vacío · acceso inmediato', data:MAL_CARRY },
-  { id:'mochilas', icon:'👜', title:'Mochilas — 4 personal items (1 por persona)', subtitle:'cabina · bajo el asiento', data:MAL_MOCHILAS },
-  { id:'panialera', icon:'🍼', title:'Bolsa pañalera — ítem gratuito bebé', subtitle:'cabina · acceso durante vuelo', data:MAL_PANIALERA },
-  { id:'sueltos', icon:'🧴', title:'Neceser + Botiquín + Accesorios sólidos', subtitle:'sin bolsa de vacío · dentro de maletas', data:MAL_SUELTOS },
-];
-
-function itemKey(g,c,b,i){ return g+'_'+c+'_'+b+'_'+i; }
-function sizeClass(s){ return {S:'tag-s',M:'tag-m',L:'tag-l'}[s]||'tag-libre'; }
-function badgeLabel(b){ return {viaje:'✈ viaje',crucero:'🚢 crucero',pirata:'🏴 pirata',halloween:'🎃 halloween',playa:'🏖 playa',regreso:'🏠 regreso'}[b]||b; }
-
-function getSectionStats(gridId, data) {
-  let total=0, done=0;
-  data.forEach((day,ci)=>{ day.bags.forEach((bag,bi)=>{ bag.items.forEach((_,ii)=>{ total++; if(packed[itemKey(gridId,ci,bi,ii)]) done++; }); }); });
-  return {total, done};
-}
-
-function renderSections() {
-  const container = document.getElementById('sections');
-  container.innerHTML = '';
-  ALL_GRIDS.forEach(sec => {
-    const stats = getSectionStats(sec.id, sec.data);
-    const isCollapsed = sectionCollapsed[sec.id];
-    const div = document.createElement('div');
-    div.className = 'maleta-section';
-    div.id = 'sec-' + sec.id;
-    div.style.display = (currentFilter === 'all' || currentFilter === sec.id) ? '' : 'none';
-
-    const pct = stats.total ? Math.round(stats.done/stats.total*100) : 0;
-    const allDone = stats.done === stats.total && stats.total > 0;
-
-    div.innerHTML = `
-      <div class="maleta-head ${isCollapsed?'':'open'}" onclick="toggleSection('${sec.id}')">
-        <span class="maleta-icon">${sec.icon}</span>
-        <span class="maleta-title">${sec.title}</span>
-        <div class="maleta-meta">
-          <div class="maleta-stats">
-            <span class="mstat ${allDone?'done-all':''}">${stats.done}/${stats.total} ítems</span>
-            <span class="mstat">${pct}%</span>
-            <span class="mstat" style="color:var(--ink3);font-size:10px">${sec.subtitle}</span>
+  <div class="legend-strip">
+    <span style="font-weight:500;color:var(--ink3);margin-right:2px">Vacbird:</span>
+    <span style="display:flex;align-items:center;gap:4px"><span class="l-dot" style="background:var(--tag-s-bg)"></span>S · 18.5×25.2"</span>
+    <span style="display:flex;align-items:center;gap:4px"><span class="l-dot" style="background:var(--tag-m-bg)"></span>M · 21.2×29.1"</span>
+    <span style="display:flex;align-items:center;gap:4px"><span class="l-dot" style="background:var(--tag-l-bg)"></span>L · 24×33"</span>
+    <span style="color:var(--ink3)">⊘ = sin bolsa de vacío</span>
+  </div>
+  <div style="max-width:880px;margin:0 auto;padding:12px 14px 20px">
+    <div id="sections-loading" class="skeleton">
+      <div class="skel-card"><div class="skel-line" style="height:16px;width:60%"></div><div class="skel-line" style="height:12px;width:40%"></div></div>
+      <div class="skel-card"><div class="skel-line" style="height:16px;width:70%"></div><div class="skel-line" style="height:12px;width:50%"></div></div>
+    </div>
+    <div id="sections" style="display:none"></div>
+    <div class="vcounter" id="vcounter">
+      <div class="vcounter-head" onclick="toggleVacbird()">
+        <h3>Bolsas Vacbird — pack 18 (6S+6M+6L) · $36.98</h3>
+        <span class="sec-chev" id="vcchev">▼</span>
+      </div>
+      <div id="vcbody" style="display:none">
+        <div class="vcounter-body">
+          <div class="counter-grid">
+            <div class="counter-cell"><div class="csz csz-s">Small · 29</div><div class="cdims">18.5 × 25.2"</div><div class="cmal"><span>M1: <b>0</b></span><span>M2: <b>4</b></span></div><div class="ctotal">4</div><div class="csub">ropa bebé</div></div>
+            <div class="counter-cell"><div class="csz csz-m">Medium · 34</div><div class="cdims">21.2 × 29.1"</div><div class="cmal"><span>M1: <b>4</b></span><span>M2: <b>2</b></span></div><div class="ctotal">6</div><div class="csub">adultos + niña</div></div>
+            <div class="counter-cell"><div class="csz csz-l">Large · 39</div><div class="cdims">24 × 33"</div><div class="cmal"><span>M1: <b>3</b></span><span>M2: <b>3</b></span></div><div class="ctotal">6</div><div class="csub">disfraces + pañales</div></div>
           </div>
-          <span class="mchev ${isCollapsed?'':'open'}" id="chev-${sec.id}">▼</span>
+          <div class="rec-box"><strong>16 bolsas en total</strong> — pack de 18 alcanza, sobran 2 de backup. <strong>No van en bolsa:</strong> máquina ruido blanco, ganchos magnéticos, bañera inflable, organizador puerta, cortina blackout, neceser, botiquín.</div>
         </div>
       </div>
-      <div class="maleta-body" id="body-${sec.id}" style="${isCollapsed?'display:none':''}">
-        <div class="days-grid" id="grid-${sec.id}"></div>
-      </div>`;
-    container.appendChild(div);
-    if (!isCollapsed) renderGrid(sec.id, sec.data);
+    </div>
+  </div>
+</div>
+
+<!-- PAGE: FECHAS -->
+<div class="page" id="page-fechas">
+  <div style="max-width:880px;margin:0 auto;padding:14px 14px 20px">
+    <div class="dates-intro">Estas son las fechas críticas del crucero. Algunas se pueden perder en minutos si no actúas a tiempo — especialmente el Royal Gathering. Márcalas como hechas cuando las completes.</div>
+    <div id="timeline-container"></div>
+  </div>
+</div>
+
+<!-- PAGE: COMPRAS -->
+<div class="page" id="page-compras">
+  <div style="max-width:880px;margin:0 auto;padding:14px 14px 20px">
+    <div id="compras-container"></div>
+  </div>
+</div>
+
+<!-- PAGE: GUÍA -->
+<div class="page" id="page-guia">
+  <div style="max-width:880px;margin:0 auto;padding:14px 14px 20px">
+    <div id="guia-container"></div>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <button class="nav-item active" id="nav-checklist" onclick="setPage('checklist')">
+    <span class="nav-icon">☑</span>
+    <span>Checklist</span>
+  </button>
+  <button class="nav-item" id="nav-fechas" onclick="setPage('fechas')">
+    <span class="nav-icon">📅</span>
+    <span>Fechas</span>
+  </button>
+  <button class="nav-item" id="nav-compras" onclick="setPage('compras')">
+    <span class="nav-icon">🛍</span>
+    <span>Compras</span>
+    <span class="nav-badge" id="compras-badge" style="display:none">0</span>
+  </button>
+  <button class="nav-item" id="nav-guia" onclick="setPage('guia')">
+    <span class="nav-icon">🗺</span>
+    <span>Guía</span>
+  </button>
+</nav>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script>
+// ── FIREBASE ──
+firebase.initializeApp({
+  apiKey:'AIzaSyC76T8y6Qm3GwcbzDD6qTZGfSSgi4qduAQ',
+  authDomain:'checklist-dc.firebaseapp.com',
+  databaseURL:'https://checklist-dc-default-rtdb.firebaseio.com',
+  projectId:'checklist-dc',
+  storageBucket:'checklist-dc.firebasestorage.app',
+  messagingSenderId:'1058090239983',
+  appId:'1:1058090239983:web:478f28757d9eb0eb76581a'
+});
+var db=firebase.database();
+var ITEMS_PATH='dcl_wish_oct2026/items';
+var DATES_PATH='dcl_wish_oct2026/dates';
+var BUYS_PATH='dcl_wish_oct2026/buys';
+
+// ── STATE ──
+var packed={};
+var datesDone={};
+var buysDone={};
+var currentFilter='all';
+var sectionCollapsed={};
+var guideDayOpen={};
+var currentUser=localStorage.getItem('dcl_user')||null;
+var darkMode=localStorage.getItem('dcl_dark')==='1';
+var saveTimer=null;
+var initialized=false;
+
+// ── DARK MODE ──
+if(darkMode){document.documentElement.setAttribute('data-theme','dark');document.getElementById('dark-btn').textContent='☾';}
+function toggleDark(){
+  darkMode=!darkMode;
+  document.documentElement.setAttribute('data-theme',darkMode?'dark':'light');
+  document.getElementById('dark-btn').textContent=darkMode?'☾':'☀';
+  localStorage.setItem('dcl_dark',darkMode?'1':'0');
+}
+
+// ── USER ──
+function showUserModal(){document.getElementById('user-modal').classList.add('show');}
+function selectUser(u){
+  currentUser=u;
+  localStorage.setItem('dcl_user',u);
+  updateUserUI();
+  document.getElementById('user-modal').classList.remove('show');
+}
+function updateUserUI(){
+  var dot=document.getElementById('user-dot');
+  var lbl=document.getElementById('user-name-lbl');
+  if(currentUser==='yosh'){dot.style.background='#7f77dd';lbl.textContent='Yosh';}
+  else if(currentUser==='joss'){dot.style.background='#1D9E75';lbl.textContent='Joss';}
+  else{dot.style.background='#9b9890';lbl.textContent='?';}
+}
+updateUserUI();
+if(!currentUser){setTimeout(showUserModal,600);}
+
+// ── SYNC STATUS ──
+function setSS(s,t){var d=document.getElementById('sdot'),l=document.getElementById('slbl');d.className='sdot '+s;l.textContent=t;}
+
+// ── PAGE NAV ──
+function setPage(p){
+  document.querySelectorAll('.page').forEach(function(x){x.classList.remove('active');});
+  document.querySelectorAll('.nav-item').forEach(function(x){x.classList.remove('active');});
+  document.getElementById('page-'+p).classList.add('active');
+  document.getElementById('nav-'+p).classList.add('active');
+}
+
+// ── CHECKLIST DATA ──
+var MAL1=[
+  {date:'Mié 28–Jue 29 oct',label:'Vuelo GUA→MCO + Pre-crucero',badge:'viaje',bags:[
+    {size:'L',who:'Yosh + Joss',items:['Camisa/blusa casual Yosh (día vuelo)','Pantalón/shorts casual Yosh (día vuelo)','Ropa interior Yosh (2 mudadas)','Calcetines Yosh (2 pares)','Camisa/blusa casual Joss (día vuelo)','Pantalón/shorts casual Joss (día vuelo)','Ropa interior Joss (2 mudadas)','Calcetines Joss (2 pares)','Pijamas Yosh + Joss (1 juego cada uno)']}
+  ]},
+  {date:'Vie 30 oct · Embarque',label:'Día 1 a bordo · Port Canaveral',badge:'crucero',bags:[
+    {size:'L',who:'Yosh + Joss',items:['Outfit embarque Yosh','Outfit embarque Joss','Traje de baño Yosh (1er juego)','Traje de baño Joss (1er juego)','Pareo Yosh','Pareo Joss','Outfit cena rotacional casual noche Vie 30']}
+  ]},
+  {date:'Sáb 31 oct · Nassau',label:'Pirate Night + Halloween — misma noche',badge:'pirata',bags:[
+    {size:'L',who:'Disfraz Pirata (ambos)',items:['Disfraz pirata Yosh','Disfraz pirata Joss','Accesorios pirata Yosh (parche, bandana, cinturón)','Accesorios pirata Joss (parche, bandana, cinturón)']},
+    {size:'M',who:'Disfraz Halloween (ambos)',items:['Disfraz Halloween Yosh','Disfraz Halloween Joss','Accesorios Halloween Yosh','Accesorios Halloween Joss']}
+  ]},
+  {date:'Dom 1 nov · Castaway Cay',label:'Día 4 · Isla privada Disney',badge:'playa',bags:[
+    {size:'M',who:'Yosh + Joss',items:['Traje de baño Yosh (2do juego)','Traje de baño Joss (2do juego)','Pareo Yosh (2do)','Pareo Joss (2do)','Shorts cambio Yosh','Shorts cambio Joss','Outfit cena rotacional casual noche Dom 1']}
+  ]},
+  {date:'Var. noches a bordo',label:'Cena de gala · rotational dining',badge:'crucero',bags:[
+    {size:'M',who:'Yosh + Joss',items:['Outfit elegante Yosh','Outfit elegante Joss','Zapatos vestir Yosh','Zapatos vestir Joss','Accesorios (joyería, cinturón, etc.)']}
+  ]},
+  {date:'Lun 2 nov · Desembarque',label:'Día 5 · Salida del barco',badge:'regreso',bags:[
+    {size:'M',who:'Yosh + Joss',items:['Ropa desembarque Yosh','Ropa desembarque Joss','Ropa interior limpia Yosh','Ropa interior limpia Joss','Calcetines Yosh','Calcetines Joss']}
+  ]},
+  {date:'Mar 3 – Mié 4 nov',label:'Post-crucero · Orlando → vuelo Mié 4',badge:'regreso',bags:[
+    {size:'M',who:'Yosh + Joss',items:['Outfit casual Mar 3 Yosh + Joss','Outfit vuelo regreso Mié 4 Yosh + Joss','Ropa interior Yosh + Joss (2 mudadas)','Calcetines Yosh + Joss (2 pares)']}
+  ]},
+];
+var MAL2=[
+  {date:'Mié 28–Jue 29 oct',label:'Vuelo GUA→MCO + Pre-crucero',badge:'viaje',bags:[
+    {size:'M',who:'Emma (7a)',items:['Outfit vuelo niña','Outfit pre-crucero Jue 29 niña','Ropa interior niña (2 mudadas)','Calcetines niña (2 pares)','Pijama niña']},
+    {size:'S',who:'Nina (1a9m)',items:['Onesies / rompers (3-4 mudadas)','Pijama bebé (1 juego)','Baberos (3-4)','Calcetines bebé (2 pares)']}
+  ]},
+  {date:'Vie 30 oct · Embarque',label:'Día 1 a bordo · Port Canaveral',badge:'crucero',bags:[
+    {size:'M',who:'Emma (7a)',items:['Outfit embarque niña','Traje de baño niña (1er juego)','Shorts de cambio niña','Outfit cena rotacional casual noche Vie 30','Ropa interior niña']},
+    {size:'S',who:'Nina (1a9m)',items:['Onesies / rompers bebé (3-4 mudadas)','Traje de baño UPF bebé','Swim diapers día embarque (3-4 uds.)','Baberos (3)']}
+  ]},
+  {date:'Sáb 31 oct · Nassau',label:'Pirate Night + Halloween — misma noche',badge:'pirata',bags:[
+    {size:'L',who:'Emma + Nina · disfraces',items:['Disfraz pirata completo niña','Disfraz Halloween completo niña','Mini disfraz Halloween bebé','Mini accesorios pirata bebé','3 mudadas bebé del día','Ropa interior niña']}
+  ]},
+  {date:'Dom 1 nov · Castaway Cay',label:'Día 4 · Isla privada Disney',badge:'playa',bags:[
+    {size:'L',who:'Emma + Nina · playa',items:['Traje de baño niña (2do juego)','Shorts de cambio niña','Outfit cena noche Dom 1 niña','Ropa UPF bebé (top + bottom)','Swim diapers bebé (5-6 uds.)','Sombrero de sol bebé','Cambio seco bebé']}
+  ]},
+  {date:'Var. noches a bordo',label:'Gala + Royal Gathering — princesa',badge:'crucero',bags:[
+    {size:'L',who:'Emma (7a)',items:['Vestido de princesa (Royal Gathering — reservar 30 sep)','Zapatillas / zapatos de princesa','Outfit cena elegante niña','Accesorios princesa (tiara, guantes, etc.)']}
+  ]},
+  {date:'Lun 2 nov · Desembarque',label:'Día 5 · Salida del barco',badge:'regreso',bags:[
+    {size:'S',who:'Nina (1a9m)',items:['Ropa cómoda desembarque bebé','Mudadas extra bebé (2-3)','Baberos (2-3)']}
+  ]},
+  {date:'Mar 3 – Mié 4 nov',label:'Post-crucero · Orlando',badge:'regreso',bags:[
+    {size:'S',who:'Nina (1a9m)',items:['Onesies / rompers Mar 3 (3-4 mudadas)','Onesies / rompers Mié 4 vuelo (3-4 mudadas)','Pijama bebé (1 juego)','Baberos (4-5)']}
+  ]},
+  {date:'Todo el viaje',label:'Pañales regulares comprimidos',badge:'crucero',bags:[
+    {size:'L',who:'Nina (1a9m)',items:['~60-80 pañales regulares (todo el viaje)','Toallitas húmedas extra (2 paquetes)']}
+  ]},
+  {date:'Maleta 2 — accesorios cabina',label:'Sólidos · sin bolsa de vacío',badge:'viaje',bags:[
+    {size:'x',who:'Entre bolsas comprimidas',items:['Máquina de ruido blanco','Ganchos magnéticos (bolsita zip)','Bañera inflable bebé (en empaque)','Organizador de puerta (enrollado)','Cortina blackout (doblada)','Decoraciones magnéticas Disney + Halloween']}
+  ]},
+];
+var MAL_CARRY=[
+  {date:'Día de viaje',label:'Ropa de llegada (4 personas)',badge:'viaje',bags:[
+    {size:'x',who:'Yosh',items:['Mudada completa Yosh','Ropa interior Yosh','Calcetines Yosh']},
+    {size:'x',who:'Joss',items:['Mudada completa Joss','Ropa interior Joss','Calcetines Joss']},
+    {size:'x',who:'Emma',items:['Mudada completa niña','Ropa interior niña','Calcetines niña']},
+    {size:'x',who:'Nina',items:['2-3 mudadas extra bebé','Swim diapers (3-4) — por si el splash pad llama']}
+  ]},
+  {date:'NUNCA en maleta despachada',label:'Documentos y valores',badge:'viaje',bags:[
+    {size:'x',who:'Todos',items:['Pasaporte Yosh (Guatemala, vigente)','Pasaporte Joss (Guatemala, vigente)','Pasaporte Emma (Guatemala, vigente)','Pasaporte Nina (Guatemala, vigente)','Acta de nacimiento Emma (copia certificada)','Acta de nacimiento Nina (copia certificada)','Registro de vacunas Nina','MagicBand+ Yosh (cargado antes del viaje)','MagicBand+ Joss (cargado antes del viaje)','Cargador propietario MagicBand+ × 2','Tarjetas del crucero (Key to the World)','Itinerario impreso del crucero','Tickets de vuelo (impreso + digital)','Documentos silla de carro Nina','Tarjetas de crédito / débito','Efectivo USD','Número emergencia seguro de viaje (impreso)','Póliza seguro de viaje (digital + impresa)']}
+  ]},
+  {date:'Acceso rápido · cabina',label:'Salud y protección solar',badge:'crucero',bags:[
+    {size:'x',who:'Familia',items:['Protector solar SPF 50+ (≤100ml para cabina)','Ibuprofeno (adultos + niños)','Antiemético para mareo','Pastillas mareo bebé','Alcohol gel','Tiritas básicas']}
+  ]},
+];
+var MAL_MOCHILAS=[
+  {date:'Mochila Yosh',label:'Electrónicos + fotos',badge:'viaje',bags:[
+    {size:'x',who:'Yosh carga',items:['Cámara + lentes + accesorios','Power bank cargado','Cargador Yosh (teléfono)','Audífonos Yosh','Lentes de sol Yosh','Gorra Yosh','Disney Ears Yosh','Tumbler / termo Yosh (reutilizable)','Copia física documentos','Cargador multi-puerto USB/USB-C cubo (sin surge protector)']}
+  ]},
+  {date:'Mochila Joss',label:'Playa + organización',badge:'playa',bags:[
+    {size:'x',who:'Joss carga',items:['Gorra Joss','Lentes de sol Joss','Disney Ears Joss','Tumbler / termo Joss (reutilizable)','Libretas de autógrafos (4) + Sharpies','Lanyards porta-tarjeta (3)','Snacks adultos para el vuelo','Protector solar Joss','Bolsa colapsible para playa']}
+  ]},
+  {date:'Mochila Emma (7a)',label:'Sus cosas + snacks',badge:'viaje',bags:[
+    {size:'x',who:'Emma carga su mochila',items:['Disney Ears Emma','Tumbler / termo Emma (reutilizable)','Galletas / crackers (sellados de fábrica)','Barras de cereal / granola','Fruta deshidratada','Gomitas / gummies','Nueces o chips de maíz','Juguete o libro favorito','Audífonos Emma','Peluche pequeño','NO frutas frescas — pueden confiscarse en customs MCO']}
+  ]},
+  {date:'Mochila de playa · Castaway Cay',label:'Día de isla privada Disney',badge:'playa',bags:[
+    {size:'x',who:'Yosh o Joss carga',items:['Toallas (DCL las provee en el barco)','Botellas de agua reutilizables Yosh + Joss','Tumbler Emma (rellenar a bordo)','Protector solar extra SPF 50+','Trajes de baño de repuesto','Snacks playa (sellados)','Juguetes de arena para Nina','Parasol / mini tienda de playa para Nina','Bolsa impermeable para toallas mojadas']}
+  ]},
+];
+var MAL_PANIALERA=[
+  {date:'Vuelo GUA→PTY→MCO',label:'Leche + alimentación bebé',badge:'viaje',bags:[
+    {size:'x',who:'Nina — exención TSA',items:['Fórmula / leche materna (declarar en seguridad TSA)','Agua purificada para preparar fórmula','Biberones + tetinas (2-3 juegos)','Bolsas de puré bebé (Gerber, HappyBaby)','Puffs / galletas de arroz bebé','Cereales bebé en bolsita','Cucharas + tazón de viaje']}
+  ]},
+  {date:'Vuelo · snacks niñas',label:'Alimentos seguros en aduanas EE.UU.',badge:'viaje',bags:[
+    {size:'x',who:'Emma + Nina',items:['Crackers / galletas saladas (selladas)','Barras de granola / cereal (selladas)','Cereal en bolsita (sellado)','Uvas pasas (caja sellada)','Chips de maíz (sellados)','NO frutas frescas (confiscación en customs MCO)','NO lácteos frescos ni carnes']}
+  ]},
+  {date:'Todo el viaje · acceso inmediato',label:'Pañales día + emergencias',badge:'crucero',bags:[
+    {size:'x',who:'Nina',items:['8-10 pañales regulares para el día','4-5 swim diapers','Toallitas húmedas','Bolsas con aroma para desechar pañales','Crema de pañal','Muda de emergencia bebé','Baberos (3-4)','Swaddle / sábana ligera para vuelo + siestas']}
+  ]},
+];
+var MAL_SUELTOS=[
+  {date:'Maleta 1 · neceser adultos',label:'Cuidado personal adultos',badge:'crucero',bags:[
+    {size:'x',who:'Neceser de tela (M1)',items:['Shampoo + acondicionador','Pasta dental + cepillos Yosh + Joss','Desodorante Yosh + Joss','Rasuradora','Crema hidratante','After-sun / aloe vera','Protector solar SPF 50+ extra']},
+    {size:'x',who:'Bolsa higiene femenina (M1)',items:['Toallas sanitarias de emergencia','Tampones','Otros productos higiene femenina']}
+  ]},
+  {date:'Maleta 1 · botiquín',label:'Botiquín familiar',badge:'viaje',bags:[
+    {size:'x',who:'Bolsa rígida (M1)',items:['Ibuprofeno adultos (tabletas)','Ibuprofeno / paracetamol niños (líquido)','Antihistamínico (adultos + niños)','Pastillas para el mareo','Antiácido','Alcohol gel (frasco grande)','Toallitas desinfectantes','Curitas variadas (10-15)','Gasas esterilizadas (3-4)','Cinta adhesiva médica','Termómetro','Tijeras de uñas bebé','Crema de pañal extra (calor Bahamas)']}
+  ]},
+  {date:'Maleta 2 · neceser bebé',label:'Cuidado personal bebé',badge:'crucero',bags:[
+    {size:'x',who:'Neceser bebé (M2)',items:['Champú + jabón bebé','Crema hidratante bebé','Crema de pañal','Cepillo de cabello suave','Cortauñas bebé','Protector solar bebé SPF 50+']}
+  ]},
+  {date:'Maleta 2 · neceser niña',label:'Cuidado personal niña',badge:'crucero',bags:[
+    {size:'x',who:'Bolsita niña (M2)',items:['Cepillo de cabello + ligas + accesorios','Cepillo de dientes Emma','Pasta dental Emma','Shampoo Emma (si prefiere el suyo)']}
+  ]},
+  {date:'Maleta 2 · playa Nina',label:'Protección solar bebé · Castaway Cay',badge:'playa',bags:[
+    {size:'x',who:'Entre accesorios M2',items:['Parasol o mini tienda playa pop-up para Nina','Esterilla o mat de playa pequeña para Nina']}
+  ]},
+  {date:'Maleta 1 · extras sueltos',label:'Accesorios electrónicos + seguro',badge:'viaje',bags:[
+    {size:'x',who:'M1 (entre bolsas comprimidas)',items:['Cargador multi-puerto USB/USB-C tipo cubo (SIN surge protector)','Número emergencia seguro de viaje (tarjeta para billetera)','Póliza seguro de viaje impresa','Mickey Ears Yosh + Joss (si ya los tienen de WDW)','Mickey Ears Emma']}
+  ]},
+];
+var ALL_GRIDS=[
+  {id:'mal1',icon:'🧳',title:'Maleta 1 — Yosh &amp; Joss',sub:'7 bolsas · 4M+3L',data:MAL1},
+  {id:'mal2',icon:'🧳',title:'Maleta 2 — Emma &amp; Nina',sub:'9 bolsas · 4S+2M+3L',data:MAL2},
+  {id:'carry',icon:'🎒',title:'Carry-on — cabina',sub:'sin bolsas de vacío',data:MAL_CARRY},
+  {id:'mochilas',icon:'👜',title:'Mochilas — 4 personal items',sub:'cabina · bajo el asiento',data:MAL_MOCHILAS},
+  {id:'panialera',icon:'🍼',title:'Bolsa pañalera — ítem gratuito',sub:'cabina · acceso inmediato',data:MAL_PANIALERA},
+  {id:'sueltos',icon:'🧴',title:'Neceser + Botiquín + Sólidos',sub:'sin bolsa de vacío',data:MAL_SUELTOS},
+];
+
+// ── DATES DATA ──
+var DATES_DATA=[
+  {group:'Ya disponible — hacer ya',items:[
+    {id:'d1',urgent:true,date:'Ahora',title:'Descargar app DCL Navigator',desc:'Bajarla en el teléfono de Yosh y Joss. Vincular reserva del crucero. Es el control central a bordo.'},
+    {id:'d2',urgent:true,date:'Ahora',title:'Confirmar seguro de viaje',desc:'Verificar que la póliza cubra a los 4. Guardar número de emergencia impreso en billetera.'},
+    {id:'d3',urgent:false,date:'Ahora',title:'Vincular MagicBands+ al crucero',desc:'Entrar a disneycruise.com → Mi reserva → DisneyBand+. Vincular ambas bands antes de zarpar.'},
+  ]},
+  {group:'Agosto 2026',items:[
+    {id:'d4',urgent:true,date:'16 ago',title:'Reserva de actividades a bordo abre',desc:'Specialty dining (Palo, Enchante), spa, Port Adventures, Bibbidi Bobbidi Boutique para Emma. Entrar a medianoche EST para los mejores horarios.'},
+  ]},
+  {group:'Septiembre 2026',items:[
+    {id:'d5',urgent:true,date:'30 sep · medianoche',title:'Royal Gathering — reservar a medianoche',desc:'¡CRÍTICO para Emma! La experiencia gratuita de princesas se agota en minutos. Entrar a disneycruise.com exactamente a medianoche hora del Este (22:00 Guatemala).'},
+    {id:'d6',urgent:true,date:'30 sep · medianoche',title:'Check-in online abre',desc:'Hacer check-in en cuanto abra. El Port Arrival Time (PAT) más temprano disponible llena rápido — entre más temprano, más tiempo en el barco el día de embarque.'},
+    {id:'d7',urgent:false,date:'Sep 2026',title:'Subir fotos de seguridad en el check-in',desc:'El sistema pide foto de cada miembro de la familia. Tener fotos recientes de Yosh, Joss, Emma y Nina listas para subir.'},
+    {id:'d8',urgent:false,date:'Sep 2026',title:'Confirmar datos de vuelos en check-in',desc:'El check-in pide detalles de vuelo de llegada y salida. Tener número de vuelo Copa a mano.'},
+  ]},
+  {group:'Octubre 2026 — semana del crucero',items:[
+    {id:'d9',urgent:false,date:'Antes del 27 oct',title:'Cargar MagicBands+ completamente',desc:'Conectar ambas bands la noche antes de salir de Guatemala. El cargador propietario va en el carry-on.'},
+    {id:'d10',urgent:false,date:'27 oct',title:'Preparar folder de documentos',desc:'Pasaportes (4), actas de nacimiento Emma y Nina, registro de vacunas Nina, póliza seguro, itinerario impreso, tickets de vuelo. En carpeta o sobre plástico en carry-on.'},
+    {id:'d11',urgent:false,date:'28 oct',title:'Salida de Guatemala (vuelo)',desc:'GUA → PTY → MCO. Declarar fórmula/leche bebé en seguridad TSA. No llevar frutas frescas.'},
+    {id:'d12',urgent:false,date:'30 oct · 11am EST',title:'Llegada al puerto Port Canaveral',desc:'DCL Transfer desde MCO ($45 × 4 = $180). El equipaje va directo a la cabina. Llevar swim diapers de Nina en el carry-on por si el splash pad llama al embarcar.'},
+    {id:'d13',urgent:false,date:'31 oct · noche',title:'Pirate Night + Halloween — misma noche',desc:'Nassau durante el día. Por la noche: deck party con fuegos artificiales. Disfraces de pirata + Halloween listos y accesibles. No perderse los fuegos desde la cubierta.'},
+    {id:'d14',urgent:false,date:'1 nov',title:'Castaway Cay — protección solar Nina',desc:'Sol de Bahamas intenso en noviembre. Parasol/tienda playa para Nina, SPF 50+ aplicar cada 2h, sombrero bebé. Swim diapers obligatorios en el agua.'},
+    {id:'d15',urgent:false,date:'2 nov · mañana',title:'Desembarque',desc:'Temprano en la mañana. Uber XL Port Canaveral → Casa Orlando (~$108). Llevar silla de carro Nina para el Uber. Equipaje a recoger en área de desembarque.'},
+  ]},
+];
+
+// ── COMPRAS DATA ──
+var BUYS_DATA=[
+  {section:'Prioridad alta — comprar pronto',items:[
+    {id:'b1',name:'Bolsas Vacbird 18-pack (6S+6M+6L)',note:'Con bomba inalámbrica recargable. Ya investigado: ~$36.98 en Amazon.',price:'$37',pri:'alta'},
+    {id:'b2',name:'Cargador multi-USB cubo (sin surge protector)',note:'Anker 543 (65W) o Baseus GaN. 2 USB-C + 2 USB-A. Para camarote.',price:'~$25',pri:'alta'},
+    {id:'b3',name:'Parasol / mini tienda de playa para Nina',note:'Pop-up UPF 50+. Castaway Cay: sol de Bahamas intenso en noviembre.',price:'~$30',pri:'alta'},
+  ]},
+  {section:'Disfraces y vestuario',items:[
+    {id:'b4',name:'Disfraz pirata Yosh',note:'Pirate Night 31 oct. El barco da bandanas gratis pero el outfit es tuyo.',price:'',pri:'alta'},
+    {id:'b5',name:'Disfraz pirata Joss',note:'',price:'',pri:'alta'},
+    {id:'b6',name:'Disfraz Halloween Yosh',note:'Halloween Night — misma noche que Pirate Night (31 oct).',price:'',pri:'alta'},
+    {id:'b7',name:'Disfraz Halloween Joss',note:'',price:'',pri:'alta'},
+    {id:'b8',name:'Disfraz pirata completo Emma',note:'',price:'',pri:'alta'},
+    {id:'b9',name:'Disfraz Halloween Emma',note:'',price:'',pri:'alta'},
+    {id:'b10',name:'Mini disfraz Halloween / pirata Nina',note:'Algo cómodo y seguro para bebé de 1a9m.',price:'',pri:'media'},
+    {id:'b11',name:'Vestido de princesa Emma (Royal Gathering)',note:'Para el evento de princesas — reservar 30 sep a medianoche.',price:'',pri:'alta'},
+  ]},
+  {section:'Accesorios de cabina',items:[
+    {id:'b12',name:'Decoraciones magnéticas Halloween para puerta',note:'Pedir en Amazon o Etsy. Paredes y puertas del camarote son magnéticas.',price:'~$15',pri:'media'},
+    {id:'b13',name:'Decoraciones magnéticas Disney para puerta',note:'Que Emma las elija. Para personalizar la puerta de la cabina.',price:'~$15',pri:'media'},
+    {id:'b14',name:'Libretas de autógrafos (4)',note:'Una para cada miembro de la familia — incluyendo Nina.',price:'~$20',pri:'media'},
+  ]},
+  {section:'Snacks y alimentos',items:[
+    {id:'b15',name:'Snacks sellados para el vuelo',note:'Crackers, barras granola, fruta deshidratada, chips de maíz. Solo empacados de fábrica.',price:'',pri:'media'},
+    {id:'b16',name:'Fórmula / comida bebé Nina',note:'Para el vuelo (exención TSA sin límite 100ml) + primeros días.',price:'',pri:'alta'},
+    {id:'b17',name:'Puffs, galletas de arroz, purés bebé',note:'Gerber, HappyBaby. Para el vuelo y primeros días a bordo.',price:'',pri:'alta'},
+  ]},
+  {section:'Pendientes menores',items:[
+    {id:'b18',name:'Bolsas Ziploc grandes (freezer)',note:'Para ropa mojada el último día + emergencias.',price:'~$5',pri:'baja'},
+    {id:'b19',name:'Botellas de agua reutilizables (2)',note:'Para Yosh y Joss. Rellenar gratis a bordo todo el día.',price:'~$15',pri:'media'},
+    {id:'b20',name:'Juguetes de arena para Nina',note:'Cubeta colapsible + palita. Para Castaway Cay.',price:'~$10',pri:'baja'},
+  ]},
+];
+
+// ── GUIA DATA ──
+var GUIA_DATA=[
+  {icon:'✈',name:'Mié 28 oct — Vuelo GUA→MCO',sub:'GUA → PTY → MCO · Copa Airlines',badge:'b-viaje',tips:[
+    {hi:true,icon:'⚠',text:'<strong>Declarar en seguridad TSA:</strong> fórmula/leche de Nina está exenta del límite de 100ml pero DEBE declararse. Decir "tengo alimento para bebé" al llegar al control de seguridad.'},
+    {hi:false,icon:'🍼',text:'Swim diapers de Nina en carry-on — por si el splash pad llama el día de embarque (Vie 30).'},
+    {hi:false,icon:'🍪',text:'Solo snacks sellados de fábrica para aduanas MCO. Sin frutas frescas, lácteos frescos ni carnes — los confiscan.'},
+    {hi:false,icon:'📋',text:'Pasaportes y documentos en carpeta en carry-on. Nunca en maleta despachada.'},
+    {hi:false,icon:'🧳',text:'El equipaje llega al camarote horas después de embarcar. La ropa de llegada va en el carry-on.'},
+  ]},
+  {icon:'🚢',name:'Vie 30 oct — Embarque',sub:'Port Canaveral · Disney Wish',badge:'b-crucero',tips:[
+    {hi:true,icon:'⭐',text:'<strong>Llegar a la hora del PAT más temprano posible.</strong> Entre antes entren, más tiempo de explorar el barco antes de que zarpe. La sala de animación de Nina y el Oceaneer Club de Emma abren ese día.'},
+    {hi:false,icon:'🎡',text:'<strong>AquaMouse:</strong> la fila es más corta al embarcar. Ir directo si Emma quiere montarla.'},
+    {hi:false,icon:'👑',text:'Si no reservaste el Royal Gathering antes, verificar disponibilidad en la app DCL Navigator al conectarte a DCL-Guest Wi-Fi a bordo.'},
+    {hi:false,icon:'🍽',text:'El buffet Marceline Market es el almuerzo de embarque — llega temprano para no esperar mesa.'},
+    {hi:false,icon:'🧲',text:'Instalar ganchos magnéticos y decoraciones en la puerta de la cabina apenas llegues. Las paredes del camarote son completamente magnéticas.'},
+    {hi:false,icon:'🍼',text:'Pedir Diaper Genie al stateroom host apenas entres a la cabina.'},
+  ]},
+  {icon:'🏴',name:'Sáb 31 oct — Nassau + Pirate Night',sub:'Nassau durante el día · Pirate Night + Halloween por la noche',badge:'b-pirata',tips:[
+    {hi:false,icon:'🏙',text:'Nassau es opcional — muchos optan por quedarse a bordo. Con la bebé puede ser más cómodo usar ese día para explorar el barco tranquilos y aprovechar las piscinas con menos gente.'},
+    {hi:true,icon:'🎆',text:'<strong>Fuegos artificiales desde el barco esa noche</strong> — no se los pierdan. Subir a cubierta después de la cena. Es uno de los momentos más especiales del crucero.'},
+    {hi:false,icon:'🏴',text:'Disfraces de pirata para toda la familia. El barco reparte bandanas gratis pero el resto lo traes tú.'},
+    {hi:false,icon:'🎃',text:'Halloween Night es la misma noche — si tienen 2 disfraces, coordinar cuándo usar cada uno o combinarlos.'},
+    {hi:false,icon:'⏰',text:'Llegar 15 minutos antes a cualquier show o evento para conseguir buen asiento.'},
+  ]},
+  {icon:'🏝',name:'Dom 1 nov — Castaway Cay',sub:'Isla privada Disney · Bahamas',badge:'b-playa',tips:[
+    {hi:true,icon:'☀',text:'<strong>Protección solar desde el barco:</strong> aplicar SPF 50+ a todos (especialmente Nina) ANTES de bajar a la isla. El sol de Bahamas en noviembre sigue siendo intenso.'},
+    {hi:false,icon:'🏊',text:'Emma puede usar las piscinas (está entrenada). Para Nina: solo las áreas de splash y playa con swim diapers.'},
+    {hi:false,icon:'🏖',text:'Las toallas las da DCL en el barco antes de bajar. No necesitan traer las suyas — el barco está justo ahí.'},
+    {hi:false,icon:'🍼',text:'Parasol / mini tienda de playa para Nina. El sol directo en bebés menores de 2 años es riesgo de quemadura en minutos.'},
+    {hi:false,icon:'🔙',text:'El barco está a pie — si alguien necesita algo (pañales, descanso, comida), pueden volver en cualquier momento.'},
+    {hi:false,icon:'🌊',text:'El agua empieza poco profunda junto a la orilla — Nina puede jugar sentada en la arena con el agua llegándole a la cintura.'},
+  ]},
+  {icon:'🏰',name:'Lun 2 nov — Desembarque',sub:'Port Canaveral → Casa Orlando',badge:'b-regreso',tips:[
+    {hi:true,icon:'🚗',text:'<strong>Uber XL Port Canaveral → Casa Orlando (~$108).</strong> Llevar silla de carro de Nina instalada o lista para instalar — es obligatorio por ley para bebés en EE.UU.'},
+    {hi:false,icon:'🧳',text:'El desembarque es temprano en la mañana — tener ropa cómoda de desembarque accesible en el carry-on desde la noche anterior.'},
+    {hi:false,icon:'📸',text:'Antes de salir del barco: revisar que no queden fotos sin comprar en el sistema. Las fotos profesionales se eliminan al terminar el viaje.'},
+    {hi:false,icon:'💳',text:'Verificar el folio del camarote (estado de cuenta) la noche anterior para revisar cargos.'},
+    {hi:false,icon:'🛒',text:'Si quieren comprar souvenirs de último momento, la tienda Mickey\'s Mainsail cierra antes del desembarque.'},
+  ]},
+];
+
+// ── RENDER FUNCTIONS ──
+function iKey(g,c,b,i){return g+'_'+c+'_'+b+'_'+i;}
+function tagClass(s){return{S:'S',M:'M',L:'L'}[s]?'tag-'+s:'tag-x';}
+function badgeClass(b){return{viaje:'b-viaje',crucero:'b-crucero',pirata:'b-pirata',halloween:'b-halloween',playa:'b-playa',regreso:'b-regreso'}[b]||'b-viaje';}
+function badgeLbl(b){return{viaje:'✈ viaje',crucero:'🚢 crucero',pirata:'🏴 pirata',halloween:'🎃 halloween',playa:'🏖 playa',regreso:'🏠 regreso'}[b]||b;}
+
+function getStats(gridId,data){
+  var t=0,d=0;
+  data.forEach(function(day,ci){day.bags.forEach(function(bag,bi){bag.items.forEach(function(_,ii){t++;if(packed[iKey(gridId,ci,bi,ii)])d++;});});});
+  return{total:t,done:d};
+}
+
+function renderSections(){
+  var loading=document.getElementById('sections-loading');
+  var container=document.getElementById('sections');
+  if(loading)loading.style.display='none';
+  if(container)container.style.display='';
+  container.innerHTML='';
+  ALL_GRIDS.forEach(function(sec){
+    var stats=getStats(sec.id,sec.data);
+    var pct=stats.total?Math.round(stats.done/stats.total*100):0;
+    var allDone=stats.done===stats.total&&stats.total>0;
+    var collapsed=sectionCollapsed[sec.id];
+    var wrap=document.createElement('div');
+    wrap.className='sec-wrap';
+    wrap.id='sec-'+sec.id;
+    wrap.style.display=(currentFilter==='all'||currentFilter===sec.id)?'':'none';
+    wrap.innerHTML='<div class="sec-head'+(collapsed?'':' open')+'" onclick="toggleSec(\''+sec.id+'\')">'
+      +'<span class="sec-icon">'+sec.icon+'</span>'
+      +'<span class="sec-title">'+sec.title+'</span>'
+      +'<div class="sec-right">'
+        +'<span class="sec-stat'+(allDone?' complete':'')+'">'+stats.done+'/'+stats.total+'</span>'
+        +'<span class="sec-pct">'+pct+'%</span>'
+        +'<span class="sec-chev'+(collapsed?'':' open')+'" id="chev-'+sec.id+'">▼</span>'
+      +'</div>'
+    +'</div>'
+    +'<div class="sec-body" id="body-'+sec.id+'"'+(collapsed?' style="display:none"':'')+'>'
+      +'<div class="days-grid" id="grid-'+sec.id+'"></div>'
+    +'</div>';
+    container.appendChild(wrap);
+    if(!collapsed) renderGrid(sec.id,sec.data);
   });
 }
 
-function renderGrid(gridId, data) {
-  const container = document.getElementById('grid-' + gridId);
-  if (!container) return;
-  container.innerHTML = '';
-  data.forEach((day, ci) => {
-    const allItemsDone = day.bags.every((bag,bi) => bag.items.every((_,ii) => packed[itemKey(gridId,ci,bi,ii)]));
-    const card = document.createElement('div');
-    card.className = 'day-card' + (allItemsDone?' done':'');
-    card.id = gridId+'-card-'+ci;
-
-    let bagsHTML = '';
-    day.bags.forEach((bag, bi) => {
-      const doneCount = bag.items.filter((_,ii) => packed[itemKey(gridId,ci,bi,ii)]).length;
-      const bagDone = doneCount === bag.items.length;
-      const itemsHTML = bag.items.map((item,ii) => {
-        const k = itemKey(gridId,ci,bi,ii);
-        const ip = !!packed[k];
-        return `<div class="item-row${ip?' item-done':''}" onclick="toggleItem('${gridId}',${ci},${bi},${ii})">
-          <div class="item-cb${ip?' item-cb-done':''}"><span class="item-ck">${ip?'✓':''}</span></div>
-          <span class="item-label">${ip?'<s>'+item+'</s>':item}</span>
-        </div>`;
+function renderGrid(gId,data){
+  var c=document.getElementById('grid-'+gId);
+  if(!c)return;
+  c.innerHTML='';
+  data.forEach(function(day,ci){
+    var allDone=day.bags.every(function(bag,bi){return bag.items.every(function(_,ii){return packed[iKey(gId,ci,bi,ii)];});});
+    var card=document.createElement('div');
+    card.className='day-card'+(allDone?' done':'');
+    card.id=gId+'-card-'+ci;
+    var bHTML='';
+    day.bags.forEach(function(bag,bi){
+      var dc=bag.items.filter(function(_,ii){return packed[iKey(gId,ci,bi,ii)];}).length;
+      var bdone=dc===bag.items.length;
+      var iHTML=bag.items.map(function(item,ii){
+        var k=iKey(gId,ci,bi,ii),ip=!!packed[k];
+        var wtag=packed[k+'_by']?('<span class="who-tag who-'+packed[k+'_by']+'">'+packed[k+'_by']+'</span>'):'';
+        return '<div class="item-row'+(ip?' done-item':'')+'" onclick="toggleItem(\''+gId+'\','+ci+','+bi+','+ii+')">'
+          +'<div class="item-tap">'
+          +'<div class="item-cb'+(ip?' checked':'')+'"><span class="item-ck">✓</span></div>'
+          +'<span class="item-txt">'+item+wtag+'</span>'
+          +'</div></div>';
       }).join('');
-      bagsHTML += `<div class="bag-block${bagDone?' bag-block-done':''}" id="bb-${gridId}-${ci}-${bi}">
-        <div class="bag-block-head">
-          <span class="bag-tag ${sizeClass(bag.size)}">${bag.size}</span>
-          <span class="bag-who-lbl">${bag.who}</span>
-          <span class="bag-counter-lbl" id="bc-${gridId}-${ci}-${bi}">${doneCount}/${bag.items.length}</span>
-        </div>
-        <div class="bag-items-list">${itemsHTML}</div>
-      </div>`;
+      bHTML+='<div class="bag-block'+(bdone?' all-done':'')+'" id="bb-'+gId+'-'+ci+'-'+bi+'">'
+        +'<div class="bag-head"><span class="bag-tag '+tagClass(bag.size)+'">'+bag.size+'</span>'
+        +'<span class="bag-who">'+bag.who+'</span>'
+        +'<span class="bag-ctr" id="bc-'+gId+'-'+ci+'-'+bi+'">'+dc+'/'+bag.items.length+'</span></div>'
+        +'<div class="items-list">'+iHTML+'</div></div>';
     });
-
-    card.innerHTML = `<div class="day-head">
-      <div><div class="day-date">${day.date}</div><div class="day-label">${day.label}</div></div>
-      <span class="day-badge badge-${day.badge}">${badgeLabel(day.badge)}</span>
-    </div><div class="day-bags">${bagsHTML}</div>`;
-    container.appendChild(card);
+    card.innerHTML='<div class="day-card-head"><div><div class="day-date">'+day.date+'</div>'
+      +'<div class="day-label">'+day.label+'</div></div>'
+      +'<span class="day-badge '+badgeClass(day.badge)+'">'+badgeLbl(day.badge)+'</span></div>'
+      +'<div class="day-card-body">'+bHTML+'</div>';
+    c.appendChild(card);
   });
 }
 
-window.toggleItem = function(grid, ci, bi, ii) {
-  const k = itemKey(grid,ci,bi,ii);
-  const newVal = !packed[k];
-  packed[k] = newVal;
-  scheduleSync(k, newVal || null);
-  refreshBagBlock(grid, ci, bi);
-  updateSectionHeader(grid);
+function toggleItem(grid,ci,bi,ii){
+  var k=iKey(grid,ci,bi,ii);
+  packed[k]=!packed[k];
+  if(packed[k]&&currentUser){packed[k+'_by']=currentUser;} else{delete packed[k+'_by'];}
+  var updates={};
+  updates[ITEMS_PATH+'/'+k]=packed[k]||null;
+  if(packed[k]&&currentUser)updates[ITEMS_PATH+'/'+k+'_by']=currentUser;
+  else updates[ITEMS_PATH+'/'+k+'_by']=null;
+  setSS('saving','guardando...');
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(function(){
+    db.ref('/').update(updates).then(function(){setSS('ok','✓');}).catch(function(){setSS('err','error');});
+  },500);
+  refreshBag(grid,ci,bi);
+  refreshSecHead(grid);
   updateProgress();
-};
-
-function refreshBagBlock(grid, ci, bi) {
-  const secData = ALL_GRIDS.find(x=>x.id===grid);
-  if (!secData) return;
-  const bag = secData.data[ci].bags[bi];
-  const block = document.getElementById('bb-'+grid+'-'+ci+'-'+bi);
-  if (!block) return;
-  const doneCount = bag.items.filter((_,ii)=>packed[itemKey(grid,ci,bi,ii)]).length;
-  const bagDone = doneCount === bag.items.length;
-  block.className = 'bag-block'+(bagDone?' bag-block-done':'');
-  const ctr = document.getElementById('bc-'+grid+'-'+ci+'-'+bi);
-  if (ctr) ctr.textContent = doneCount+'/'+bag.items.length;
-  const list = block.querySelector('.bag-items-list');
-  if (list) {
-    list.innerHTML = bag.items.map((item,ii)=>{
-      const k=itemKey(grid,ci,bi,ii), ip=!!packed[k];
-      return `<div class="item-row${ip?' item-done':''}" onclick="toggleItem('${grid}',${ci},${bi},${ii})">
-        <div class="item-cb${ip?' item-cb-done':''}"><span class="item-ck">${ip?'✓':''}</span></div>
-        <span class="item-label">${ip?'<s>'+item+'</s>':item}</span>
-      </div>`;
-    }).join('');
-  }
-  const allDone = secData.data[ci].bags.every((b,bii)=>b.items.every((_,iii)=>packed[itemKey(grid,ci,bii,iii)]));
-  const card = document.getElementById(grid+'-card-'+ci);
-  if (card) card.classList.toggle('done', allDone);
 }
 
-function updateSectionHeader(gridId) {
-  const secData = ALL_GRIDS.find(x=>x.id===gridId);
-  if (!secData) return;
-  const stats = getSectionStats(gridId, secData.data);
-  const pct = stats.total ? Math.round(stats.done/stats.total*100) : 0;
-  const allDone = stats.done === stats.total && stats.total > 0;
-  const head = document.querySelector('#sec-'+gridId+' .maleta-meta');
-  if (head) head.innerHTML = `<div class="maleta-stats">
-    <span class="mstat ${allDone?'done-all':''}">${stats.done}/${stats.total} ítems</span>
-    <span class="mstat">${pct}%</span>
-    <span class="mstat" style="color:var(--ink3);font-size:10px">${secData.subtitle}</span>
-  </div>
-  <span class="mchev ${sectionCollapsed[gridId]?'':'open'}" id="chev-${gridId}">▼</span>`;
+function refreshBag(grid,ci,bi){
+  var sec=ALL_GRIDS.find(function(x){return x.id===grid;});
+  if(!sec)return;
+  var bag=sec.data[ci].bags[bi];
+  var block=document.getElementById('bb-'+grid+'-'+ci+'-'+bi);
+  if(!block)return;
+  var dc=bag.items.filter(function(_,ii){return packed[iKey(grid,ci,bi,ii)];}).length;
+  block.className='bag-block'+(dc===bag.items.length?' all-done':'');
+  var ctr=document.getElementById('bc-'+grid+'-'+ci+'-'+bi);
+  if(ctr)ctr.textContent=dc+'/'+bag.items.length;
+  var list=block.querySelector('.items-list');
+  if(list)list.innerHTML=bag.items.map(function(item,ii){
+    var k=iKey(grid,ci,bi,ii),ip=!!packed[k];
+    var wtag=packed[k+'_by']?('<span class="who-tag who-'+packed[k+'_by']+'">'+packed[k+'_by']+'</span>'):'';
+    return '<div class="item-row'+(ip?' done-item':'')+'" onclick="toggleItem(\''+grid+'\','+ci+','+bi+','+ii+')">'
+      +'<div class="item-tap"><div class="item-cb'+(ip?' checked':'')+'"><span class="item-ck">✓</span></div>'
+      +'<span class="item-txt">'+item+wtag+'</span></div></div>';
+  }).join('');
+  var allDone=sec.data[ci].bags.every(function(b,bii){return b.items.every(function(_,iii){return packed[iKey(grid,ci,bii,iii)];});});
+  var card=document.getElementById(grid+'-card-'+ci);
+  if(card)card.classList.toggle('done',allDone);
 }
 
-function updateProgress() {
-  let total=0, done=0;
-  ALL_GRIDS.forEach(({id,data})=>{
-    data.forEach((day,ci)=>{ day.bags.forEach((bag,bi)=>{ bag.items.forEach((_,ii)=>{ total++; if(packed[itemKey(id,ci,bi,ii)]) done++; }); }); });
+function refreshSecHead(gridId){
+  var sec=ALL_GRIDS.find(function(x){return x.id===gridId;});
+  if(!sec)return;
+  var stats=getStats(gridId,sec.data);
+  var pct=stats.total?Math.round(stats.done/stats.total*100):0;
+  var allDone=stats.done===stats.total&&stats.total>0;
+  var r=document.querySelector('#sec-'+gridId+' .sec-right');
+  if(r)r.innerHTML='<span class="sec-stat'+(allDone?' complete':'')+'">'+stats.done+'/'+stats.total+'</span>'
+    +'<span class="sec-pct">'+pct+'%</span>'
+    +'<span class="sec-chev'+(sectionCollapsed[gridId]?'':' open')+'" id="chev-'+gridId+'">▼</span>';
+}
+
+function updateProgress(){
+  var t=0,d=0;
+  ALL_GRIDS.forEach(function(s){
+    s.data.forEach(function(day,ci){day.bags.forEach(function(bag,bi){bag.items.forEach(function(_,ii){t++;if(packed[iKey(s.id,ci,bi,ii)])d++;});});});
   });
-  document.getElementById('packed-count').textContent = done;
-  document.getElementById('packed-total').textContent = total;
-  document.getElementById('main-pbar').style.width = total ? Math.round(done/total*100)+'%' : '0%';
+  document.getElementById('pc').textContent=d;
+  document.getElementById('pt').textContent=t;
+  document.getElementById('main-pbar').style.width=t?Math.round(d/t*100)+'%':'0%';
 }
 
-window.toggleSection = function(id) {
-  sectionCollapsed[id] = !sectionCollapsed[id];
-  const body = document.getElementById('body-'+id);
-  const chev = document.getElementById('chev-'+id);
-  const head = document.querySelector('#sec-'+id+' .maleta-head');
-  if (sectionCollapsed[id]) {
-    body.style.display = 'none';
-    chev && chev.classList.remove('open');
-    head && head.classList.remove('open');
-  } else {
-    body.style.display = '';
-    chev && chev.classList.add('open');
-    head && head.classList.add('open');
-    const secData = ALL_GRIDS.find(x=>x.id===id);
-    if (secData) renderGrid(id, secData.data);
-  }
-};
+function toggleSec(id){
+  sectionCollapsed[id]=!sectionCollapsed[id];
+  var body=document.getElementById('body-'+id);
+  var chev=document.getElementById('chev-'+id);
+  var head=document.querySelector('#sec-'+id+' .sec-head');
+  if(sectionCollapsed[id]){body.style.display='none';if(chev)chev.classList.remove('open');if(head)head.classList.remove('open');}
+  else{body.style.display='';if(chev)chev.classList.add('open');if(head)head.classList.add('open');var sec=ALL_GRIDS.find(function(x){return x.id===id;});if(sec)renderGrid(id,sec.data);}
+}
 
-window.setFilter = function(filter, btn) {
-  currentFilter = filter;
-  document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('active'));
+function setFilter(f,btn){
+  currentFilter=f;
+  document.querySelectorAll('.ftab').forEach(function(t){t.classList.remove('active');});
   btn.classList.add('active');
-  ALL_GRIDS.forEach(sec => {
-    const el = document.getElementById('sec-'+sec.id);
-    if (el) el.style.display = (filter==='all'||filter===sec.id) ? '' : 'none';
-  });
-};
+  ALL_GRIDS.forEach(function(sec){var el=document.getElementById('sec-'+sec.id);if(el)el.style.display=(f==='all'||f===sec.id)?'':'none';});
+}
 
-window.expandAll = function() {
-  ALL_GRIDS.forEach(sec => {
-    sectionCollapsed[sec.id] = false;
-    const body = document.getElementById('body-'+sec.id);
-    const chev = document.getElementById('chev-'+sec.id);
-    const head = document.querySelector('#sec-'+sec.id+' .maleta-head');
-    if (body) { body.style.display=''; renderGrid(sec.id, sec.data); }
-    if (chev) chev.classList.add('open');
-    if (head) head.classList.add('open');
-  });
-};
+function expandAll(){ALL_GRIDS.forEach(function(sec){sectionCollapsed[sec.id]=false;var body=document.getElementById('body-'+sec.id);var chev=document.getElementById('chev-'+sec.id);var head=document.querySelector('#sec-'+sec.id+' .sec-head');if(body){body.style.display='';renderGrid(sec.id,sec.data);}if(chev)chev.classList.add('open');if(head)head.classList.add('open');});}
+function collapseAll(){ALL_GRIDS.forEach(function(sec){sectionCollapsed[sec.id]=true;var body=document.getElementById('body-'+sec.id);var chev=document.getElementById('chev-'+sec.id);var head=document.querySelector('#sec-'+sec.id+' .sec-head');if(body)body.style.display='none';if(chev)chev.classList.remove('open');if(head)head.classList.remove('open');});}
+function confirmReset(){if(confirm('¿Reiniciar TODOS los ítems? Esto afecta a Yosh y Joss.')){packed={};db.ref(ITEMS_PATH).remove().then(function(){setSS('ok','reiniciado');renderSections();updateProgress();});}}
+function toggleVacbird(){var b=document.getElementById('vcbody'),c=document.getElementById('vcchev');var o=b.style.display!=='none';b.style.display=o?'none':'';c.classList.toggle('open',!o);}
 
-window.collapseAll = function() {
-  ALL_GRIDS.forEach(sec => {
-    sectionCollapsed[sec.id] = true;
-    const body = document.getElementById('body-'+sec.id);
-    const chev = document.getElementById('chev-'+sec.id);
-    const head = document.querySelector('#sec-'+sec.id+' .maleta-head');
-    if (body) body.style.display = 'none';
-    if (chev) chev.classList.remove('open');
-    if (head) head.classList.remove('open');
+// ── RENDER DATES ──
+function renderDates(){
+  var todayMs=new Date('2026-04-11').getTime();
+  var container=document.getElementById('timeline-container');
+  container.innerHTML='';
+  DATES_DATA.forEach(function(group){
+    var div=document.createElement('div');
+    div.className='tl-group';
+    var title=document.createElement('div');
+    title.className='tl-group-title';
+    title.textContent=group.title||group.group;
+    div.appendChild(title);
+    group.items.forEach(function(item){
+      var done=!!datesDone[item.id];
+      var row=document.createElement('div');
+      row.className='tl-item'+(item.urgent&&!done?' urgent':'')+(done?' tl-done':'');
+      row.id='tl-'+item.id;
+      row.onclick=function(){toggleDate(item.id);};
+      var daysLeft='';
+      row.innerHTML='<div class="tl-left"><div class="tl-date-badge">'+item.date+'</div></div>'
+        +'<div class="tl-content"><div class="tl-title">'+item.title+'</div><div class="tl-desc">'+item.desc+'</div></div>'
+        +'<div class="tl-cb'+(done?' done':'')+'">'+( done?'✓':'')+'</div>';
+      div.appendChild(row);
+    });
+    container.appendChild(div);
   });
-};
+}
 
-window.confirmReset = function() {
-  if (confirm('¿Reiniciar TODOS los ítems marcados? Esto se sincronizará para ambos.')) {
-    packed = {};
-    remove(ref(db, DB_PATH + '/items')).then(()=>{ setSyncStatus('ok','reiniciado'); renderSections(); updateProgress(); });
+function toggleDate(id){
+  datesDone[id]=!datesDone[id];
+  db.ref(DATES_PATH+'/'+id).set(datesDone[id]||null).catch(function(){});
+  var row=document.getElementById('tl-'+id);
+  if(!row)return;
+  var item=null;
+  DATES_DATA.forEach(function(g){g.items.forEach(function(i){if(i.id===id)item=i;});});
+  if(!item)return;
+  var done=datesDone[id];
+  row.className='tl-item'+(item.urgent&&!done?' urgent':'')+(done?' tl-done':'');
+  var cb=row.querySelector('.tl-cb');
+  if(cb){cb.className='tl-cb'+(done?' done':'');cb.textContent=done?'✓':'';}
+  updateDatesBadge();
+}
+
+function updateDatesBadge(){
+  var total=0,done=0;
+  DATES_DATA.forEach(function(g){g.items.forEach(function(i){total++;if(datesDone[i.id])done++;});});
+  var badge=document.getElementById('nav-fechas');
+  // nothing to show
+}
+
+// ── RENDER COMPRAS ──
+function renderCompras(){
+  var container=document.getElementById('compras-container');
+  container.innerHTML='';
+  var pending=0;
+  BUYS_DATA.forEach(function(section){
+    var sdiv=document.createElement('div');
+    sdiv.className='buy-section';
+    var stitle=document.createElement('div');
+    stitle.className='buy-section-title';
+    stitle.textContent=section.section;
+    sdiv.appendChild(stitle);
+    section.items.forEach(function(item){
+      var done=!!buysDone[item.id];
+      if(!done)pending++;
+      var row=document.createElement('div');
+      row.className='buy-item'+(done?' bought':'');
+      row.id='buy-'+item.id;
+      row.onclick=function(){toggleBuy(item.id);};
+      row.innerHTML='<div class="buy-tap">'
+        +'<div class="buy-cb'+(done?' done':'')+'">'+( done?'✓':'')+'</div>'
+        +'<div class="buy-info"><div class="buy-name">'+item.name+'</div>'+(item.note?'<div class="buy-note">'+item.note+'</div>':'')+'</div>'
+        +(item.price?'<div class="buy-price'+(done?' done':'')+'">'+item.price+'</div>':'')
+        +'</div>'
+        +'<div style="padding:0 10px 0 0;display:flex;align-items:center"><span class="buy-priority pri-'+item.pri+'">'+item.pri+'</span></div>';
+      sdiv.appendChild(row);
+    });
+    container.appendChild(sdiv);
+  });
+  var badge=document.getElementById('compras-badge');
+  if(badge){if(pending>0){badge.textContent=pending;badge.style.display='flex';}else{badge.style.display='none';}}
+}
+
+function toggleBuy(id){
+  buysDone[id]=!buysDone[id];
+  db.ref(BUYS_PATH+'/'+id).set(buysDone[id]||null).catch(function(){});
+  var row=document.getElementById('buy-'+id);
+  if(!row)return;
+  var done=buysDone[id];
+  row.className='buy-item'+(done?' bought':'');
+  var cb=row.querySelector('.buy-cb');
+  if(cb){cb.className='buy-cb'+(done?' done':'');cb.textContent=done?'✓':'';}
+  var pr=row.querySelector('.buy-price');
+  if(pr)pr.className='buy-price'+(done?' done':'');
+  renderCompraBadge();
+}
+
+function renderCompraBadge(){
+  var pending=0;
+  BUYS_DATA.forEach(function(s){s.items.forEach(function(i){if(!buysDone[i.id])pending++;});});
+  var badge=document.getElementById('compras-badge');
+  if(badge){if(pending>0){badge.textContent=pending;badge.style.display='flex';}else{badge.style.display='none';}}
+}
+
+// ── RENDER GUIA ──
+function renderGuia(){
+  var container=document.getElementById('guia-container');
+  container.innerHTML='';
+  GUIA_DATA.forEach(function(day,di){
+    var open=guideDayOpen[di];
+    var div=document.createElement('div');
+    div.className='guide-day';
+    div.innerHTML='<div class="guide-day-head'+(open?' open':'')+'" onclick="toggleGuideDay('+di+')">'
+      +'<span class="guide-day-icon">'+day.icon+'</span>'
+      +'<div class="guide-day-info"><div class="guide-day-name">'+day.name+'</div><div class="guide-day-sub">'+day.sub+'</div></div>'
+      +'<span class="day-badge '+day.badge+'" style="font-size:10px;padding:3px 9px">'+day.sub.split(' · ')[0]+'</span>'
+      +'<span class="sec-chev'+(open?' open':'')+'" id="gchev-'+di+'">▼</span>'
+    +'</div>'
+    +'<div class="guide-day-body" id="gbody-'+di+'"'+(open?'':' style="display:none"')+'>'
+      +'<div class="guide-tips">'
+      +day.tips.map(function(t){return '<div class="tip-row'+(t.hi?' highlight':'')+'"><span class="tip-icon">'+t.icon+'</span><span class="tip-text">'+t.text+'</span></div>';}).join('')
+      +'</div></div>';
+    container.appendChild(div);
+  });
+}
+
+function toggleGuideDay(di){
+  guideDayOpen[di]=!guideDayOpen[di];
+  var body=document.getElementById('gbody-'+di);
+  var chev=document.getElementById('gchev-'+di);
+  var head=body.previousElementSibling;
+  if(guideDayOpen[di]){body.style.display='';if(chev)chev.classList.add('open');if(head)head.classList.add('open');}
+  else{body.style.display='none';if(chev)chev.classList.remove('open');if(head)head.classList.remove('open');}
+}
+
+// ── FIREBASE LISTENERS ──
+setSS('saving','conectando...');
+
+db.ref(ITEMS_PATH).on('value',function(snap){
+  var data=snap.val()||{};
+  packed={};
+  Object.keys(data).forEach(function(k){if(data[k])packed[k]=data[k];});
+  setSS('ok','✓');
+  if(!initialized){
+    initialized=true;
+    renderSections();
+    renderDates();
+    renderCompras();
+    renderGuia();
+    updateProgress();
+  } else {
+    renderSections();
+    updateProgress();
   }
-};
+},function(){setSS('err','sin conexión');});
 
-window.toggleVacbird = function() {
-  const body = document.getElementById('vacbird-body');
-  const chev = document.getElementById('vacbird-chev');
-  const open = body.style.display !== 'none';
-  body.style.display = open ? 'none' : '';
-  chev.classList.toggle('open', !open);
-};
-
-onValue(ref(db, DB_PATH + '/items'), (snapshot) => {
-  const data = snapshot.val() || {};
-  packed = {};
-  Object.keys(data).forEach(k => { if (data[k]) packed[k] = true; });
-  setSyncStatus('ok', 'sincronizado ✓');
-  renderSections();
-  updateProgress();
-}, (error) => {
-  setSyncStatus('err', 'error conexión');
+db.ref(DATES_PATH).on('value',function(snap){
+  var data=snap.val()||{};
+  datesDone={};
+  Object.keys(data).forEach(function(k){if(data[k])datesDone[k]=true;});
+  if(initialized)renderDates();
 });
 
-setSyncStatus('saving', 'conectando...');
+db.ref(BUYS_PATH).on('value',function(snap){
+  var data=snap.val()||{};
+  buysDone={};
+  Object.keys(data).forEach(function(k){if(data[k])buysDone[k]=true;});
+  if(initialized)renderCompras();
+});
 </script>
 </body>
 </html>
