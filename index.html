@@ -306,21 +306,24 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
 /* ── BUDGET PAGE ── */
 .budget-summary{background:var(--hdr-bg);border-radius:var(--rl);padding:16px;margin-bottom:16px}
 .budget-summary-title{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.4);margin-bottom:12px}
-.budget-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
-.bmetric{text-align:center}
-.bmetric-val{font-size:22px;font-weight:300;color:#f0ede6;line-height:1}
-.bmetric-lbl{font-size:9px;color:rgba(255,255,255,.45);margin-top:3px}
+.budget-metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:8px}
+.budget-metrics-2{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:14px}
+.bmetric{background:rgba(255,255,255,.06);border-radius:10px;padding:10px 12px;text-align:center}
+.bmetric-val{font-size:19px;font-weight:400;color:#f0ede6;line-height:1}
+.bmetric-lbl{font-size:9px;color:rgba(255,255,255,.4);margin-top:3px}
 .bmetric-val.over{color:#f87171}
 .bmetric-val.ok{color:#4ade80}
-.budget-bar-wrap{margin-bottom:10px}
-.budget-bar-track{height:6px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
+.bmetric-val.warn{color:#fbbf24}
+.budget-bar-wrap{margin-bottom:12px}
+.budget-bar-track{height:6px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden;margin-bottom:4px}
 .budget-bar-fill{height:100%;border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1);background:var(--accent)}
+.budget-bar-fill.warn{background:#fbbf24}
 .budget-bar-fill.over{background:#f87171}
-.budget-bar-labels{display:flex;justify-content:space-between;margin-top:4px}
+.budget-bar-labels{display:flex;justify-content:space-between}
 .budget-bar-lbl{font-size:9px;color:rgba(255,255,255,.35)}
 .budget-edit-row{display:flex;align-items:center;gap:8px}
 .budget-edit-lbl{font-size:11px;color:rgba(255,255,255,.5);flex:1}
-.budget-edit-input{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:#f0ede6;font-size:14px;font-weight:500;padding:5px 10px;width:110px;text-align:right;font-family:inherit}
+.budget-edit-input{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:#f0ede6;font-size:14px;font-weight:500;padding:5px 10px 5px 20px;width:120px;text-align:right;font-family:inherit}
 .budget-edit-input:focus{outline:none;border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.12)}
 .budget-section{margin-bottom:12px;border:1px solid var(--surface3);border-radius:var(--rl);overflow:hidden;background:var(--surface)}
 .budget-section-head{display:flex;align-items:center;gap:10px;padding:11px 14px;background:var(--surface2);cursor:pointer;user-select:none;transition:background .15s;border-bottom:1px solid var(--surface3)}
@@ -328,35 +331,43 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
 .budget-section-head:not(.open){border-bottom:none}
 .budget-section-icon{font-size:16px;flex-shrink:0}
 .budget-section-title{font-size:13px;font-weight:500;flex:1;color:var(--ink)}
-.budget-section-total{font-size:13px;font-weight:500;color:var(--ink2);margin-right:4px}
-.budget-section-chev{font-size:10px;color:var(--ink3);transition:transform .2s}
+.budget-section-meta{display:flex;flex-direction:column;align-items:flex-end;gap:1px;margin-right:4px;flex-shrink:0}
+.budget-section-total{font-size:12px;font-weight:500;color:var(--ink2)}
+.budget-section-paid{font-size:10px;color:var(--teal)}
+.budget-section-chev{font-size:10px;color:var(--ink3);transition:transform .2s;flex-shrink:0}
 .budget-section-chev.open{transform:rotate(180deg)}
-.budget-section-body{padding:8px}
-.bitem{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:var(--r);border:1px solid var(--surface3);background:var(--surface);margin-bottom:6px;transition:border-color .15s}
-.bitem:last-child{margin-bottom:0}
-.bitem.paid{border-left:3px solid var(--teal)}
-.bitem.pending{border-left:3px solid var(--surface3)}
-.bitem.estimated{border-left:3px solid var(--gold)}
+.budget-section-body{padding:8px;display:flex;flex-direction:column;gap:6px}
+/* item card */
+.bitem{border-radius:var(--r);border:1px solid var(--surface3);background:var(--surface);overflow:hidden;transition:border-color .15s}
+.bitem.st-paid{border-left:3px solid var(--teal)}
+.bitem.st-partial{border-left:3px solid #fbbf24}
+.bitem.st-pending{border-left:3px solid var(--surface3)}
+.bitem.st-estimated{border-left:3px solid var(--gold)}
+.bitem-top{display:flex;align-items:flex-start;gap:10px;padding:10px 12px 8px}
 .bitem-info{flex:1;min-width:0}
 .bitem-name{font-size:13px;font-weight:500;color:var(--ink);line-height:1.25}
-.bitem-note{font-size:10px;color:var(--ink3);margin-top:2px}
-.bitem-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
-.bitem-amount{position:relative}
-.bitem-input{background:var(--surface2);border:1px solid var(--surface3);border-radius:8px;color:var(--ink);font-size:13px;font-weight:500;padding:5px 8px 5px 18px;width:96px;text-align:right;font-family:inherit;transition:border-color .15s}
-.bitem-input:focus{outline:none;border-color:var(--accent);background:var(--surface)}
-.bitem-input.has-value{background:var(--surface);border-color:var(--surface3)}
-.bitem-currency{position:absolute;left:8px;top:50%;transform:translateY(-50%);font-size:12px;color:var(--ink3);pointer-events:none}
-.bitem-toggle{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--surface3);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:11px;font-weight:700;transition:all .15s;flex-shrink:0;background:none;color:var(--ink3);font-family:inherit}
-.bitem-toggle:hover{border-color:var(--teal);color:var(--teal)}
-.bitem-toggle.paid{background:var(--teal);border-color:var(--teal);color:#fff}
-.bitem-badge{font-size:9px;font-weight:600;padding:2px 6px;border-radius:5px;white-space:nowrap}
+.bitem-note{font-size:10px;color:var(--ink3);margin-top:2px;line-height:1.35}
+.bitem-badge{font-size:9px;font-weight:600;padding:2px 7px;border-radius:5px;white-space:nowrap;flex-shrink:0;margin-top:2px}
 .bbadge-paid{background:var(--teal-bg);color:var(--teal)}
+.bbadge-partial{background:#fef3c7;color:#92400e}
+[data-theme="dark"] .bbadge-partial{background:#2a1e06;color:#fbbf24}
 .bbadge-pending{background:var(--surface2);color:var(--ink3)}
 .bbadge-est{background:var(--gold-bg);color:var(--gold)}
-.day-header-row{display:flex;align-items:center;gap:8px;padding:10px 10px 6px;margin-top:4px}
-.day-header-dot{width:8px;height:8px;border-radius:50%;background:var(--surface3);flex-shrink:0}
-.day-header-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3)}
-.day-header-line{flex:1;height:1px;background:var(--surface3)}
+/* two-field row */
+.bitem-fields{display:flex;border-top:1px solid var(--surface3)}
+.bfield{flex:1;display:flex;flex-direction:column;padding:8px 10px;gap:3px;position:relative}
+.bfield:first-child{border-right:1px solid var(--surface3)}
+.bfield-lbl{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--ink3)}
+.bfield-wrap{position:relative}
+.bfield-symbol{position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:12px;color:var(--ink3);pointer-events:none;font-weight:500}
+.bfield-input{background:none;border:none;color:var(--ink);font-size:14px;font-weight:500;padding:2px 0 2px 14px;width:100%;font-family:inherit;min-width:0}
+.bfield-input:focus{outline:none;color:var(--accent)}
+.bfield-input::placeholder{color:var(--ink3);font-weight:400}
+/* balance pendiente */
+.bitem-balance{display:flex;align-items:center;justify-content:space-between;padding:6px 12px;background:var(--surface2);border-top:1px solid var(--surface3);font-size:11px}
+.bitem-balance-lbl{color:var(--ink3)}
+.bitem-balance-val{font-weight:600;color:var(--accent)}
+.bitem-balance-val.zero{color:var(--teal)}
 /* ── MISC ── */
 .empty-state{text-align:center;padding:40px 20px;color:var(--ink3);font-size:13px}
 .footer{text-align:center;font-size:10px;color:var(--ink3);padding:16px;margin-top:8px}
@@ -485,27 +496,33 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
       <div class="budget-summary-title">Presupuesto Disney Wish 2026</div>
       <div class="budget-metrics">
         <div class="bmetric">
-          <div class="bmetric-val" id="bm-gastado">$0</div>
-          <div class="bmetric-lbl">Pagado</div>
-        </div>
-        <div class="bmetric">
-          <div class="bmetric-val" id="bm-estimado">$0</div>
+          <div class="bmetric-val" id="bm-total">$0</div>
           <div class="bmetric-lbl">Total estimado</div>
         </div>
         <div class="bmetric">
-          <div class="bmetric-val" id="bm-restante">$0</div>
+          <div class="bmetric-val ok" id="bm-pagado">$0</div>
+          <div class="bmetric-lbl">Pagado</div>
+        </div>
+      </div>
+      <div class="budget-metrics-2">
+        <div class="bmetric">
+          <div class="bmetric-val warn" id="bm-porpagar">$0</div>
+          <div class="bmetric-lbl">Por pagar</div>
+        </div>
+        <div class="bmetric">
+          <div class="bmetric-val ok" id="bm-disponible">$0</div>
           <div class="bmetric-lbl">Disponible</div>
         </div>
       </div>
       <div class="budget-bar-wrap">
         <div class="budget-bar-track"><div class="budget-bar-fill" id="budget-bar" style="width:0%"></div></div>
         <div class="budget-bar-labels">
-          <span class="budget-bar-lbl" id="bbar-pct">0% del presupuesto usado</span>
+          <span class="budget-bar-lbl" id="bbar-pct">0% del presupuesto comprometido</span>
           <span class="budget-bar-lbl" id="bbar-total">Presupuesto: $8,000</span>
         </div>
       </div>
       <div class="budget-edit-row">
-        <span class="budget-edit-lbl">Ajustar presupuesto total</span>
+        <span class="budget-edit-lbl">Presupuesto total del viaje</span>
         <div style="position:relative">
           <span style="position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:12px;color:rgba(255,255,255,.45);pointer-events:none">$</span>
           <input class="budget-edit-input" type="number" id="budget-total-input" value="8000" min="0" step="100" oninput="onBudgetTotalChange(this.value)">
@@ -1221,104 +1238,139 @@ function toggleGuideDay(di){
 }
 
 // ── BUDGET DATA ──
+// amount = total cost · paid = amount already paid · estimated = true means no confirmed price yet
 var BUDGET_SECTIONS=[
   {id:'crucero',icon:'🚢',title:'Crucero Disney Wish',items:[
-    {id:'bg1',name:'Disney Wish — Grand Total (4 pasajeros)',note:'Yosh $1,215 · Joss $1,215 · Emma $567.36 · Nina $321.18 · Taxes $464.12',amount:3782.66,status:'pending'},
-    {id:'bg2',name:'Depósito pagado (16-ene-2026)',note:'Abonado al Grand Total',amount:165.93,status:'paid'},
-    {id:'bg3',name:'Balance pendiente crucero',note:'Vence 1-ago-2026',amount:3616.73,status:'pending'},
-    {id:'bg4',name:'DCL Transfer MCO → Port Canaveral',note:'$45 × 4 personas · 30 oct',amount:180,status:'pending'},
-    {id:'bg5',name:'Propinas stateroom host',note:'~$14/noche × 3 noches × 2 adultos = $84 recomendado',amount:84,status:'pending'},
+    {id:'bg1',name:'Disney Wish — Grand Total (4 pasajeros)',note:'Yosh $1,215 · Joss $1,215 · Emma $567.36 · Nina $321.18 · Taxes $464.12',amount:3782.66,paid:165.93,estimated:false},
+    {id:'bg4',name:'DCL Transfer MCO → Port Canaveral',note:'$45 × 4 personas · 30 oct',amount:180,paid:0,estimated:false},
+    {id:'bg5',name:'Propinas stateroom host',note:'~$14/noche × 3 noches × 2 adultos · recomendado',amount:84,paid:0,estimated:true},
   ]},
   {id:'vuelos',icon:'✈',title:'Vuelos y transporte terrestre',items:[
-    {id:'bg6',name:'Vuelos Copa — ida GUA→PTY→MCO',note:'4 pasajeros · Copa Classic · Mié 28 oct',amount:0,status:'pending'},
-    {id:'bg7',name:'Vuelos Copa — vuelta MCO→PTY→GUA',note:'4 pasajeros · Copa Classic · Mié 4 nov',amount:0,status:'pending'},
-    {id:'bg8',name:'Uber XL Port Canaveral → Casa Orlando',note:'Lun 2 nov · ~53 millas · estimado',amount:108,status:'pending'},
-    {id:'bg9',name:'Transporte MCO ↔ Casa (conocido)',note:'Llegada 28 oct y salida 4 nov · gratuito',amount:0,status:'paid'},
+    {id:'bg6',name:'Vuelos Copa — ida GUA→PTY→MCO',note:'4 pasajeros · Copa Classic · Mié 28 oct',amount:0,paid:0,estimated:true},
+    {id:'bg7',name:'Vuelos Copa — vuelta MCO→PTY→GUA',note:'4 pasajeros · Copa Classic · Mié 4 nov',amount:0,paid:0,estimated:true},
+    {id:'bg8',name:'Uber XL Port Canaveral → Casa Orlando',note:'Lun 2 nov · ~53 millas',amount:108,paid:0,estimated:true},
+    {id:'bg9',name:'Transporte MCO ↔ Casa (conocido)',note:'Llegada 28 oct y salida 4 nov · gratuito',amount:0,paid:0,estimated:false},
   ]},
   {id:'precompras',icon:'🛒',title:'Compras pre-viaje',items:[
-    {id:'bg10',name:'Bolsas Vacbird 18-pack (6S+6M+6L)',note:'Con bomba inalámbrica · Amazon ~$36.98',amount:37,status:'pending'},
-    {id:'bg11',name:'Cargador multi-USB cubo GaN',note:'Anker 543 o Baseus · sin surge protector ~$25',amount:25,status:'pending'},
-    {id:'bg12',name:'Parasol / mini tienda playa Nina',note:'Pop-up UPF 50+ ~$30',amount:30,status:'pending'},
-    {id:'bg13',name:'Disfraces pirata x4 (familia)',note:'Pirate Night 31 oct',amount:0,status:'pending'},
-    {id:'bg14',name:'Disfraces Halloween x4 (familia)',note:'Halloween Night 31 oct',amount:0,status:'pending'},
-    {id:'bg15',name:'Vestido de princesa Emma',note:'Royal Gathering — reservar 30 sep a medianoche',amount:0,status:'pending'},
-    {id:'bg16',name:'Decoraciones magnéticas puerta cabina',note:'Disney + Halloween · ~$15 c/u',amount:30,status:'pending'},
-    {id:'bg17',name:'Libretas de autógrafos x4',note:'Una por persona incluyendo Nina',amount:20,status:'pending'},
-    {id:'bg18',name:'Snacks sellados para vuelo',note:'Emma + Nina + adultos',amount:0,status:'pending'},
-    {id:'bg19',name:'Fórmula / comida bebé Nina',note:'Para vuelo y primeros días a bordo',amount:0,status:'pending'},
+    {id:'bg10',name:'Bolsas Vacbird 18-pack (6S+6M+6L)',note:'Con bomba inalámbrica · Amazon ~$36.98',amount:37,paid:0,estimated:false},
+    {id:'bg11',name:'Cargador multi-USB cubo GaN',note:'Anker 543 o Baseus · sin surge protector ~$25',amount:25,paid:0,estimated:false},
+    {id:'bg12',name:'Parasol / mini tienda playa Nina',note:'Pop-up UPF 50+ ~$30',amount:30,paid:0,estimated:false},
+    {id:'bg13',name:'Disfraces pirata x4 (familia)',note:'Pirate Night 31 oct',amount:0,paid:0,estimated:true},
+    {id:'bg14',name:'Disfraces Halloween x4 (familia)',note:'Halloween Night 31 oct',amount:0,paid:0,estimated:true},
+    {id:'bg15',name:'Vestido de princesa Emma',note:'Royal Gathering — reservar 30 sep a medianoche',amount:0,paid:0,estimated:true},
+    {id:'bg16',name:'Decoraciones magnéticas puerta cabina',note:'Disney + Halloween · ~$15 c/u',amount:30,paid:0,estimated:false},
+    {id:'bg17',name:'Libretas de autógrafos x4',note:'Una por persona incluyendo Nina',amount:20,paid:0,estimated:false},
+    {id:'bg18',name:'Snacks sellados para vuelo',note:'Emma + Nina + adultos',amount:0,paid:0,estimated:true},
+    {id:'bg19',name:'Fórmula / comida bebé Nina',note:'Para vuelo y primeros días a bordo',amount:0,paid:0,estimated:true},
   ]},
   {id:'nassau',icon:'🏴',title:'Nassau — Sáb 31 oct',items:[
-    {id:'bg20',name:'Pirates of Nassau Museum (familia)',note:'$14 adultos × 2 + $7 Emma · Nina gratis',amount:35,status:'estimated'},
-    {id:'bg21',name:'Rip Ty\'d Tap Room',note:'Cervezas artesanales · juegos para los niños',amount:0,status:'estimated'},
-    {id:'bg22',name:'Straw Market — souvenirs',note:'~$10–15 por niño',amount:25,status:'estimated'},
-    {id:'bg23',name:'Comidas / snacks en tierra Nassau',note:'',amount:0,status:'estimated'},
+    {id:'bg20',name:'Pirates of Nassau Museum (familia)',note:'$14 adultos × 2 + $7 Emma · Nina gratis',amount:35,paid:0,estimated:false},
+    {id:'bg21',name:'Rip Ty\'d Tap Room',note:'Cervezas artesanales · juegos para los niños',amount:0,paid:0,estimated:true},
+    {id:'bg22',name:'Straw Market — souvenirs',note:'~$10–15 por niño',amount:25,paid:0,estimated:true},
+    {id:'bg23',name:'Comidas / snacks en tierra Nassau',note:'',amount:0,paid:0,estimated:true},
   ]},
   {id:'castaway',icon:'🏝',title:'Castaway Cay — Dom 1 nov',items:[
-    {id:'bg24',name:'Renta bicicletas',note:'Opcional · $19/hr/persona',amount:0,status:'estimated'},
-    {id:'bg25',name:'Souvenirs en la isla',note:'Tienda Disney Castaway Cay',amount:0,status:'estimated'},
-    {id:'bg26',name:'Actividades adicionales',note:'Stingray $64 opcional · paddleboard · kayak',amount:0,status:'estimated'},
+    {id:'bg24',name:'Renta bicicletas',note:'Opcional · $19/hr/persona',amount:0,paid:0,estimated:true},
+    {id:'bg25',name:'Souvenirs en la isla',note:'Tienda Disney Castaway Cay',amount:0,paid:0,estimated:true},
+    {id:'bg26',name:'Actividades adicionales',note:'Stingray $64 opcional · paddleboard · kayak',amount:0,paid:0,estimated:true},
   ]},
   {id:'abordo',icon:'⚓',title:'Gastos a bordo',items:[
-    {id:'bg27',name:'Bebidas especiales / cócteles',note:'Las de cena son gratis; bar y mixología son pago',amount:0,status:'estimated'},
-    {id:'bg28',name:'Fotos profesionales DCL',note:'Fotógrafos a bordo y en Castaway Cay · paquetes disponibles',amount:0,status:'estimated'},
-    {id:'bg29',name:'Souvenirs Mickey\'s Mainsail',note:'Ears, ropa Disney Wish exclusivos',amount:0,status:'estimated'},
+    {id:'bg27',name:'Bebidas especiales / cócteles',note:'Las de cena son gratis; bar y mixología son pago',amount:0,paid:0,estimated:true},
+    {id:'bg28',name:'Fotos profesionales DCL',note:'Fotógrafos a bordo y en Castaway Cay · paquetes disponibles',amount:0,paid:0,estimated:true},
+    {id:'bg29',name:'Souvenirs Mickey\'s Mainsail',note:'Ears, ropa Disney Wish exclusivos',amount:0,paid:0,estimated:true},
   ]},
   {id:'orlando',icon:'🏠',title:'Pre / Post crucero — Orlando',items:[
-    {id:'bg30',name:'Comidas Oct 28–29 (pre-crucero)',note:'Casa de conocidos · presupuesto para salir a comer',amount:0,status:'estimated'},
-    {id:'bg31',name:'Comidas Nov 3–4 (post-crucero)',note:'Casa de conocidos · presupuesto para salir a comer',amount:0,status:'estimated'},
-    {id:'bg32',name:'Supermercado / snacks en Orlando',note:'Pañales, fórmula extra, snacks para la casa',amount:0,status:'estimated'},
-    {id:'bg33',name:'Imprevistos / emergencias',note:'Reserva para gastos no planificados',amount:0,status:'estimated'},
+    {id:'bg30',name:'Comidas Oct 28–29 (pre-crucero)',note:'Casa de conocidos · presupuesto para salir a comer',amount:0,paid:0,estimated:true},
+    {id:'bg31',name:'Comidas Nov 3–4 (post-crucero)',note:'Casa de conocidos · presupuesto para salir a comer',amount:0,paid:0,estimated:true},
+    {id:'bg32',name:'Supermercado / snacks en Orlando',note:'Pañales, fórmula extra, snacks para la casa',amount:0,paid:0,estimated:true},
+    {id:'bg33',name:'Imprevistos / emergencias',note:'Reserva para gastos no planificados',amount:0,paid:0,estimated:true},
   ]},
 ];
 
 function fmtMoney(n){
-  if(!n||isNaN(n)||n===0)return '$0';
+  if(n==null||isNaN(n)||n===0)return '$0';
   return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:2});
 }
 
+function getBItemTotal(item){
+  var stored=budgetData['bamt_'+item.id];
+  return stored!=null?parseFloat(stored)||0:(item.amount||0);
+}
+function getBItemPaid(item){
+  var stored=budgetData['bpaid_'+item.id];
+  return stored!=null?parseFloat(stored)||0:(item.paid||0);
+}
+function getBItemStatus(item){
+  var total=getBItemTotal(item);
+  var paid=getBItemPaid(item);
+  if(total===0&&paid===0)return item.estimated?'st-estimated':'st-pending';
+  if(paid>=total&&total>0)return 'st-paid';
+  if(paid>0&&paid<total)return 'st-partial';
+  return item.estimated?'st-estimated':'st-pending';
+}
+function getBItemBadge(item){
+  var st=getBItemStatus(item);
+  if(st==='st-paid')return{cls:'bbadge-paid',lbl:'Pagado'};
+  if(st==='st-partial')return{cls:'bbadge-partial',lbl:'Parcial'};
+  if(st==='st-estimated')return{cls:'bbadge-est',lbl:'Estimado'};
+  return{cls:'bbadge-pending',lbl:'Pendiente'};
+}
+
 function getBudgetTotals(){
-  var paid=0,estimated=0;
+  var totalAmt=0,totalPaid=0;
   BUDGET_SECTIONS.forEach(function(sec){
     sec.items.forEach(function(item){
-      var amt=parseFloat(budgetData['bamt_'+item.id]);
-      if(isNaN(amt))amt=item.amount||0;
-      var st=budgetData['bst_'+item.id]||item.status;
-      if(st==='paid')paid+=amt;
-      estimated+=amt;
+      totalAmt+=getBItemTotal(item);
+      totalPaid+=getBItemPaid(item);
     });
   });
-  return{paid:paid,estimated:estimated};
+  return{total:totalAmt,paid:totalPaid};
 }
 
 function updateBudgetSummary(){
-  var totals=getBudgetTotals();
-  var total=budgetTotal||8000;
-  var restante=total-totals.estimated;
-  var over=totals.estimated>total;
-  var pct=total>0?Math.min(Math.round(totals.estimated/total*100),100):0;
-  var pgEl=document.getElementById('bm-gastado');
-  var peEl=document.getElementById('bm-estimado');
-  var prEl=document.getElementById('bm-restante');
-  if(pgEl)pgEl.textContent=fmtMoney(totals.paid);
-  if(peEl)peEl.textContent=fmtMoney(totals.estimated);
-  if(prEl){prEl.textContent=fmtMoney(Math.abs(restante));prEl.className='bmetric-val'+(over?' over':' ok');}
-  var restLbl=document.querySelector('#bm-restante+.bmetric-lbl');
-  if(restLbl)restLbl.textContent=over?'Excedido':'Disponible';
+  var t=getBudgetTotals();
+  var budget=budgetTotal||8000;
+  var porPagar=t.total-t.paid;
+  var disponible=budget-t.total;
+  var over=t.total>budget;
+  var pct=budget>0?Math.min(Math.round(t.total/budget*100),100):0;
+
+  var elTotal=document.getElementById('bm-total');
+  var elPagado=document.getElementById('bm-pagado');
+  var elPorPagar=document.getElementById('bm-porpagar');
+  var elDisp=document.getElementById('bm-disponible');
+  if(elTotal)elTotal.textContent=fmtMoney(t.total);
+  if(elPagado)elPagado.textContent=fmtMoney(t.paid);
+  if(elPorPagar){
+    elPorPagar.textContent=fmtMoney(porPagar);
+    elPorPagar.className='bmetric-val'+(porPagar>0?' warn':' ok');
+  }
+  if(elDisp){
+    elDisp.textContent=fmtMoney(Math.abs(disponible));
+    elDisp.className='bmetric-val'+(over?' over':' ok');
+    var dispLbl=elDisp.nextElementSibling;
+    if(dispLbl)dispLbl.textContent=over?'Excedido':'Disponible';
+  }
   var bar=document.getElementById('budget-bar');
-  if(bar){bar.style.width=pct+'%';bar.className='budget-bar-fill'+(over?' over':'');}
+  if(bar){
+    bar.style.width=pct+'%';
+    bar.className='budget-bar-fill'+(over?' over':pct>=80?' warn':'');
+  }
   var pctEl=document.getElementById('bbar-pct');
-  var totalEl=document.getElementById('bbar-total');
-  if(pctEl)pctEl.textContent=pct+'% del presupuesto usado';
-  if(totalEl)totalEl.textContent='Presupuesto: '+fmtMoney(total);
+  var totEl=document.getElementById('bbar-total');
+  if(pctEl)pctEl.textContent=pct+'% del presupuesto comprometido';
+  if(totEl)totEl.textContent='Presupuesto: '+fmtMoney(budget);
+
+  // section subtotals
   BUDGET_SECTIONS.forEach(function(sec){
-    var secTotal=0;
-    sec.items.forEach(function(item){
-      var amt=parseFloat(budgetData['bamt_'+item.id]);
-      if(isNaN(amt))amt=item.amount||0;
-      secTotal+=amt;
-    });
-    var el=document.getElementById('bsectotal-'+sec.id);
-    if(el)el.textContent=secTotal>0?fmtMoney(secTotal):'';
+    var secTotal=0,secPaid=0;
+    sec.items.forEach(function(item){secTotal+=getBItemTotal(item);secPaid+=getBItemPaid(item);});
+    var metaEl=document.getElementById('bsecmeta-'+sec.id);
+    if(metaEl){
+      metaEl.querySelector('.budget-section-total').textContent=secTotal>0?fmtMoney(secTotal):'';
+      var paidEl=metaEl.querySelector('.budget-section-paid');
+      if(paidEl)paidEl.textContent=secPaid>0?'Pagado: '+fmtMoney(secPaid):'';
+    }
   });
 }
 
@@ -1341,31 +1393,46 @@ function onBudgetAmountChange(id,val){
     var u={};u[BUDGET_PATH+'/'+key]=budgetData[key];
     db.ref('/').update(u);
   },700);
+  refreshBItem(id);
   updateBudgetSummary();
 }
 
-function toggleBudgetStatus(id){
-  var stkey='bst_'+id;
+function onBudgetPaidChange(id,val){
+  var key='bpaid_'+id;
+  var n=parseFloat(val);
+  budgetData[key]=isNaN(n)?null:n;
+  clearTimeout(budgetSaveTimer);
+  budgetSaveTimer=setTimeout(function(){
+    var u={};u[BUDGET_PATH+'/'+key]=budgetData[key];
+    db.ref('/').update(u);
+  },700);
+  refreshBItem(id);
+  updateBudgetSummary();
+}
+
+function refreshBItem(id){
   var item=null;
   BUDGET_SECTIONS.forEach(function(s){s.items.forEach(function(i){if(i.id===id)item=i;});});
   if(!item)return;
-  var current=budgetData[stkey]||item.status;
-  var next=current==='paid'?(item.status==='estimated'?'estimated':'pending'):'paid';
-  budgetData[stkey]=next;
-  var u={};u[BUDGET_PATH+'/'+stkey]=next;
-  db.ref('/').update(u);
   var row=document.getElementById('brow-'+id);
-  if(row){
-    row.className='bitem '+next;
-    var btn=row.querySelector('.bitem-toggle');
-    var badge=row.querySelector('.bitem-badge');
-    if(btn){btn.className='bitem-toggle'+(next==='paid'?' paid':'');btn.textContent=next==='paid'?'✓':'';}
-    if(badge){
-      badge.className='bitem-badge '+(next==='paid'?'bbadge-paid':next==='estimated'?'bbadge-est':'bbadge-pending');
-      badge.textContent=next==='paid'?'Pagado':next==='estimated'?'Estimado':'Pendiente';
+  if(!row)return;
+  var st=getBItemStatus(item);
+  var badge=getBItemBadge(item);
+  row.className='bitem '+st;
+  var badgeEl=row.querySelector('.bitem-badge');
+  if(badgeEl){badgeEl.className='bitem-badge '+badge.cls;badgeEl.textContent=badge.lbl;}
+  // update balance row if present
+  var balRow=document.getElementById('bbal-'+id);
+  if(balRow){
+    var total=getBItemTotal(item);
+    var paid=getBItemPaid(item);
+    var balance=total-paid;
+    var balVal=balRow.querySelector('.bitem-balance-val');
+    if(balVal){
+      balVal.textContent=balance>0?fmtMoney(balance):'Pagado completo ✓';
+      balVal.className='bitem-balance-val'+(balance<=0?' zero':'');
     }
   }
-  updateBudgetSummary();
 }
 
 function toggleBudgetSection(id){
@@ -1383,7 +1450,6 @@ function renderBudget(){
   var container=document.getElementById('budget-container');
   if(!container)return;
   container.innerHTML='';
-  // restore budget total
   if(budgetData['total']){
     budgetTotal=parseFloat(budgetData['total'])||8000;
     var inp=document.getElementById('budget-total-input');
@@ -1391,50 +1457,64 @@ function renderBudget(){
   }
   BUDGET_SECTIONS.forEach(function(sec){
     var open=budgetSectionOpen[sec.id]!==false;
-    var secTotal=0;
-    sec.items.forEach(function(item){
-      var amt=parseFloat(budgetData['bamt_'+item.id]);
-      if(isNaN(amt))amt=item.amount||0;
-      secTotal+=amt;
-    });
+    var secTotal=0,secPaid=0;
+    sec.items.forEach(function(item){secTotal+=getBItemTotal(item);secPaid+=getBItemPaid(item);});
     var wrap=document.createElement('div');
     wrap.className='budget-section';
     wrap.id='bsec-'+sec.id;
     wrap.innerHTML='<div class="budget-section-head'+(open?' open':'')+'" onclick="toggleBudgetSection(\''+sec.id+'\')">'
       +'<span class="budget-section-icon">'+sec.icon+'</span>'
       +'<span class="budget-section-title">'+sec.title+'</span>'
-      +'<span class="budget-section-total" id="bsectotal-'+sec.id+'">'+(secTotal>0?fmtMoney(secTotal):'')+'</span>'
+      +'<div class="budget-section-meta" id="bsecmeta-'+sec.id+'">'
+        +'<span class="budget-section-total">'+(secTotal>0?fmtMoney(secTotal):'')+'</span>'
+        +'<span class="budget-section-paid">'+(secPaid>0?'Pagado: '+fmtMoney(secPaid):'')+'</span>'
+      +'</div>'
       +'<span class="budget-section-chev'+(open?' open':'')+'" id="bsecchev-'+sec.id+'">▼</span>'
     +'</div>'
     +'<div class="budget-section-body" id="bsecbody-'+sec.id+'"'+(open?'':' style="display:none"')+'></div>';
     container.appendChild(wrap);
     var body=document.getElementById('bsecbody-'+sec.id);
     sec.items.forEach(function(item){
-      var storedAmt=budgetData['bamt_'+item.id];
-      var displayAmt=storedAmt!=null?storedAmt:item.amount;
-      var st=budgetData['bst_'+item.id]||item.status;
-      var badgeLabel=st==='paid'?'Pagado':st==='estimated'?'Estimado':'Pendiente';
-      var badgeCls=st==='paid'?'bbadge-paid':st==='estimated'?'bbadge-est':'bbadge-pending';
+      var totalVal=getBItemTotal(item);
+      var paidVal=getBItemPaid(item);
+      var st=getBItemStatus(item);
+      var badge=getBItemBadge(item);
+      var balance=totalVal-paidVal;
+      var showBalance=totalVal>0&&paidVal>0;
       var row=document.createElement('div');
       row.className='bitem '+st;
       row.id='brow-'+item.id;
-      row.innerHTML='<div class="bitem-info">'
+      row.innerHTML='<div class="bitem-top">'
+        +'<div class="bitem-info">'
         +'<div class="bitem-name">'+item.name+'</div>'
         +(item.note?'<div class="bitem-note">'+item.note+'</div>':'')
         +'</div>'
-        +'<div class="bitem-right">'
-        +'<span class="bitem-badge '+badgeCls+'">'+badgeLabel+'</span>'
-        +'<div class="bitem-amount">'
-        +'<span class="bitem-currency">$</span>'
-        +'<input class="bitem-input'+(displayAmt?' has-value':'')+'" type="number" min="0" step="1" '
-        +'placeholder="0" value="'+(displayAmt!=null&&displayAmt!==0?displayAmt:'')+'" '
+        +'<span class="bitem-badge '+badge.cls+'">'+badge.lbl+'</span>'
+        +'</div>'
+        +'<div class="bitem-fields">'
+        +'<div class="bfield">'
+        +'<span class="bfield-lbl">Total</span>'
+        +'<div class="bfield-wrap">'
+        +'<span class="bfield-symbol">$</span>'
+        +'<input class="bfield-input" type="number" min="0" step="1" placeholder="0.00" '
+        +'value="'+(totalVal||'')+'" '
         +'oninput="onBudgetAmountChange(\''+item.id+'\',this.value)" '
         +'onfocus="this.select()">'
+        +'</div></div>'
+        +'<div class="bfield">'
+        +'<span class="bfield-lbl">Pagado</span>'
+        +'<div class="bfield-wrap">'
+        +'<span class="bfield-symbol">$</span>'
+        +'<input class="bfield-input" type="number" min="0" step="1" placeholder="0.00" '
+        +'value="'+(paidVal||'')+'" '
+        +'oninput="onBudgetPaidChange(\''+item.id+'\',this.value)" '
+        +'onfocus="this.select()">'
+        +'</div></div>'
         +'</div>'
-        +'<button class="bitem-toggle'+(st==='paid'?' paid':'')+'" onclick="toggleBudgetStatus(\''+item.id+'\')" title="Marcar como pagado">'
-        +(st==='paid'?'✓':'')
-        +'</button>'
-        +'</div>';
+        +(showBalance?'<div class="bitem-balance" id="bbal-'+item.id+'">'
+        +'<span class="bitem-balance-lbl">Balance pendiente</span>'
+        +'<span class="bitem-balance-val'+(balance<=0?' zero':'')+'">'+( balance>0?fmtMoney(balance):'Pagado completo ✓')+'</span>'
+        +'</div>':'<div id="bbal-'+item.id+'" style="display:none"></div>');
       body.appendChild(row);
     });
   });
