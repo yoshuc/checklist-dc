@@ -24,7 +24,6 @@
   --tag-m-bg:#9fe1cb;--tag-m-c:#085041;
   --tag-l-bg:#fac775;--tag-l-c:#633806;
   --nav-h:56px;--toolbar-h:48px;
-  /* Header always dark regardless of theme */
   --hdr-bg:#1c1b18;--hdr-ink:#f5f3ee;--hdr-ink2:#9b9890;
   --hdr-ctrl-border:rgba(255,255,255,0.18);--hdr-ctrl-bg:rgba(255,255,255,0.09);
   --hdr-ctrl-hover:rgba(255,255,255,0.16);--hdr-ctrl-text:rgba(255,255,255,0.82);
@@ -43,7 +42,6 @@
   --tag-s-bg:#0c2a4a;--tag-s-c:#6ab0f0;
   --tag-m-bg:#0a2a1e;--tag-m-c:#3ed4a0;
   --tag-l-bg:#2a1e06;--tag-l-c:#e0a040;
-  /* Header stays dark in dark mode too — use slightly lighter dark */
   --hdr-bg:#0e0e0d;--hdr-ink:#f0ede6;--hdr-ink2:#6b6860;
   --hdr-ctrl-border:rgba(255,255,255,0.14);--hdr-ctrl-bg:rgba(255,255,255,0.07);
   --hdr-ctrl-hover:rgba(255,255,255,0.13);--hdr-ctrl-text:rgba(255,255,255,0.75);
@@ -75,8 +73,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
 .pbar-fill{height:100%;background:var(--accent);border-radius:2px;transition:width .5s cubic-bezier(.4,0,.2,1)}
 
 /* ── BOTTOM NAV ── */
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:300;background:var(--surface);border-top:1px solid var(--surface3);display:flex;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -2px 12px var(--shadow)}
-.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:8px 4px;cursor:pointer;border:none;background:none;color:var(--ink3);font-family:inherit;font-size:9px;font-weight:500;transition:color .15s;min-height:var(--nav-h);position:relative}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:300;background:var(--surface);border-top:1px solid var(--surface3);display:flex;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -2px 12px var(--shadow);overflow-x:auto}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:8px 4px;cursor:pointer;border:none;background:none;color:var(--ink3);font-family:inherit;font-size:9px;font-weight:500;transition:color .15s;min-height:var(--nav-h);position:relative;min-width:52px}
 .nav-item.active{color:var(--accent)}
 .nav-item.active::after{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:24px;height:2px;background:var(--accent);border-radius:0 0 2px 2px}
 .nav-icon{font-size:20px;line-height:1}
@@ -151,7 +149,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
 /* ── ITEM ROWS ── */
 .items-list{padding:2px 0}
 .item-row{display:flex;align-items:flex-start;gap:0;padding:0;cursor:pointer;user-select:none;position:relative}
-/* Large tap target */
 .item-tap{display:flex;align-items:flex-start;gap:8px;padding:7px 10px;flex:1;min-height:44px;transition:background .1s;border-radius:4px}
 .item-row:hover .item-tap{background:var(--surface2)}
 .item-row.done-item .item-tap{opacity:.5}
@@ -229,8 +226,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
 .buy-group-chev{font-size:10px;color:var(--ink3);transition:transform .2s}
 .buy-group-chev.open{transform:rotate(180deg)}
 .buy-group-body{padding:10px;display:flex;flex-direction:column;gap:6px}
-
-/* ── BUY ITEM — new 2-button design ── */
 .buy-item{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--rl);overflow:hidden;transition:border-color .15s}
 .buy-item.comprado{border-color:var(--teal-border);opacity:.7}
 .buy-item.descartado{opacity:.45}
@@ -262,7 +257,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
 .guide-day-info{flex:1}
 .guide-day-name{font-family:'Instrument Serif',serif;font-size:16px;font-weight:400}
 .guide-day-sub{font-size:11px;color:var(--ink2);margin-top:1px}
-.guide-day-badge{font-size:10px;font-weight:500;padding:3px 9px;border-radius:8px;flex-shrink:0}
 .guide-day-body{padding:14px 16px;background:var(--surface2)}
 .guide-tips{display:flex;flex-direction:column;gap:8px}
 .tip-row{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;background:var(--surface);border-radius:var(--r);border:1px solid var(--surface3)}
@@ -295,13 +289,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
 /* ── LEGEND STRIP ── */
 .legend-strip{display:flex;gap:10px;flex-wrap:wrap;padding:8px 14px;background:var(--surface2);border-bottom:1px solid var(--surface3);font-size:10px;color:var(--ink2)}
 .l-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
-
-/* ── PROGRESS RINGS on header ── */
-.rings-row{display:flex;gap:6px;padding:8px 16px;overflow-x:auto;scrollbar-width:none}
-.rings-row::-webkit-scrollbar{display:none}
-.ring-item{display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0}
-.ring-label{font-size:9px;color:rgba(255,255,255,.5);white-space:nowrap}
-.ring-val{font-size:10px;font-weight:500;color:rgba(255,255,255,.8)}
 
 /* ── BUDGET PAGE ── */
 .budget-summary{background:var(--hdr-bg);border-radius:var(--rl);padding:16px;margin-bottom:16px}
@@ -337,7 +324,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
 .budget-section-chev{font-size:10px;color:var(--ink3);transition:transform .2s;flex-shrink:0}
 .budget-section-chev.open{transform:rotate(180deg)}
 .budget-section-body{padding:8px;display:flex;flex-direction:column;gap:6px}
-/* item card */
 .bitem{border-radius:var(--r);border:1px solid var(--surface3);background:var(--surface);overflow:hidden;transition:border-color .15s}
 .bitem.st-paid{border-left:3px solid var(--teal)}
 .bitem.st-partial{border-left:3px solid #fbbf24}
@@ -353,7 +339,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
 [data-theme="dark"] .bbadge-partial{background:#2a1e06;color:#fbbf24}
 .bbadge-pending{background:var(--surface2);color:var(--ink3)}
 .bbadge-est{background:var(--gold-bg);color:var(--gold)}
-/* two-field row */
 .bitem-fields{display:flex;border-top:1px solid var(--surface3)}
 .bfield{flex:1;display:flex;flex-direction:column;padding:8px 10px;gap:3px;position:relative}
 .bfield:first-child{border-right:1px solid var(--surface3)}
@@ -363,11 +348,60 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
 .bfield-input{background:none;border:none;color:var(--ink);font-size:14px;font-weight:500;padding:2px 0 2px 14px;width:100%;font-family:inherit;min-width:0}
 .bfield-input:focus{outline:none;color:var(--accent)}
 .bfield-input::placeholder{color:var(--ink3);font-weight:400}
-/* balance pendiente */
 .bitem-balance{display:flex;align-items:center;justify-content:space-between;padding:6px 12px;background:var(--surface2);border-top:1px solid var(--surface3);font-size:11px}
 .bitem-balance-lbl{color:var(--ink3)}
 .bitem-balance-val{font-weight:600;color:var(--accent)}
 .bitem-balance-val.zero{color:var(--teal)}
+
+/* ── TOP 10 PAGE ── */
+.t10-intro{font-size:13px;color:var(--ink2);margin-bottom:16px;line-height:1.6;padding:12px 14px;background:var(--blue-bg);border-radius:var(--rl);border:1px solid var(--surface3)}
+.t10-section-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin:20px 0 10px;padding-bottom:6px;border-bottom:1.5px solid var(--surface3)}
+.t10-card{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--rl);padding:14px 16px;margin-bottom:10px}
+.t10-card-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
+.t10-num{width:30px;height:30px;min-width:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0}
+.t10-n1{background:var(--teal-bg);color:var(--teal)}
+.t10-n2{background:#3a2a18;color:#fac775}
+.t10-n3{background:var(--blue-bg);color:var(--blue)}
+.t10-n4{background:var(--accent-bg);color:var(--accent)}
+.t10-n5{background:var(--surface2);color:var(--ink2)}
+.t10-n6{background:var(--teal-bg);color:var(--teal)}
+.t10-n7{background:#2a1040;color:#c9a0f8}
+.t10-n8{background:var(--gold-bg);color:var(--gold)}
+.t10-n9{background:#0a1a2e;color:#4a8ac0}
+.t10-n10{background:var(--blue-bg);color:var(--blue)}
+[data-theme="dark"] .t10-n2{background:#2a1a08;color:#fac775}
+[data-theme="dark"] .t10-n7{background:#1a0a2e;color:#c9a0f8}
+[data-theme="dark"] .t10-n9{background:#0a1a2a;color:#4a8ac0}
+.t10-card-right{flex:1;min-width:0}
+.t10-card-title{font-family:'Instrument Serif',serif;font-size:15px;font-weight:400;color:var(--ink);margin:0 0 2px;line-height:1.3}
+.t10-card-deck{font-size:11px;color:var(--ink3);margin:0}
+.t10-badges{display:flex;gap:5px;flex-wrap:wrap;margin:7px 0 9px}
+.t10-bf{background:var(--teal-bg);color:var(--teal);font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px}
+.t10-bp{background:var(--accent-bg);color:var(--accent);font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px}
+.t10-bb{background:var(--blue-bg);color:var(--blue);font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px}
+.t10-be{background:var(--gold-bg);color:var(--gold);font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px}
+.t10-chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:6px;margin-bottom:9px}
+.t10-chip{background:var(--surface2);border-radius:var(--r);padding:7px 10px}
+.t10-cl{font-size:9px;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}
+.t10-cv{font-size:12px;color:var(--ink);font-weight:500}
+.t10-tips{border-top:1px solid var(--surface3);padding-top:9px}
+.t10-ti{display:flex;gap:7px;align-items:flex-start;margin-top:6px}
+.t10-td{width:4px;height:4px;min-width:4px;border-radius:50%;background:var(--surface3);margin-top:7px;flex-shrink:0}
+.t10-tt{font-size:12px;color:var(--ink2);line-height:1.5}
+.t10-alert{background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:var(--r);padding:8px 12px;margin-top:8px;font-size:12px;color:var(--ink2);line-height:1.5}
+.t10-alert strong{color:var(--accent)}
+.t10-alert-teal{background:var(--teal-bg);border:1px solid var(--teal-border);border-radius:var(--r);padding:8px 12px;margin-top:8px;font-size:12px;color:var(--ink2);line-height:1.5}
+.t10-alert-teal strong{color:var(--teal)}
+.t10-cost{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--rl);padding:16px 18px;margin-top:22px}
+.t10-cost h3{font-family:'Instrument Serif',serif;font-size:15px;font-weight:400;margin-bottom:12px}
+.t10-cost-row{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--surface3);font-size:12px;color:var(--ink2);gap:10px}
+.t10-cost-row:last-child{border-bottom:none;font-weight:500;font-size:13px;color:var(--ink);padding-top:10px;margin-top:2px}
+.t10-cost-name{flex:1}
+.t10-cost-free{font-weight:500;color:var(--teal);flex-shrink:0}
+.t10-cost-paid{font-weight:500;color:var(--accent);flex-shrink:0}
+.t10-cost-total{font-weight:500;color:var(--ink);flex-shrink:0}
+.t10-source{font-size:10px;color:var(--ink3);text-align:center;padding:14px;margin-top:8px;line-height:1.6}
+
 /* ── MISC ── */
 .empty-state{text-align:center;padding:40px 20px;color:var(--ink3);font-size:13px}
 .footer{text-align:center;font-size:10px;color:var(--ink3);padding:16px;margin-top:8px}
@@ -491,28 +525,15 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
 <!-- PAGE: PRESUPUESTO -->
 <div class="page" id="page-budget">
   <div style="max-width:880px;margin:0 auto;padding:14px 14px 20px">
-
     <div class="budget-summary" id="budget-summary">
       <div class="budget-summary-title">Presupuesto Disney Wish 2026</div>
       <div class="budget-metrics">
-        <div class="bmetric">
-          <div class="bmetric-val" id="bm-total">$0</div>
-          <div class="bmetric-lbl">Total estimado</div>
-        </div>
-        <div class="bmetric">
-          <div class="bmetric-val ok" id="bm-pagado">$0</div>
-          <div class="bmetric-lbl">Pagado</div>
-        </div>
+        <div class="bmetric"><div class="bmetric-val" id="bm-total">$0</div><div class="bmetric-lbl">Total estimado</div></div>
+        <div class="bmetric"><div class="bmetric-val ok" id="bm-pagado">$0</div><div class="bmetric-lbl">Pagado</div></div>
       </div>
       <div class="budget-metrics-2">
-        <div class="bmetric">
-          <div class="bmetric-val warn" id="bm-porpagar">$0</div>
-          <div class="bmetric-lbl">Por pagar</div>
-        </div>
-        <div class="bmetric">
-          <div class="bmetric-val ok" id="bm-disponible">$0</div>
-          <div class="bmetric-lbl">Disponible</div>
-        </div>
+        <div class="bmetric"><div class="bmetric-val warn" id="bm-porpagar">$0</div><div class="bmetric-lbl">Por pagar</div></div>
+        <div class="bmetric"><div class="bmetric-val ok" id="bm-disponible">$0</div><div class="bmetric-lbl">Disponible</div></div>
       </div>
       <div class="budget-bar-wrap">
         <div class="budget-bar-track"><div class="budget-bar-fill" id="budget-bar" style="width:0%"></div></div>
@@ -529,10 +550,275 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
         </div>
       </div>
     </div>
-
     <div id="budget-container"></div>
   </div>
 </div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PAGE: TOP 10                                   -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="page" id="page-top10">
+  <div style="max-width:880px;margin:0 auto;padding:14px 14px 20px">
+
+    <div class="t10-intro">
+      🚢 <strong style="color:var(--ink)">Top 10 experiencias imperdibles del Disney Wish</strong> — basado en el tour de Portholes &amp; Pixie Dust (abr 2025) validado con TouringPlans, MouseHacking, AllEars, Disney Food Blog y 5 blogs más. <span style="color:var(--ink3)">Crucero 3 noches · Oct 30–Nov 2, 2026 · Yosh · Joss · Emma 7a · Nina 1a9m</span>
+    </div>
+
+    <div class="t10-section-lbl">Experiencias incluidas en el crucero — $0 costo adicional</div>
+
+    <!-- 1 -->
+    <div class="t10-card">
+      <div class="t10-card-head">
+        <div class="t10-num t10-n1">1</div>
+        <div class="t10-card-right">
+          <p class="t10-card-title">Arendelle: A Frozen Dining Adventure</p>
+          <p class="t10-card-deck">Deck 5 Aft · rotational dining ya asignado · experiencia #1 del barco según todos los blogs</p>
+        </div>
+      </div>
+      <div class="t10-badges"><span class="t10-bf">Incluido</span><span class="t10-be">Emma lo amará</span><span class="t10-bb">Nina: apta en brazos</span></div>
+      <div class="t10-chips">
+        <div class="t10-chip"><div class="t10-cl">Costo extra</div><div class="t10-cv">$0</div></div>
+        <div class="t10-chip"><div class="t10-cl">Duración</div><div class="t10-cv">~90 min</div></div>
+        <div class="t10-chip"><div class="t10-cl">Personajes</div><div class="t10-cv">Anna · Elsa · Kristoff · Olaf</div></div>
+        <div class="t10-chip"><div class="t10-cl">Horario cenas</div><div class="t10-cv">~6pm o ~8:30pm</div></div>
+      </div>
+      <div class="t10-tips">
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Llega 10 min antes — el pasillo de retratos reales de Arendelle es la foto antes del show. Pide mesa cerca del escenario central en Guest Services el día de embarque.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">El momento cumbre: fibra óptica en techo y paredes + "Let It Go" en vivo. Ensáyalo con Emma antes del crucero.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Postres estrella: Elsa's Coronation Sundae + Rock Chocolate Bar de los trolls. Puedes pedir varios sin costo extra.</div></div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="t10-card">
+      <div class="t10-card-head">
+        <div class="t10-num t10-n2">2</div>
+        <div class="t10-card-right">
+          <p class="t10-card-title">Pirate Night + Halloween on the High Seas</p>
+          <p class="t10-card-deck">Cubierta principal · Sáb 31 oct · deck party + fuegos artificiales en mar abierto</p>
+        </div>
+      </div>
+      <div class="t10-badges"><span class="t10-bf">Incluido</span><span class="t10-bb">Sin reserva</span><span class="t10-be">Emma: doble disfraz en una noche</span></div>
+      <div class="t10-chips">
+        <div class="t10-chip"><div class="t10-cl">Costo extra</div><div class="t10-cv">$0</div></div>
+        <div class="t10-chip"><div class="t10-cl">Deck party</div><div class="t10-cv">~10:15pm</div></div>
+        <div class="t10-chip"><div class="t10-cl">Fuegos artificiales</div><div class="t10-cv">~11pm (mar abierto)</div></div>
+        <div class="t10-chip"><div class="t10-cl">Trick-or-treat</div><div class="t10-cv">Antes / durante party</div></div>
+      </div>
+      <div class="t10-tips">
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Llevan 4 disfraces pirata + disfraces Halloween en Maleta 2 — Emma puede hacer el cambio entre cena y deck party.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Fuegos artificiales desde un barco en mar abierto — Disney es uno de los pocos cruceros que los hace en el agua.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Llega a la cubierta 20 min antes para lugar con vista directa al escenario y al cielo.</div></div>
+      </div>
+      <div class="t10-alert-teal"><strong>Halloween especial:</strong> este crucero es la edición Halloween on the High Seas — decoraciones, menú temático y personajes en disfraz toda la noche de Nassau.</div>
+    </div>
+
+    <!-- 3 -->
+    <div class="t10-card">
+      <div class="t10-card-head">
+        <div class="t10-num t10-n3">3</div>
+        <div class="t10-card-right">
+          <p class="t10-card-title">Broadway shows en el Walt Disney Theatre</p>
+          <p class="t10-card-deck">Deck 2–4 Forward · 3 shows distintos en 3 noches · exclusivos del Disney Wish</p>
+        </div>
+      </div>
+      <div class="t10-badges"><span class="t10-bf">Incluido</span><span class="t10-bb">Sin reserva</span></div>
+      <div class="t10-chips">
+        <div class="t10-chip"><div class="t10-cl">Costo extra</div><div class="t10-cv">$0</div></div>
+        <div class="t10-chip"><div class="t10-cl">Shows</div><div class="t10-cv">Little Mermaid · Aladdin · Seas the Adventure</div></div>
+        <div class="t10-chip"><div class="t10-cl">Funciones</div><div class="t10-cv">~6:30pm y ~8:30pm</div></div>
+        <div class="t10-chip"><div class="t10-cl">Duración</div><div class="t10-cv">30–50 min c/u</div></div>
+      </div>
+      <div class="t10-tips">
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Llega 20–30 min antes para asientos centrales. Tu función = opuesta a tu turno de cena.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">The Little Mermaid: projection mapping 360° transforma TODO el teatro en el fondo del mar. El #1 según blogs especializados.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Seas the Adventure (embarque Vie 30): Elsa, Moana, Merida, Tiana, Crush y Squirt. Perfecta para arrancar el viaje.</div></div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="t10-card">
+      <div class="t10-card-head">
+        <div class="t10-num t10-n4">4</div>
+        <div class="t10-card-right">
+          <p class="t10-card-title">Royal Gathering — meet &amp; greet con 4–5 princesas</p>
+          <p class="t10-card-deck">Grand Hall Atrium · gratis pero la reserva más difícil del barco · abre exactamente 30 días antes</p>
+        </div>
+      </div>
+      <div class="t10-badges"><span class="t10-bf">Gratis</span><span class="t10-be">Emma: la experiencia de su vida</span><span class="t10-bp">Reservar 30 sep · medianoche ET</span></div>
+      <div class="t10-chips">
+        <div class="t10-chip"><div class="t10-cl">Costo extra</div><div class="t10-cv">$0</div></div>
+        <div class="t10-chip"><div class="t10-cl">Abre reservas</div><div class="t10-cv">30 sep · 11:59pm Guatemala</div></div>
+        <div class="t10-chip"><div class="t10-cl">Princesas típicas</div><div class="t10-cv">Belle · Rapunzel · Tiana · Moana · Cinderella</div></div>
+        <div class="t10-chip"><div class="t10-cl">Duración</div><div class="t10-cv">~7–10 min total</div></div>
+      </div>
+      <div class="t10-tips">
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Abre para TODOS exactamente 30 días antes — sin importar nivel Castaway. Reserva en la DCL Navigator App.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Viste a Emma en su vestido de princesa (ya en Maleta 2, bolsa L) para la foto con cada princesa.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Anna y Elsa NO aparecen aquí — están en Arendelle. Estas son las princesas clásicas (Belle, Rapunzel, etc.).</div></div>
+      </div>
+      <div class="t10-alert"><strong>⏰ Alarma urgente:</strong> pon recordatorio ahora para el 30 de septiembre a las 11:59pm hora Guatemala. Se agota en minutos.</div>
+    </div>
+
+    <!-- 5 -->
+    <div class="t10-card">
+      <div class="t10-card-head">
+        <div class="t10-num t10-n5">5</div>
+        <div class="t10-card-right">
+          <p class="t10-card-title">AquaMouse — primera atracción Disney en alta mar</p>
+          <p class="t10-card-deck">Deck 11 · tobogán 760 pies con show animado de Mickey + tramo transparente sobre el mar</p>
+        </div>
+      </div>
+      <div class="t10-badges"><span class="t10-bf">Incluido</span><span class="t10-bb">Sin reserva</span><span class="t10-be">Emma: verificar talla 42" / 107cm</span><span class="t10-bp">Nina: no apta por talla</span></div>
+      <div class="t10-chips">
+        <div class="t10-chip"><div class="t10-cl">Costo extra</div><div class="t10-cv">$0</div></div>
+        <div class="t10-chip"><div class="t10-cl">Mejor horario</div><div class="t10-cv">Embarque ~1pm · o post-cena ~8–9pm</div></div>
+        <div class="t10-chip"><div class="t10-cl">Espera típica</div><div class="t10-cv">5–60 min según hora</div></div>
+        <div class="t10-chip"><div class="t10-cl">Talla mínima</div><div class="t10-cv">42" / 107 cm</div></div>
+      </div>
+      <div class="t10-tips">
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">El día de embarque (Vie 30) abre ~1pm con filas mínimas — úsalo mientras las maletas llegan al camarote.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Post-cena (~8–9pm) las filas caen a 5 min. Puedes subir varias veces seguidas sin bajarte.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">El tramo en tubo transparente sobre el borde del barco con vista al mar es el momento más fotografiado del crucero.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Alterna entre "Swiss Meltdown" y "Scuba Scramble" — puedes ver ambos cortometrajes en días distintos.</div></div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="t10-card">
+      <div class="t10-card-head">
+        <div class="t10-num t10-n6">6</div>
+        <div class="t10-card-right">
+          <p class="t10-card-title">Toy Story Splash Zone + Slide-a-Saurus Rex</p>
+          <p class="t10-card-deck">Deck 11 · zona acuática familiar más grande de DCL · wading pool de 15cm para Nina</p>
+        </div>
+      </div>
+      <div class="t10-badges"><span class="t10-bf">Incluido</span><span class="t10-be">Nina: paraíso (Trixie's Falls pool)</span><span class="t10-bb">Emma: slide min. 38" / 97cm</span></div>
+      <div class="t10-chips">
+        <div class="t10-chip"><div class="t10-cl">Área principal</div><div class="t10-cv">$0</div></div>
+        <div class="t10-chip"><div class="t10-cl">Wheezy's Freezies</div><div class="t10-cv">Smoothies $3.50 · Dole Whip $6</div></div>
+        <div class="t10-chip"><div class="t10-cl">Piscina bebés</div><div class="t10-cv">Trixie's Falls · 15cm prof.</div></div>
+        <div class="t10-chip"><div class="t10-cl">Slide mín. Emma</div><div class="t10-cv">38" / 97 cm</div></div>
+      </div>
+      <div class="t10-tips">
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Piscinas regulares requieren estar entrenados — Nina no aplica. Su zona es este splash zone con el wading pool Toy Story.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Swim diapers de Nina son obligatorios en el agua — llevas suficientes en Maleta 2 para cada día.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Wheezy's Freezies al lado: el Dole Whip a $6 es el snack más popular de la cubierta.</div></div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="t10-card">
+      <div class="t10-card-head">
+        <div class="t10-num t10-n7">7</div>
+        <div class="t10-card-right">
+          <p class="t10-card-title">Worlds of Marvel · Avengers Quantum Encounter</p>
+          <p class="t10-card-deck">Deck 4 Aft · tercer restaurante rotacional · cena interactiva con tecnología Pym</p>
+        </div>
+      </div>
+      <div class="t10-badges"><span class="t10-bf">Incluido en rotación</span><span class="t10-bb">Ant-Man en vivo</span></div>
+      <div class="t10-chips">
+        <div class="t10-chip"><div class="t10-cl">Costo extra</div><div class="t10-cv">$0</div></div>
+        <div class="t10-chip"><div class="t10-cl">Interacción</div><div class="t10-cv">Botón en mesa · efectos Pym</div></div>
+        <div class="t10-chip"><div class="t10-cl">Souvenir estrella</div><div class="t10-cv">Quantum Core sipper cup ~$20</div></div>
+        <div class="t10-chip"><div class="t10-cl">Personajes</div><div class="t10-cv">Ant-Man + Wasp caminan por el salón</div></div>
+      </div>
+      <div class="t10-tips">
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">La mesa tiene un botón que activa efectos de reducción/agrandamiento — lo primero que Emma querrá probar.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Ant-Man y Wasp caminan en persona por el salón pero NO se detienen para fotos — sí saludan a los niños.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Quantum Core sipper cup: solo se vende aquí, es el souvenir más popular del barco.</div></div>
+      </div>
+    </div>
+
+    <div class="t10-section-lbl">Experiencias de pago — add-ons opcionales recomendados</div>
+
+    <!-- 8 -->
+    <div class="t10-card">
+      <div class="t10-card-head">
+        <div class="t10-num t10-n8">8</div>
+        <div class="t10-card-right">
+          <p class="t10-card-title">Bibbidi Bobbidi Boutique — transformación de princesa</p>
+          <p class="t10-card-deck">Deck 3 · para Emma (3–12 años) · reservar antes del embarque en DCL Navigator App</p>
+        </div>
+      </div>
+      <div class="t10-badges"><span class="t10-bp">Add-on de pago</span><span class="t10-be">Emma: apta (7 años)</span><span class="t10-bb">Reservar ~16 ago (75 días antes)</span></div>
+      <div class="t10-chips">
+        <div class="t10-chip"><div class="t10-cl">Paquete básico</div><div class="t10-cv">~$100 (peinado + maquillaje)</div></div>
+        <div class="t10-chip"><div class="t10-cl">Con vestido incluido</div><div class="t10-cv">~$200–$230</div></div>
+        <div class="t10-chip"><div class="t10-cl">Paquete signature</div><div class="t10-cv">~$450</div></div>
+        <div class="t10-chip"><div class="t10-cl">Ahorro clave</div><div class="t10-cv">Llevar vestido propio → ~$100 menos</div></div>
+      </div>
+      <div class="t10-tips">
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Ya llevas el vestido de princesa de Emma en Maleta 2 — el paquete básico (~$100) da peinado + maquillaje + accesorios.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Táctica ganadora: reserva BBB justo antes del Royal Gathering — Emma entra a conocer las princesas ya transformada.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">También hay paquete pirata — perfecto para preparar a Emma para la noche del 31 oct (Pirate Night + Halloween).</div></div>
+      </div>
+      <div class="t10-alert-teal"><strong>Combo mágico:</strong> BBB (~$100) + Royal Gathering ($0) = experiencia princess completa por solo ~$100. La inversión más eficiente para Emma.</div>
+    </div>
+
+    <!-- 9 -->
+    <div class="t10-card">
+      <div class="t10-card-head">
+        <div class="t10-num t10-n9">9</div>
+        <div class="t10-card-right">
+          <p class="t10-card-title">Star Wars: Hyperspace Lounge</p>
+          <p class="t10-card-deck">Deck 3 Starboard · exclusivo del Disney Wish · viewport con saltos al hiperespacio en tiempo real</p>
+        </div>
+      </div>
+      <div class="t10-badges"><span class="t10-bp">Bebidas de pago</span><span class="t10-bb">Reservar al embarcar · 45 min/slot</span><span class="t10-be">Niños bienvenidos antes de 9pm</span></div>
+      <div class="t10-chips">
+        <div class="t10-chip"><div class="t10-cl">Bebidas kids</div><div class="t10-cv">$10–$24 (Temple Twist con boba)</div></div>
+        <div class="t10-chip"><div class="t10-cl">Cocktails adultos</div><div class="t10-cv">$10.50–$52</div></div>
+        <div class="t10-chip"><div class="t10-cl">Duración slot</div><div class="t10-cv">45 min</div></div>
+        <div class="t10-chip"><div class="t10-cl">Reserva</div><div class="t10-cv">Solo a bordo · día de embarque</div></div>
+      </div>
+      <div class="t10-tips">
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Reserva en cuanto suban al barco el día de embarque — tiene lista de espera casi inmediata.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">El viewport muestra saltos al hiperespacio a Tatooine, Coruscant y Mustafar con audio surround y hologramas de naves.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Temple Twist (bebida kids con boba verde): las bolitas de boba son fuente de diversión extra para Emma.</div></div>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="t10-card">
+      <div class="t10-card-head">
+        <div class="t10-num t10-n10">10</div>
+        <div class="t10-card-right">
+          <p class="t10-card-title">It's a Small World Nursery + Oceaneer Club</p>
+          <p class="t10-card-deck">Deck 2 · Nina: nursery por hora · Emma: club gratis ilimitado con 5 salas temáticas</p>
+        </div>
+      </div>
+      <div class="t10-badges"><span class="t10-bf">Emma: gratis sin límite</span><span class="t10-bp">Nina: ~$9–$11/hr</span><span class="t10-bb">Registrar día de embarque</span></div>
+      <div class="t10-chips">
+        <div class="t10-chip"><div class="t10-cl">Oceaneer Club Emma</div><div class="t10-cv">$0 · ilimitado</div></div>
+        <div class="t10-chip"><div class="t10-cl">Nursery Nina</div><div class="t10-cv">~$9–$11/hr</div></div>
+        <div class="t10-chip"><div class="t10-cl">Salas del club</div><div class="t10-cv">Star Wars · Marvel · Princesas · Sommerhaus Frozen</div></div>
+        <div class="t10-chip"><div class="t10-cl">Registro</div><div class="t10-cv">Día de embarque · imprescindible</div></div>
+      </div>
+      <div class="t10-tips">
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">El club tiene el "Sommerhaus" de Frozen exclusivo del Wish — conecta con toda la temática de Arendelle del crucero.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">La Nursery para Nina es la ventana para la cena adulta en pareja — reservar apenas suban al barco.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Registra a ambas niñas el día de embarque — necesitas completar la papelería antes del primer uso.</div></div>
+      </div>
+      <div class="t10-alert"><strong>Tip de pareja:</strong> Nursery Nina + Palo Steakhouse Deck 12 (~$45/persona) = única cena de adultos en solitario de los 4 días. Reservar los dos a la vez.</div>
+    </div>
+
+    <!-- RESUMEN COSTOS -->
+    <div class="t10-cost">
+      <h3>Resumen de costos — top 10 completo</h3>
+      <div class="t10-cost-row"><span class="t10-cost-name">#1–7 · Arendelle, Pirate Night, Shows, Royal Gathering, AquaMouse, Toy Story, Marvel</span><span class="t10-cost-free">$0</span></div>
+      <div class="t10-cost-row"><span class="t10-cost-name">#8 · Bibbidi Bobbidi Boutique — paquete básico (llevan vestido propio)</span><span class="t10-cost-paid">~$100</span></div>
+      <div class="t10-cost-row"><span class="t10-cost-name">#9 · Hyperspace Lounge — 2 bebidas adultos + 1 kids Temple Twist</span><span class="t10-cost-paid">~$35–$50</span></div>
+      <div class="t10-cost-row"><span class="t10-cost-name">#10 · Nursery Nina — ~3 sesiones × 2 hrs</span><span class="t10-cost-paid">~$55–$70</span></div>
+      <div class="t10-cost-row"><span class="t10-cost-name">Total estimado add-ons del top 10</span><span class="t10-cost-total">~$190–$220</span></div>
+      <div class="t10-cost-row" style="border-top:1px dashed var(--surface3);padding-top:10px;margin-top:4px;font-size:11px;color:var(--ink3);font-weight:400"><span class="t10-cost-name">+ Olaf's Royal Picnic (fuera del top 10 por precio) · Emma $275 + Yosh $75 + Joss $75 + Nina gratis</span><span style="color:var(--accent);font-weight:500;flex-shrink:0">~$425</span></div>
+    </div>
+
+    <div class="t10-source">Validado con TouringPlans · MouseHacking · AllEars · Disney Food Blog · The Magic for Less · Bright Color Mom · Chasing Experiences · Eat Sleep Cruise</div>
+
+  </div>
+</div>
+<!-- /page-top10 -->
 
 <!-- BOTTOM NAV -->
 <nav class="bottom-nav">
@@ -556,6 +842,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
   <button class="nav-item" id="nav-budget" onclick="setPage('budget')">
     <span class="nav-icon">💰</span>
     <span>Presupuesto</span>
+  </button>
+  <button class="nav-item" id="nav-top10" onclick="setPage('top10')">
+    <span class="nav-icon">⭐</span>
+    <span>Top 10</span>
   </button>
 </nav>
 
@@ -630,6 +920,7 @@ function setPage(p){
   document.querySelectorAll('.nav-item').forEach(function(x){x.classList.remove('active');});
   document.getElementById('page-'+p).classList.add('active');
   document.getElementById('nav-'+p).classList.add('active');
+  window.scrollTo(0,0);
 }
 
 // ── CHECKLIST DATA ──
@@ -778,21 +1069,21 @@ var DATES_DATA=[
     {id:'d10',urgent:false,date:'27 oct',title:'Preparar folder de documentos',desc:'Pasaportes (4), actas de nacimiento Emma y Nina, registro de vacunas Nina, póliza seguro, itinerario impreso, tickets de vuelo. En carpeta o sobre plástico en carry-on.'},
     {id:'d11',urgent:false,date:'28 oct',title:'Salida de Guatemala (vuelo)',desc:'GUA → PTY → MCO. Declarar fórmula/leche bebé en seguridad TSA. No llevar frutas frescas.'},
     {id:'d12',urgent:false,date:'30 oct · 11am EST',title:'Llegada al puerto Port Canaveral',desc:'DCL Transfer desde MCO ($45 × 4 = $180). El equipaje va directo a la cabina. Llevar swim diapers de Nina en el carry-on por si el splash pad llama al embarcar.'},
-    {id:'d13',urgent:false,date:'31 oct',title:'Nassau — itinerario coordinado con familiares del Utopia',desc:'3 barcos en puerto ese día (~16,000 pasajeros). Estrategia: quedarse a bordo hasta las 11am (AquaMouse sin cola). Bajar 11am · Straw Market (11–11:45) · Pirates of Nassau Museum (11:45–1:15 · $14 adultos, $7 niños) · Rip Ty\'d Tap Room (1:15–2pm). Regreso al barco a las 2pm. Por la noche: Pirate Night + fuegos artificiales — disfraces listos y accesibles.'},
-    {id:'d14',urgent:false,date:'1 nov',title:'Castaway Cay — plan completo del día',desc:'Bajar 9:00–9:30am. Fotos con personajes temprano (poca cola). Spring-a-Leak para Nina + Pelican Plunge para Emma (9:30–11:30am). Cookie\'s BBQ almuerzo a las 11:30am. Playa + siesta Nina + Scuttle\'s Cove Emma (12:30–2:30pm). Última ronda en agua (2:30–3:30pm — playa más vacía). Regresar al barco a las 3:30–4:00pm. Cerrar maletas esa noche — desembarque mañana.'},
-    {id:'d15',urgent:false,date:'2 nov · mañana',title:'Desembarque',desc:'Temprano en la mañana. Uber XL Port Canaveral → Casa Orlando (~$108). Llevar silla de carro Nina para el Uber. Equipaje a recoger en área de desembarque.'},
+    {id:'d13',urgent:false,date:'31 oct',title:'Nassau — itinerario coordinado con familiares del Utopia',desc:'3 barcos en puerto ese día (~16,000 pasajeros). Estrategia: quedarse a bordo hasta las 11am. Bajar 11am · Straw Market (11–11:45) · Pirates of Nassau Museum ($14 adultos, $7 niños) · Rip Ty\'d Tap Room. Regreso 2pm. Pirate Night + fuegos artificiales por la noche.'},
+    {id:'d14',urgent:false,date:'1 nov',title:'Castaway Cay — plan completo del día',desc:'Bajar 9:00–9:30am. Fotos personajes temprano. Spring-a-Leak para Nina + Pelican Plunge Emma (9:30–11:30am). Cookie\'s BBQ almuerzo 11:30am. Playa + siesta Nina (12:30–3:30pm). Regreso al barco 3:30–4pm. Cerrar maletas esa noche.'},
+    {id:'d15',urgent:false,date:'2 nov · mañana',title:'Desembarque',desc:'Temprano en la mañana. Uber XL Port Canaveral → Casa Orlando (~$108). Llevar silla de carro Nina. Equipaje en área de desembarque.'},
   ]},
 ];
 
 // ── COMPRAS DATA ──
 var BUYS_DATA=[
   {section:'Prioridad alta — comprar pronto',items:[
-    {id:'b1',name:'Bolsas Vacbird 18-pack (6S+6M+6L)',note:'Con bomba inalámbrica recargable. Ya investigado: ~$36.98 en Amazon.',price:'$37',pri:'alta'},
+    {id:'b1',name:'Bolsas Vacbird 18-pack (6S+6M+6L)',note:'Con bomba inalámbrica recargable. ~$36.98 en Amazon.',price:'$37',pri:'alta'},
     {id:'b2',name:'Cargador multi-USB cubo (sin surge protector)',note:'Anker 543 (65W) o Baseus GaN. 2 USB-C + 2 USB-A. Para camarote.',price:'~$25',pri:'alta'},
     {id:'b3',name:'Parasol / mini tienda de playa para Nina',note:'Pop-up UPF 50+. Castaway Cay: sol de Bahamas intenso en noviembre.',price:'~$30',pri:'alta'},
   ]},
   {section:'Disfraces y vestuario',items:[
-    {id:'b4',name:'Disfraz pirata Yosh',note:'Pirate Night 31 oct. El barco da bandanas gratis pero el outfit es tuyo.',price:'',pri:'alta'},
+    {id:'b4',name:'Disfraz pirata Yosh',note:'Pirate Night 31 oct.',price:'',pri:'alta'},
     {id:'b5',name:'Disfraz pirata Joss',note:'',price:'',pri:'alta'},
     {id:'b6',name:'Disfraz Halloween Yosh',note:'Halloween Night — misma noche que Pirate Night (31 oct).',price:'',pri:'alta'},
     {id:'b7',name:'Disfraz Halloween Joss',note:'',price:'',pri:'alta'},
@@ -802,13 +1093,13 @@ var BUYS_DATA=[
     {id:'b11',name:'Vestido de princesa Emma (Royal Gathering)',note:'Para el evento de princesas — reservar 30 sep a medianoche.',price:'',pri:'alta'},
   ]},
   {section:'Accesorios de cabina',items:[
-    {id:'b12',name:'Decoraciones magnéticas Halloween para puerta',note:'Pedir en Amazon o Etsy. Paredes y puertas del camarote son magnéticas.',price:'~$15',pri:'media'},
-    {id:'b13',name:'Decoraciones magnéticas Disney para puerta',note:'Que Emma las elija. Para personalizar la puerta de la cabina.',price:'~$15',pri:'media'},
-    {id:'b14',name:'Libretas de autógrafos (4)',note:'Una para cada miembro de la familia — incluyendo Nina.',price:'~$20',pri:'media'},
+    {id:'b12',name:'Decoraciones magnéticas Halloween para puerta',note:'Amazon o Etsy. Paredes y puertas del camarote son magnéticas.',price:'~$15',pri:'media'},
+    {id:'b13',name:'Decoraciones magnéticas Disney para puerta',note:'Que Emma las elija.',price:'~$15',pri:'media'},
+    {id:'b14',name:'Libretas de autógrafos (4)',note:'Una para cada miembro de la familia.',price:'~$20',pri:'media'},
   ]},
   {section:'Snacks y alimentos',items:[
-    {id:'b15',name:'Snacks sellados para el vuelo',note:'Crackers, barras granola, fruta deshidratada, chips de maíz. Solo empacados de fábrica.',price:'',pri:'media'},
-    {id:'b16',name:'Fórmula / comida bebé Nina',note:'Para el vuelo (exención TSA sin límite 100ml) + primeros días.',price:'',pri:'alta'},
+    {id:'b15',name:'Snacks sellados para el vuelo',note:'Crackers, barras granola, fruta deshidratada, chips de maíz.',price:'',pri:'media'},
+    {id:'b16',name:'Fórmula / comida bebé Nina',note:'Para el vuelo (exención TSA) + primeros días.',price:'',pri:'alta'},
     {id:'b17',name:'Puffs, galletas de arroz, purés bebé',note:'Gerber, HappyBaby. Para el vuelo y primeros días a bordo.',price:'',pri:'alta'},
   ]},
   {section:'Pendientes menores',items:[
@@ -823,48 +1114,43 @@ var GUIA_DATA=[
   {icon:'✈',name:'Mié 28 oct — Vuelo GUA→MCO',sub:'GUA → PTY → MCO · Copa Airlines',badge:'b-viaje',tips:[
     {hi:true,icon:'⚠',text:'<strong>Declarar en seguridad TSA:</strong> fórmula/leche de Nina está exenta del límite de 100ml pero DEBE declararse. Decir "tengo alimento para bebé" al llegar al control de seguridad.'},
     {hi:false,icon:'🍼',text:'Swim diapers de Nina en carry-on — por si el splash pad llama el día de embarque (Vie 30).'},
-    {hi:false,icon:'🍪',text:'Solo snacks sellados de fábrica para aduanas MCO. Sin frutas frescas, lácteos frescos ni carnes — los confiscan.'},
+    {hi:false,icon:'🍪',text:'Solo snacks sellados de fábrica para aduanas MCO. Sin frutas frescas, lácteos frescos ni carnes.'},
     {hi:false,icon:'📋',text:'Pasaportes y documentos en carpeta en carry-on. Nunca en maleta despachada.'},
     {hi:false,icon:'🧳',text:'El equipaje llega al camarote horas después de embarcar. La ropa de llegada va en el carry-on.'},
   ]},
   {icon:'🚢',name:'Vie 30 oct — Embarque',sub:'Port Canaveral · Disney Wish',badge:'b-crucero',tips:[
-    {hi:true,icon:'⭐',text:'<strong>Llegar a la hora del PAT más temprano posible.</strong> Entre antes entren, más tiempo de explorar el barco antes de que zarpe. La sala de animación de Nina y el Oceaneer Club de Emma abren ese día.'},
+    {hi:true,icon:'⭐',text:'<strong>Llegar a la hora del PAT más temprano posible.</strong> Entre antes entren, más tiempo de explorar el barco. La sala de animación de Nina y el Oceaneer Club de Emma abren ese día.'},
     {hi:false,icon:'🎡',text:'<strong>AquaMouse:</strong> la fila es más corta al embarcar. Ir directo si Emma quiere montarla.'},
     {hi:false,icon:'👑',text:'Si no reservaste el Royal Gathering antes, verificar disponibilidad en la app DCL Navigator al conectarte a DCL-Guest Wi-Fi a bordo.'},
     {hi:false,icon:'🍽',text:'El buffet Marceline Market es el almuerzo de embarque — llega temprano para no esperar mesa.'},
-    {hi:false,icon:'🧲',text:'Instalar ganchos magnéticos y decoraciones en la puerta de la cabina apenas llegues. Las paredes del camarote son completamente magnéticas.'},
+    {hi:false,icon:'🧲',text:'Instalar ganchos magnéticos y decoraciones en la puerta de la cabina apenas llegues.'},
     {hi:false,icon:'🍼',text:'Pedir Diaper Genie al stateroom host apenas entres a la cabina.'},
   ]},
   {icon:'🏴',name:'Sáb 31 oct — Nassau + Pirate Night',sub:'Nassau 9:30am–5:30pm · Pirate Night + Halloween por la noche',badge:'b-pirata',tips:[
-    {hi:true,icon:'⚠',text:'<strong>Ese día hay 3 barcos en puerto simultáneamente:</strong> MSC Seaside (8am), Utopia of the Seas (9am) y Disney Wish (9:30am) — aproximadamente 16,000 pasajeros en el mismo downtown Nassau. El timing es todo.'},
-    {hi:true,icon:'⏰',text:'<strong>Estrategia: NO bajar antes de las 11am.</strong> Quedarse a bordo de 9:30–11am — el Wish está casi vacío, AquaMouse sin cola, piscinas para ustedes solos. La primera ola ya habrá pasado cuando bajen.'},
-    {hi:false,icon:'👨‍👩‍👧‍👦',text:'<strong>Encuentro con familiares del Utopia of the Seas</strong> (llega 9am, sale 5pm). Coordinar bajarse todos a las 11am desde sus respectivos barcos. Punto de encuentro: entrada del Straw Market a las 11:15am. Si a las 11:30am alguien no llegó, el otro empieza y se reúne en el museo. Teléfono Rip Ty\'d: +1 (242) 806-8433.'},
-    {hi:false,icon:'🛍',text:'<strong>11:00–11:45am — Straw Market</strong> (todos juntos). Justo a la derecha al salir del muelle, 3 min a pie. Emma y los niños eligen un souvenir. Los vendedores esperan el regateo — es parte de la experiencia. Presupuesto sugerido por niño: $10–15.'},
-    {hi:false,icon:'🏴',text:'<strong>11:45am–1:15pm — Pirates of Nassau Museum</strong> (todos juntos · $14 adultos, $7 niños 4–17, menores gratis). A/C dentro — un respiro del calor de Bahamas. Museo interactivo con barco pirata réplica, preguntas V/F que los niños adoran, efectos de sonido. Duración real: ~1h–1h15. Dirección: King Street, 4 min caminando del Straw Market.'},
-    {hi:false,icon:'🍺',text:'<strong>1:15–2:00pm — Rip Ty\'d Tap Room</strong> (todos juntos). Cervecería artesanal bahamense con barcaza antigua como barra central, mesas comunitarias y juegos de mesa para los niños. La despedida perfecta antes de que cada familia regrese a su barco.'},
-    {hi:false,icon:'🚶',text:'<strong>2:00pm — Regreso al barco.</strong> Rip Ty\'d está a 10 min caminando del muelle. De vuelta a las 2pm — 3.5 horas antes de que zarpe el Wish. Nina puede hacer siesta. Tiempo completo para prepararse para la noche.'},
-    {hi:true,icon:'🎆',text:'<strong>Pirate Night + fuegos artificiales — no perderse.</strong> Subir a cubierta después de la cena. Es el momento más icónico del crucero. Tener los disfraces listos y accesibles desde temprano — no guardados en maleta comprimida.'},
-    {hi:false,icon:'🎃',text:'Son dos disfraces distintos esa noche: pirata primero (Pirate Night), Halloween después. Coordinar cuándo cambiarse o combinar elementos de ambos si prefieren un solo look.'},
+    {hi:true,icon:'⚠',text:'<strong>Ese día hay 3 barcos en puerto simultáneamente:</strong> MSC Seaside (8am), Utopia of the Seas (9am) y Disney Wish (9:30am) — aproximadamente 16,000 pasajeros en el mismo downtown Nassau.'},
+    {hi:true,icon:'⏰',text:'<strong>Estrategia: NO bajar antes de las 11am.</strong> Quedarse a bordo de 9:30–11am — el Wish está casi vacío, AquaMouse sin cola, piscinas para ustedes solos.'},
+    {hi:false,icon:'👨‍👩‍👧‍👦',text:'<strong>Encuentro con familiares del Utopia of the Seas.</strong> Punto de encuentro: entrada del Straw Market a las 11:15am. Teléfono Rip Ty\'d: +1 (242) 806-8433.'},
+    {hi:false,icon:'🛍',text:'<strong>11:00–11:45am — Straw Market.</strong> Justo a la derecha al salir del muelle, 3 min a pie. Presupuesto sugerido por niño: $10–15.'},
+    {hi:false,icon:'🏴',text:'<strong>11:45am–1:15pm — Pirates of Nassau Museum</strong> ($14 adultos, $7 niños 4–17, menores gratis). A/C dentro — respiro del calor de Bahamas.'},
+    {hi:false,icon:'🍺',text:'<strong>1:15–2:00pm — Rip Ty\'d Tap Room.</strong> Cervecería artesanal bahamense. La despedida perfecta antes de regresar al barco.'},
+    {hi:false,icon:'🚶',text:'<strong>2:00pm — Regreso al barco.</strong> 3.5 horas antes de que zarpe el Wish. Nina puede hacer siesta.'},
+    {hi:true,icon:'🎆',text:'<strong>Pirate Night + fuegos artificiales — no perderse.</strong> Subir a cubierta después de la cena. Tener disfraces accesibles desde temprano.'},
   ]},
   {icon:'🏝',name:'Dom 1 nov — Castaway Cay',sub:'Isla privada Disney · 8:30am–4:45pm',badge:'b-playa',tips:[
-    {hi:true,icon:'☀',text:'<strong>Aplicar SPF 50+ a todos ANTES de bajar al barco</strong> — especialmente a Nina. El sol de Bahamas en noviembre sigue siendo intenso. Reaplicar cada 2 horas en la isla. Sombrero bebé y ropa UPF para Nina.'},
-    {hi:true,icon:'⏰',text:'<strong>Bajar a las 9:00–9:30am</strong> — ni en el primer rush (8:30am) ni tarde. A las 9am los personajes Disney están en el camino a la playa con poca cola. Si esperan a las 10:30am ya llega la segunda ola y la playa se llena.'},
-    {hi:false,icon:'📸',text:'<strong>9:00–9:30am — Fotos con personajes Disney</strong> en el camino desde el barco hacia la playa. Están disponibles temprano en la mañana con esperas cortas. La iluminación natural de la isla da mejores fotos que a bordo. No esperar a la tarde — los personajes se van antes del mediodía.'},
-    {hi:false,icon:'💧',text:'<strong>9:30–11:30am — Spring-a-Leak para Nina + Pelican Plunge para Emma.</strong> Spring-a-Leak es el área de juegos de agua para bebés y niños pequeños — con sombra y sillas para padres junto al área. Pelican Plunge son los toboganes flotantes (mínimo 38" — Emma cumple). Gratis ambos. Yosh y Joss se turnan entre las dos áreas.'},
-    {hi:false,icon:'🚲',text:'Bicicletas disponibles en renta: $19/hora. Solo si uno de los dos adultos quiere — el otro se queda con las niñas. Hacerlo temprano, antes de las 11am, porque el calor del mediodía es fuerte.'},
-    {hi:false,icon:'🍖',text:'<strong>11:30am — Cookie\'s BBQ</strong> (almuerzo incluido en el crucero). Ir apenas abra para evitar la fila del mediodía. Soft-serve ilimitado todo el día. Si Nina necesita comida específica, traerla del barco.'},
-    {hi:false,icon:'🏖',text:'<strong>12:30–2:30pm — Playa familiar + siesta Nina.</strong> Después del almuerzo, Nina puede descansar bajo el parasol en la arena. Emma en el agua o en Scuttle\'s Cove (kids club en la isla, gratis, sin reserva, abre 9am–3:30pm). A esta hora Yosh y Joss tienen tiempo más tranquilo juntos en la playa.'},
-    {hi:false,icon:'🌊',text:'El agua de la Family Beach es gradual y sin corrientes — perfecta para Nina sentada en la orilla. Disney no permite inflables propios; se rentan en la isla. Las toallas las dan a bordo antes de bajar — no necesitan traer las suyas.'},
-    {hi:false,icon:'🍦',text:'<strong>2:30–3:30pm — Última ronda en el agua.</strong> A esta hora mucha gente ya subió al barco — la playa se vacía notablemente. Es el mejor momento para conseguir sillas con sombra cerca del agua y disfrutar sin aglomeración.'},
-    {hi:true,icon:'🔙',text:'<strong>Regresar al barco a las 3:30–4:00pm.</strong> El cierre es a las 4:45pm. Entrar a las 3:30pm da margen cómodo, tiempo para ducharse y prepararse para la última cena rotacional a bordo. También es el momento de revisar el folio del camarote y cerrar maletas esa noche (desembarque mañana).'},
-    {hi:false,icon:'🛒',text:'Nota logística: hay coches/carritos gratuitos en la isla para Nina. No necesitan traer el suyo. El barco está atracado directamente — se puede volver en cualquier momento si Nina necesita siesta o cambio de pañal.'},
+    {hi:true,icon:'☀',text:'<strong>Aplicar SPF 50+ a todos ANTES de bajar al barco</strong> — especialmente a Nina. Reaplicar cada 2 horas.'},
+    {hi:true,icon:'⏰',text:'<strong>Bajar a las 9:00–9:30am.</strong> A las 9am los personajes Disney están en el camino con poca cola.'},
+    {hi:false,icon:'📸',text:'<strong>9:00–9:30am — Fotos con personajes Disney</strong> en el camino. Poca cola y mejor iluminación que a bordo.'},
+    {hi:false,icon:'💧',text:'<strong>9:30–11:30am — Spring-a-Leak para Nina + Pelican Plunge para Emma.</strong> Yosh y Joss se turnan entre las dos áreas.'},
+    {hi:false,icon:'🍖',text:'<strong>11:30am — Cookie\'s BBQ</strong> (almuerzo incluido). Ir apenas abra. Soft-serve ilimitado todo el día.'},
+    {hi:false,icon:'🏖',text:'<strong>12:30–2:30pm — Playa familiar + siesta Nina</strong> bajo el parasol. Emma en Scuttle\'s Cove (kids club en la isla, gratis).'},
+    {hi:false,icon:'🌊',text:'El agua de la Family Beach es gradual sin corrientes — perfecta para Nina sentada en la orilla.'},
+    {hi:true,icon:'🔙',text:'<strong>Regresar al barco a las 3:30–4:00pm.</strong> Tiempo para ducharse, cena y cerrar maletas (desembarque mañana).'},
   ]},
   {icon:'🏰',name:'Lun 2 nov — Desembarque',sub:'Port Canaveral → Casa Orlando',badge:'b-regreso',tips:[
-    {hi:true,icon:'🚗',text:'<strong>Uber XL Port Canaveral → Casa Orlando (~$108).</strong> Llevar silla de carro de Nina instalada o lista para instalar — es obligatorio por ley para bebés en EE.UU.'},
-    {hi:false,icon:'🧳',text:'El desembarque es temprano en la mañana — tener ropa cómoda de desembarque accesible en el carry-on desde la noche anterior.'},
-    {hi:false,icon:'📸',text:'Antes de salir del barco: revisar que no queden fotos sin comprar en el sistema. Las fotos profesionales se eliminan al terminar el viaje.'},
-    {hi:false,icon:'💳',text:'Verificar el folio del camarote (estado de cuenta) la noche anterior para revisar cargos.'},
-    {hi:false,icon:'🛒',text:'Si quieren comprar souvenirs de último momento, la tienda Mickey\'s Mainsail cierra antes del desembarque.'},
+    {hi:true,icon:'🚗',text:'<strong>Uber XL Port Canaveral → Casa Orlando (~$108).</strong> Llevar silla de carro de Nina instalada o lista para instalar.'},
+    {hi:false,icon:'🧳',text:'Tener ropa cómoda de desembarque accesible en el carry-on desde la noche anterior.'},
+    {hi:false,icon:'📸',text:'Antes de salir del barco: revisar que no queden fotos sin comprar en el sistema.'},
+    {hi:false,icon:'💳',text:'Verificar el folio del camarote la noche anterior para revisar cargos.'},
   ]},
 ];
 
@@ -1038,7 +1324,7 @@ function renderDates(){
   var container=document.getElementById('timeline-container');
   container.innerHTML='';
   DATES_DATA.forEach(function(group,gi){
-    var open=dateGroupOpen[gi]!==false; // open by default
+    var open=dateGroupOpen[gi]!==false;
     var urgentCount=group.items.filter(function(i){return i.urgent&&!datesDone[i.id];}).length;
     var doneCount=group.items.filter(function(i){return datesDone[i.id];}).length;
     var wrap=document.createElement('div');
@@ -1092,7 +1378,6 @@ function toggleDate(id){
   row.className='tl-item'+(item.urgent&&!done?' urgent':'')+(done?' tl-done':'');
   var cb=row.querySelector('.tl-cb');
   if(cb){cb.className='tl-cb'+(done?' done':'');cb.textContent=done?'✓':'';}
-  // refresh group count badge
   if(gi>=0){
     var group=DATES_DATA[gi];
     var urgentCount=group.items.filter(function(i){return i.urgent&&!datesDone[i.id];}).length;
@@ -1133,7 +1418,7 @@ function renderCompras(){
     container.appendChild(wrap);
     var body=wrap.querySelector('.buy-group-body');
     section.items.forEach(function(item){
-      var state=buysDone[item.id]||''; // 'comprado' | 'descartado' | ''
+      var state=buysDone[item.id]||'';
       var row=document.createElement('div');
       row.className='buy-item'+(state?' '+state:'');
       row.id='buy-'+item.id;
@@ -1169,14 +1454,11 @@ function toggleBuyGroup(gi){
 
 function setBuyState(id,newState){
   var current=buysDone[id]||'';
-  // toggle off if already active
   var state=current===newState?'':newState;
   buysDone[id]=state;
   db.ref(BUYS_PATH+'/'+id).set(state||null).catch(function(){});
-  // find which group this item belongs to
   var gi=-1;
   BUYS_DATA.forEach(function(s,i){s.items.forEach(function(it){if(it.id===id)gi=i;});});
-  // update item UI
   var row=document.getElementById('buy-'+id);
   if(row){
     row.className='buy-item'+(state?' '+state:'');
@@ -1184,7 +1466,6 @@ function setBuyState(id,newState){
     if(btns[0])btns[0].className='buy-action-btn'+(state==='comprado'?' active-comprado':'');
     if(btns[1])btns[1].className='buy-action-btn'+(state==='descartado'?' active-descartado':'');
   }
-  // refresh group stats
   if(gi>=0){
     var section=BUYS_DATA[gi];
     var comprados=section.items.filter(function(i){return buysDone[i.id]==='comprado';}).length;
@@ -1238,7 +1519,6 @@ function toggleGuideDay(di){
 }
 
 // ── BUDGET DATA ──
-// amount = total cost · paid = amount already paid · estimated = true means no confirmed price yet
 var BUDGET_SECTIONS=[
   {id:'crucero',icon:'🚢',title:'Crucero Disney Wish',items:[
     {id:'bg1',name:'Disney Wish — Grand Total (4 pasajeros)',note:'Yosh $1,215 · Joss $1,215 · Emma $567.36 · Nina $321.18 · Taxes $464.12',amount:3782.66,paid:165.93,estimated:false},
@@ -1292,17 +1572,10 @@ function fmtMoney(n){
   return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:2});
 }
 
-function getBItemTotal(item){
-  var stored=budgetData['bamt_'+item.id];
-  return stored!=null?parseFloat(stored)||0:(item.amount||0);
-}
-function getBItemPaid(item){
-  var stored=budgetData['bpaid_'+item.id];
-  return stored!=null?parseFloat(stored)||0:(item.paid||0);
-}
+function getBItemTotal(item){var stored=budgetData['bamt_'+item.id];return stored!=null?parseFloat(stored)||0:(item.amount||0);}
+function getBItemPaid(item){var stored=budgetData['bpaid_'+item.id];return stored!=null?parseFloat(stored)||0:(item.paid||0);}
 function getBItemStatus(item){
-  var total=getBItemTotal(item);
-  var paid=getBItemPaid(item);
+  var total=getBItemTotal(item);var paid=getBItemPaid(item);
   if(total===0&&paid===0)return item.estimated?'st-estimated':'st-pending';
   if(paid>=total&&total>0)return 'st-paid';
   if(paid>0&&paid<total)return 'st-partial';
@@ -1318,12 +1591,7 @@ function getBItemBadge(item){
 
 function getBudgetTotals(){
   var totalAmt=0,totalPaid=0;
-  BUDGET_SECTIONS.forEach(function(sec){
-    sec.items.forEach(function(item){
-      totalAmt+=getBItemTotal(item);
-      totalPaid+=getBItemPaid(item);
-    });
-  });
+  BUDGET_SECTIONS.forEach(function(sec){sec.items.forEach(function(item){totalAmt+=getBItemTotal(item);totalPaid+=getBItemPaid(item);});});
   return{total:totalAmt,paid:totalPaid};
 }
 
@@ -1334,34 +1602,19 @@ function updateBudgetSummary(){
   var disponible=budget-t.total;
   var over=t.total>budget;
   var pct=budget>0?Math.min(Math.round(t.total/budget*100),100):0;
-
   var elTotal=document.getElementById('bm-total');
   var elPagado=document.getElementById('bm-pagado');
   var elPorPagar=document.getElementById('bm-porpagar');
   var elDisp=document.getElementById('bm-disponible');
   if(elTotal)elTotal.textContent=fmtMoney(t.total);
   if(elPagado)elPagado.textContent=fmtMoney(t.paid);
-  if(elPorPagar){
-    elPorPagar.textContent=fmtMoney(porPagar);
-    elPorPagar.className='bmetric-val'+(porPagar>0?' warn':' ok');
-  }
-  if(elDisp){
-    elDisp.textContent=fmtMoney(Math.abs(disponible));
-    elDisp.className='bmetric-val'+(over?' over':' ok');
-    var dispLbl=elDisp.nextElementSibling;
-    if(dispLbl)dispLbl.textContent=over?'Excedido':'Disponible';
-  }
+  if(elPorPagar){elPorPagar.textContent=fmtMoney(porPagar);elPorPagar.className='bmetric-val'+(porPagar>0?' warn':' ok');}
+  if(elDisp){elDisp.textContent=fmtMoney(Math.abs(disponible));elDisp.className='bmetric-val'+(over?' over':' ok');var dispLbl=elDisp.nextElementSibling;if(dispLbl)dispLbl.textContent=over?'Excedido':'Disponible';}
   var bar=document.getElementById('budget-bar');
-  if(bar){
-    bar.style.width=pct+'%';
-    bar.className='budget-bar-fill'+(over?' over':pct>=80?' warn':'');
-  }
-  var pctEl=document.getElementById('bbar-pct');
-  var totEl=document.getElementById('bbar-total');
+  if(bar){bar.style.width=pct+'%';bar.className='budget-bar-fill'+(over?' over':pct>=80?' warn':'');}
+  var pctEl=document.getElementById('bbar-pct');var totEl=document.getElementById('bbar-total');
   if(pctEl)pctEl.textContent=pct+'% del presupuesto comprometido';
   if(totEl)totEl.textContent='Presupuesto: '+fmtMoney(budget);
-
-  // section subtotals
   BUDGET_SECTIONS.forEach(function(sec){
     var secTotal=0,secPaid=0;
     sec.items.forEach(function(item){secTotal+=getBItemTotal(item);secPaid+=getBItemPaid(item);});
@@ -1377,37 +1630,22 @@ function updateBudgetSummary(){
 function onBudgetTotalChange(val){
   budgetTotal=parseFloat(val)||8000;
   clearTimeout(budgetSaveTimer);
-  budgetSaveTimer=setTimeout(function(){
-    var u={};u[BUDGET_PATH+'/total']=budgetTotal;
-    db.ref('/').update(u);
-  },800);
+  budgetSaveTimer=setTimeout(function(){var u={};u[BUDGET_PATH+'/total']=budgetTotal;db.ref('/').update(u);},800);
   updateBudgetSummary();
 }
 
 function onBudgetAmountChange(id,val){
-  var key='bamt_'+id;
-  var n=parseFloat(val);
-  budgetData[key]=isNaN(n)?null:n;
+  var key='bamt_'+id;var n=parseFloat(val);budgetData[key]=isNaN(n)?null:n;
   clearTimeout(budgetSaveTimer);
-  budgetSaveTimer=setTimeout(function(){
-    var u={};u[BUDGET_PATH+'/'+key]=budgetData[key];
-    db.ref('/').update(u);
-  },700);
-  refreshBItem(id);
-  updateBudgetSummary();
+  budgetSaveTimer=setTimeout(function(){var u={};u[BUDGET_PATH+'/'+key]=budgetData[key];db.ref('/').update(u);},700);
+  refreshBItem(id);updateBudgetSummary();
 }
 
 function onBudgetPaidChange(id,val){
-  var key='bpaid_'+id;
-  var n=parseFloat(val);
-  budgetData[key]=isNaN(n)?null:n;
+  var key='bpaid_'+id;var n=parseFloat(val);budgetData[key]=isNaN(n)?null:n;
   clearTimeout(budgetSaveTimer);
-  budgetSaveTimer=setTimeout(function(){
-    var u={};u[BUDGET_PATH+'/'+key]=budgetData[key];
-    db.ref('/').update(u);
-  },700);
-  refreshBItem(id);
-  updateBudgetSummary();
+  budgetSaveTimer=setTimeout(function(){var u={};u[BUDGET_PATH+'/'+key]=budgetData[key];db.ref('/').update(u);},700);
+  refreshBItem(id);updateBudgetSummary();
 }
 
 function refreshBItem(id){
@@ -1416,29 +1654,21 @@ function refreshBItem(id){
   if(!item)return;
   var row=document.getElementById('brow-'+id);
   if(!row)return;
-  var st=getBItemStatus(item);
-  var badge=getBItemBadge(item);
+  var st=getBItemStatus(item);var badge=getBItemBadge(item);
   row.className='bitem '+st;
   var badgeEl=row.querySelector('.bitem-badge');
   if(badgeEl){badgeEl.className='bitem-badge '+badge.cls;badgeEl.textContent=badge.lbl;}
-  // update balance row if present
   var balRow=document.getElementById('bbal-'+id);
   if(balRow){
-    var total=getBItemTotal(item);
-    var paid=getBItemPaid(item);
-    var balance=total-paid;
+    var total=getBItemTotal(item);var paid=getBItemPaid(item);var balance=total-paid;
     var balVal=balRow.querySelector('.bitem-balance-val');
-    if(balVal){
-      balVal.textContent=balance>0?fmtMoney(balance):'Pagado completo ✓';
-      balVal.className='bitem-balance-val'+(balance<=0?' zero':'');
-    }
+    if(balVal){balVal.textContent=balance>0?fmtMoney(balance):'Pagado completo ✓';balVal.className='bitem-balance-val'+(balance<=0?' zero':'');}
   }
 }
 
 function toggleBudgetSection(id){
   budgetSectionOpen[id]=budgetSectionOpen[id]===false?true:false;
-  var body=document.getElementById('bsecbody-'+id);
-  var chev=document.getElementById('bsecchev-'+id);
+  var body=document.getElementById('bsecbody-'+id);var chev=document.getElementById('bsecchev-'+id);
   var head=document.querySelector('#bsec-'+id+' .budget-section-head');
   var open=budgetSectionOpen[id]!==false;
   if(body)body.style.display=open?'':'none';
@@ -1450,18 +1680,13 @@ function renderBudget(){
   var container=document.getElementById('budget-container');
   if(!container)return;
   container.innerHTML='';
-  if(budgetData['total']){
-    budgetTotal=parseFloat(budgetData['total'])||8000;
-    var inp=document.getElementById('budget-total-input');
-    if(inp)inp.value=budgetTotal;
-  }
+  if(budgetData['total']){budgetTotal=parseFloat(budgetData['total'])||8000;var inp=document.getElementById('budget-total-input');if(inp)inp.value=budgetTotal;}
   BUDGET_SECTIONS.forEach(function(sec){
     var open=budgetSectionOpen[sec.id]!==false;
     var secTotal=0,secPaid=0;
     sec.items.forEach(function(item){secTotal+=getBItemTotal(item);secPaid+=getBItemPaid(item);});
     var wrap=document.createElement('div');
-    wrap.className='budget-section';
-    wrap.id='bsec-'+sec.id;
+    wrap.className='budget-section';wrap.id='bsec-'+sec.id;
     wrap.innerHTML='<div class="budget-section-head'+(open?' open':'')+'" onclick="toggleBudgetSection(\''+sec.id+'\')">'
       +'<span class="budget-section-icon">'+sec.icon+'</span>'
       +'<span class="budget-section-title">'+sec.title+'</span>'
@@ -1475,46 +1700,22 @@ function renderBudget(){
     container.appendChild(wrap);
     var body=document.getElementById('bsecbody-'+sec.id);
     sec.items.forEach(function(item){
-      var totalVal=getBItemTotal(item);
-      var paidVal=getBItemPaid(item);
-      var st=getBItemStatus(item);
-      var badge=getBItemBadge(item);
-      var balance=totalVal-paidVal;
-      var showBalance=totalVal>0&&paidVal>0;
+      var totalVal=getBItemTotal(item);var paidVal=getBItemPaid(item);
+      var st=getBItemStatus(item);var badge=getBItemBadge(item);
+      var balance=totalVal-paidVal;var showBalance=totalVal>0&&paidVal>0;
       var row=document.createElement('div');
-      row.className='bitem '+st;
-      row.id='brow-'+item.id;
+      row.className='bitem '+st;row.id='brow-'+item.id;
       row.innerHTML='<div class="bitem-top">'
-        +'<div class="bitem-info">'
-        +'<div class="bitem-name">'+item.name+'</div>'
-        +(item.note?'<div class="bitem-note">'+item.note+'</div>':'')
-        +'</div>'
+        +'<div class="bitem-info"><div class="bitem-name">'+item.name+'</div>'+(item.note?'<div class="bitem-note">'+item.note+'</div>':'')+'</div>'
         +'<span class="bitem-badge '+badge.cls+'">'+badge.lbl+'</span>'
         +'</div>'
         +'<div class="bitem-fields">'
-        +'<div class="bfield">'
-        +'<span class="bfield-lbl">Total</span>'
-        +'<div class="bfield-wrap">'
-        +'<span class="bfield-symbol">$</span>'
-        +'<input class="bfield-input" type="number" min="0" step="1" placeholder="0.00" '
-        +'value="'+(totalVal||'')+'" '
-        +'oninput="onBudgetAmountChange(\''+item.id+'\',this.value)" '
-        +'onfocus="this.select()">'
-        +'</div></div>'
-        +'<div class="bfield">'
-        +'<span class="bfield-lbl">Pagado</span>'
-        +'<div class="bfield-wrap">'
-        +'<span class="bfield-symbol">$</span>'
-        +'<input class="bfield-input" type="number" min="0" step="1" placeholder="0.00" '
-        +'value="'+(paidVal||'')+'" '
-        +'oninput="onBudgetPaidChange(\''+item.id+'\',this.value)" '
-        +'onfocus="this.select()">'
-        +'</div></div>'
+        +'<div class="bfield"><span class="bfield-lbl">Total</span><div class="bfield-wrap"><span class="bfield-symbol">$</span>'
+        +'<input class="bfield-input" type="number" min="0" step="1" placeholder="0.00" value="'+(totalVal||'')+'" oninput="onBudgetAmountChange(\''+item.id+'\',this.value)" onfocus="this.select()"></div></div>'
+        +'<div class="bfield"><span class="bfield-lbl">Pagado</span><div class="bfield-wrap"><span class="bfield-symbol">$</span>'
+        +'<input class="bfield-input" type="number" min="0" step="1" placeholder="0.00" value="'+(paidVal||'')+'" oninput="onBudgetPaidChange(\''+item.id+'\',this.value)" onfocus="this.select()"></div></div>'
         +'</div>'
-        +(showBalance?'<div class="bitem-balance" id="bbal-'+item.id+'">'
-        +'<span class="bitem-balance-lbl">Balance pendiente</span>'
-        +'<span class="bitem-balance-val'+(balance<=0?' zero':'')+'">'+( balance>0?fmtMoney(balance):'Pagado completo ✓')+'</span>'
-        +'</div>':'<div id="bbal-'+item.id+'" style="display:none"></div>');
+        +(showBalance?'<div class="bitem-balance" id="bbal-'+item.id+'"><span class="bitem-balance-lbl">Balance pendiente</span><span class="bitem-balance-val'+(balance<=0?' zero':'')+'">'+( balance>0?fmtMoney(balance):'Pagado completo ✓')+'</span></div>':'<div id="bbal-'+item.id+'" style="display:none"></div>');
       body.appendChild(row);
     });
   });
