@@ -208,11 +208,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
     <div class="user-opts">
       <div class="user-opt" onclick="selectUser('a1')">
         <div class="user-opt-dot a1"></div>
-        <div><div class="user-opt-name">Adulto 1</div><div class="user-opt-sub">Primer adulto del grupo</div></div>
+        <div><div class="user-opt-name">Luis</div><div class="user-opt-sub">Adulto 1</div></div>
       </div>
       <div class="user-opt" onclick="selectUser('a2')">
         <div class="user-opt-dot a2"></div>
-        <div><div class="user-opt-name">Adulto 2</div><div class="user-opt-sub">Segundo adulto del grupo</div></div>
+        <div><div class="user-opt-name">Paula</div><div class="user-opt-sub">Adulto 2</div></div>
       </div>
     </div>
   </div>
@@ -572,8 +572,8 @@ function selectUser(u){
 function updateUserUI(){
   var dot=document.getElementById('user-dot');
   var lbl=document.getElementById('user-name-lbl');
-  if(currentUser==='a1'){dot.style.background='#7f77dd';lbl.textContent='Adulto 1';}
-  else if(currentUser==='a2'){dot.style.background='#1D9E75';lbl.textContent='Adulto 2';}
+  if(currentUser==='a1'){dot.style.background='#7f77dd';lbl.textContent='Luis';}
+  else if(currentUser==='a2'){dot.style.background='#1D9E75';lbl.textContent='Paula';}
   else{dot.style.background='#9b9890';lbl.textContent='?';}
 }
 updateUserUI();
