@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Disney Wish 2026 — Guía del crucero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+/* ── DESIGN TOKENS ── */
+:root{
+  --bg:#f5f3ee;--surface:#fff;--surface2:#eceae3;--surface3:#e2dfd6;
+  --ink:#1c1b18;--ink2:#56544e;--ink3:#9b9890;
+  --accent:#c0562a;--accent-bg:#fdf0ea;--accent-border:#f0c4ae;
+  --teal:#1a7a5e;--teal-bg:#e6f5f0;--teal-border:#9fe1cb;
+  --gold:#9a6810;--gold-bg:#fdf4e0;
+  --blue:#1a5a8a;--blue-bg:#e6f0f8;
+  --purple-bg:#eeedfe;--purple:#3c3489;
+  --green-bg:#e1f5ee;--green:#085041;
+  --red:#a32d2d;--red-bg:#fcebeb;--red-border:#f09595;
+  --shadow:rgba(0,0,0,0.06);
+  --r:10px;--rl:14px;--rxl:18px;
+  --nav-h:56px;
+  --hdr-bg:#1c1b18;--hdr-ink:#f5f3ee;--hdr-ink2:#9b9890;
+  --hdr-ctrl-border:rgba(255,255,255,0.18);--hdr-ctrl-bg:rgba(255,255,255,0.09);
+  --hdr-ctrl-hover:rgba(255,255,255,0.16);--hdr-ctrl-text:rgba(255,255,255,0.82);
+}
+[data-theme="dark"]{
+  --bg:#141413;--surface:#1e1d1a;--surface2:#272521;--surface3:#302e2a;
+  --ink:#f0ede6;--ink2:#b8b4ac;--ink3:#6b6860;
+  --accent:#e07a52;--accent-bg:#2a1a10;--accent-border:#5a2e18;
+  --teal:#2fb584;--teal-bg:#0a2a1e;--teal-border:#1a5a40;
+  --gold:#d4a040;--gold-bg:#2a2010;
+  --blue:#4a8ac0;--blue-bg:#0a1a2a;
+  --purple-bg:#1e1a3a;--purple:#a090f0;
+  --green-bg:#0a2a1a;--green:#3ed492;
+  --red:#e06060;--red-bg:#2a1010;--red-border:#5a2020;
+  --shadow:rgba(0,0,0,0.35);
+  --hdr-bg:#0e0e0d;--hdr-ink:#f0ede6;--hdr-ink2:#6b6860;
+  --hdr-ctrl-border:rgba(255,255,255,0.14);--hdr-ctrl-bg:rgba(255,255,255,0.07);
+  --hdr-ctrl-hover:rgba(255,255,255,0.13);--hdr-ctrl-text:rgba(255,255,255,0.75);
+}
+
+/* ── RESET & BASE ── */
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;transition:background .25s,color .25s;padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom))}
+
+/* ── TOP HEADER ── */
+.app-header{background:var(--hdr-bg);color:var(--hdr-ink);padding:12px 16px 10px;padding-top:calc(12px + env(safe-area-inset-top))}
+.app-header-row{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.app-title{font-family:'Instrument Serif',serif;font-size:18px;font-weight:400;letter-spacing:-.02em;flex:1;color:var(--hdr-ink)}
+.app-subtitle{font-size:10px;color:var(--hdr-ink2);margin-top:1px}
+.header-controls{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.sync-pill{display:flex;align-items:center;gap:4px;font-size:10px;padding:3px 8px;border-radius:20px;border:1px solid var(--hdr-ctrl-border);color:var(--hdr-ink2)}
+.sdot{width:6px;height:6px;border-radius:50%;background:var(--hdr-ink2);flex-shrink:0;transition:background .3s}
+.sdot.ok{background:#4ade80}.sdot.saving{background:#fbbf24}.sdot.err{background:#f87171}
+.dark-btn{background:var(--hdr-ctrl-bg);border:1px solid var(--hdr-ctrl-border);color:var(--hdr-ctrl-text);border-radius:8px;padding:5px 8px;cursor:pointer;font-size:13px;line-height:1;display:flex;align-items:center;justify-content:center;transition:all .15s;min-width:32px;min-height:32px}
+.dark-btn:hover{background:var(--hdr-ctrl-hover)}
+.user-pill{display:flex;align-items:center;gap:6px;background:var(--hdr-ctrl-bg);border:1px solid var(--hdr-ctrl-border);border-radius:20px;padding:4px 10px;cursor:pointer;font-size:11px;font-weight:500;color:var(--hdr-ctrl-text);transition:all .15s;min-height:32px}
+.user-pill:hover{background:var(--hdr-ctrl-hover)}
+.user-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* ── BOTTOM NAV ── */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:300;background:var(--surface);border-top:1px solid var(--surface3);display:flex;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -2px 12px var(--shadow)}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:8px 4px;cursor:pointer;border:none;background:none;color:var(--ink3);font-family:inherit;font-size:9px;font-weight:500;transition:color .15s;min-height:var(--nav-h);position:relative}
+.nav-item.active{color:var(--accent)}
+.nav-item.active::after{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:24px;height:2px;background:var(--accent);border-radius:0 0 2px 2px}
+.nav-icon{font-size:20px;line-height:1}
+
+/* ── PAGES ── */
+.page{display:none;animation:fadeIn .18s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── USER MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s}
+.modal-overlay.show{opacity:1;pointer-events:all}
+.modal{background:var(--surface);border-radius:var(--rxl);padding:24px;max-width:320px;width:100%;transform:scale(.95);transition:transform .2s}
+.modal-overlay.show .modal{transform:scale(1)}
+.modal h2{font-family:'Instrument Serif',serif;font-size:20px;font-weight:400;margin-bottom:6px}
+.modal p{font-size:13px;color:var(--ink2);margin-bottom:20px;line-height:1.5}
+.user-opts{display:flex;flex-direction:column;gap:8px}
+.user-opt{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:var(--rl);border:1.5px solid var(--surface3);cursor:pointer;transition:all .15s;background:var(--surface)}
+.user-opt:hover{border-color:var(--accent);background:var(--accent-bg)}
+.user-opt-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0}
+.user-opt-dot.a1{background:#7f77dd}
+.user-opt-dot.a2{background:#1D9E75}
+.user-opt-name{font-weight:500;font-size:15px}
+.user-opt-sub{font-size:12px;color:var(--ink2)}
+.who-tag{font-size:9px;padding:1px 5px;border-radius:4px;margin-left:6px;flex-shrink:0;vertical-align:middle;font-weight:500}
+.who-a1{background:var(--purple-bg);color:var(--purple)}
+.who-a2{background:var(--green-bg);color:var(--green)}
+
+/* ── DATES PAGE ── */
+.dates-intro{font-size:13px;color:var(--ink2);margin-bottom:16px;line-height:1.6;padding:12px 14px;background:var(--blue-bg);border-radius:var(--rl);border:1px solid var(--surface3)}
+.tl-group{margin-bottom:10px;border:1px solid var(--surface3);border-radius:var(--rl);overflow:hidden;background:var(--surface)}
+.tl-group-head{display:flex;align-items:center;gap:10px;padding:11px 14px;cursor:pointer;user-select:none;background:var(--surface2);border-bottom:1px solid var(--surface3);transition:background .15s}
+.tl-group-head:hover{background:var(--surface3)}
+.tl-group-head:not(.open){border-bottom:none}
+.tl-group-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--ink2);flex:1}
+.tl-group-count{font-size:10px;padding:2px 7px;border-radius:8px;background:var(--surface);color:var(--ink3)}
+.tl-group-count.has-urgent{background:var(--accent-bg);color:var(--accent)}
+.tl-group-chev{font-size:10px;color:var(--ink3);transition:transform .2s}
+.tl-group-chev.open{transform:rotate(180deg)}
+.tl-group-body{padding:10px}
+.tl-item{display:flex;gap:12px;padding:11px 12px;background:var(--surface);border:1px solid var(--surface3);border-radius:var(--r);margin-bottom:6px;cursor:pointer;user-select:none;transition:all .15s}
+.tl-item:last-child{margin-bottom:0}
+.tl-item:hover{background:var(--surface2)}
+.tl-item.tl-done{opacity:.5}
+.tl-item.tl-done .tl-title{text-decoration:line-through}
+.tl-item.urgent{border-left:3px solid var(--accent)}
+.tl-item.urgent .tl-date-badge{background:var(--accent-bg);color:var(--accent);border-color:var(--accent-border)}
+.tl-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:52px}
+.tl-date-badge{background:var(--surface2);border:1px solid var(--surface3);border-radius:8px;padding:4px 6px;text-align:center;font-size:9px;font-weight:600;color:var(--ink2);line-height:1.2}
+.tl-content{flex:1;min-width:0}
+.tl-title{font-size:13px;font-weight:500;margin-bottom:2px;line-height:1.3}
+.tl-desc{font-size:11px;color:var(--ink2);line-height:1.4}
+.tl-cb{width:20px;height:20px;border-radius:50%;border:2px solid var(--surface3);display:flex;align-items:center;justify-content:center;flex-shrink:0;align-self:center;transition:all .15s;color:#fff;font-size:11px;font-weight:700}
+.tl-item:hover .tl-cb{border-color:var(--teal)}
+.tl-cb.done{background:var(--teal);border-color:var(--teal)}
+
+/* ── GUIA PAGE ── */
+.guide-day{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--rl);margin-bottom:12px;overflow:hidden}
+.guide-day-head{padding:13px 16px;display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;transition:background .15s}
+.guide-day-head:hover{background:var(--surface2)}
+.guide-day-head.open{border-bottom:1px solid var(--surface3)}
+.guide-day-icon{font-size:24px;flex-shrink:0}
+.guide-day-info{flex:1}
+.guide-day-name{font-family:'Instrument Serif',serif;font-size:16px;font-weight:400}
+.guide-day-sub{font-size:11px;color:var(--ink2);margin-top:1px}
+.guide-day-body{padding:14px 16px;background:var(--surface2)}
+.guide-tips{display:flex;flex-direction:column;gap:8px}
+.tip-row{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;background:var(--surface);border-radius:var(--r);border:1px solid var(--surface3)}
+.tip-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.tip-text{font-size:12px;line-height:1.5;color:var(--ink2);flex:1}
+.tip-text strong{color:var(--ink);font-weight:500}
+.tip-row.highlight{border-color:var(--accent-border);background:var(--accent-bg)}
+.tip-row.highlight .tip-text{color:var(--ink)}
+.day-badge{font-size:9px;font-weight:500;padding:2px 7px;border-radius:7px;flex-shrink:0;white-space:nowrap}
+.b-crucero{background:var(--teal-bg);color:var(--teal)}
+.b-pirata{background:#3a2a18;color:#fac775}
+[data-theme="dark"] .b-pirata{background:#2a1a08;color:#fac775}
+.b-playa{background:var(--teal-bg);color:var(--teal)}
+.b-regreso{background:var(--surface2);color:var(--ink2)}
+.b-viaje{background:var(--gold-bg);color:var(--gold)}
+
+/* ── TOP 10 PAGE ── */
+.t10-intro{font-size:12px;color:var(--ink2);line-height:1.6;padding:12px 14px;background:var(--surface2);border-radius:var(--rl);border:1px solid var(--surface3);margin-bottom:16px}
+.t10-section-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--ink3);margin:16px 2px 8px}
+.t10-card{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--rl);padding:14px 16px;margin-bottom:10px}
+.t10-card-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
+.t10-num{width:30px;height:30px;min-width:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0}
+.t10-n1{background:var(--teal-bg);color:var(--teal)}
+.t10-n2{background:#3a2a18;color:#fac775}
+[data-theme="dark"] .t10-n2{background:#2a1a08;color:#fac775}
+.t10-n3{background:var(--blue-bg);color:var(--blue)}
+.t10-n4{background:var(--accent-bg);color:var(--accent)}
+.t10-n5{background:var(--surface2);color:var(--ink2)}
+.t10-n6{background:var(--teal-bg);color:var(--teal)}
+.t10-n7{background:#2a1040;color:#c9a0f8}
+[data-theme="dark"] .t10-n7{background:#1a0a2e;color:#c9a0f8}
+.t10-n8{background:var(--gold-bg);color:var(--gold)}
+.t10-n9{background:#0a1a2e;color:#4a8ac0}
+[data-theme="dark"] .t10-n9{background:#0a1a2a;color:#4a8ac0}
+.t10-n10{background:var(--blue-bg);color:var(--blue)}
+.t10-card-right{flex:1;min-width:0}
+.t10-card-title{font-family:'Instrument Serif',serif;font-size:15px;font-weight:400;color:var(--ink);margin:0 0 2px;line-height:1.3}
+.t10-card-deck{font-size:11px;color:var(--ink3);margin:0}
+.t10-badges{display:flex;gap:5px;flex-wrap:wrap;margin:7px 0 9px}
+.t10-bf{background:var(--teal-bg);color:var(--teal);font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px}
+.t10-bp{background:var(--accent-bg);color:var(--accent);font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px}
+.t10-bb{background:var(--blue-bg);color:var(--blue);font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px}
+.t10-be{background:var(--gold-bg);color:var(--gold);font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px}
+.t10-chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:6px;margin-bottom:9px}
+.t10-chip{background:var(--surface2);border-radius:var(--r);padding:7px 10px}
+.t10-cl{font-size:9px;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}
+.t10-cv{font-size:12px;color:var(--ink);font-weight:500}
+.t10-tips{border-top:1px solid var(--surface3);padding-top:9px}
+.t10-ti{display:flex;gap:7px;align-items:flex-start;margin-top:6px}
+.t10-td{width:4px;height:4px;min-width:4px;border-radius:50%;background:var(--surface3);margin-top:7px;flex-shrink:0}
+.t10-tt{font-size:12px;color:var(--ink2);line-height:1.5}
+.t10-alert{background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:var(--r);padding:8px 12px;margin-top:8px;font-size:12px;color:var(--ink2);line-height:1.5}
+.t10-alert strong{color:var(--accent)}
+.t10-alert-teal{background:var(--teal-bg);border:1px solid var(--teal-border);border-radius:var(--r);padding:8px 12px;margin-top:8px;font-size:12px;color:var(--ink2);line-height:1.5}
+.t10-alert-teal strong{color:var(--teal)}
+.t10-cost{background:var(--surface);border:1px solid var(--surface3);border-radius:var(--rl);padding:16px 18px;margin-top:22px}
+.t10-cost h3{font-family:'Instrument Serif',serif;font-size:15px;font-weight:400;margin-bottom:12px}
+.t10-cost-row{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--surface3);font-size:12px;color:var(--ink2);gap:10px}
+.t10-cost-row:last-child{border-bottom:none;font-weight:500;font-size:13px;color:var(--ink);padding-top:10px;margin-top:2px}
+.t10-cost-name{flex:1}
+.t10-cost-free{font-weight:500;color:var(--teal);flex-shrink:0}
+.t10-cost-paid{font-weight:500;color:var(--accent);flex-shrink:0}
+.t10-cost-total{font-weight:500;color:var(--ink);flex-shrink:0}
+.t10-source{font-size:10px;color:var(--ink3);text-align:center;padding:14px;margin-top:8px;line-height:1.6}
+
+/* ── MISC ── */
+.footer{text-align:center;font-size:10px;color:var(--ink3);padding:16px;margin-top:8px}
+</style>
+</head>
+<body>
+
+<!-- USER MODAL -->
+<div class="modal-overlay" id="user-modal">
+  <div class="modal">
+    <h2>¿Quién eres?</h2>
+    <p>Selecciona tu perfil para identificar quién marcó cada ítem en la guía compartida.</p>
+    <div class="user-opts">
+      <div class="user-opt" onclick="selectUser('a1')">
+        <div class="user-opt-dot a1"></div>
+        <div><div class="user-opt-name">Adulto 1</div><div class="user-opt-sub">Primer adulto del grupo</div></div>
+      </div>
+      <div class="user-opt" onclick="selectUser('a2')">
+        <div class="user-opt-dot a2"></div>
+        <div><div class="user-opt-name">Adulto 2</div><div class="user-opt-sub">Segundo adulto del grupo</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- APP HEADER -->
+<header class="app-header">
+  <div class="app-header-row">
+    <div>
+      <div class="app-title">Disney Wish 2026</div>
+      <div class="app-subtitle">Oct 30 – Nov 2 · Guía del crucero · Halloween on the High Seas</div>
+    </div>
+    <div class="header-controls">
+      <div class="sync-pill"><span class="sdot" id="sdot"></span><span id="slbl">···</span></div>
+      <button class="dark-btn" onclick="toggleDark()" id="dark-btn" title="Modo oscuro">☀</button>
+      <div class="user-pill" onclick="showUserModal()" id="user-pill">
+        <div class="user-dot" id="user-dot" style="background:#9b9890"></div>
+        <span id="user-name-lbl">?</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE: FECHAS -->
+<div class="page active" id="page-fechas">
+  <div style="max-width:880px;margin:0 auto;padding:14px 14px 20px">
+    <div class="dates-intro">Fechas críticas del crucero Disney Wish. Algunas ventanas se cierran en minutos — especialmente el Royal Gathering para las niñas. Márcalas como hechas cuando las completes.</div>
+    <div id="timeline-container"></div>
+  </div>
+</div>
+
+<!-- PAGE: GUÍA -->
+<div class="page" id="page-guia">
+  <div style="max-width:880px;margin:0 auto;padding:14px 14px 20px">
+    <div id="guia-container"></div>
+  </div>
+</div>
+
+<!-- PAGE: TOP 10 -->
+<div class="page" id="page-top10">
+  <div style="max-width:880px;margin:0 auto;padding:14px 14px 20px">
+
+    <div class="t10-intro">
+      🚢 <strong style="color:var(--ink)">Top 10 experiencias imperdibles del Disney Wish</strong> — basado en el tour de Portholes &amp; Pixie Dust (abr 2025), validado con TouringPlans, MouseHacking, AllEars y Disney Food Blog. <span style="color:var(--ink3)">Crucero 3 noches · Oct 30–Nov 2, 2026 · 2 adultos + 2 niñas (6 y 7 años)</span>
+    </div>
+
+    <div class="t10-section-lbl">Experiencias incluidas en el crucero — $0 costo adicional</div>
+
+    <!-- 1 -->
+    <div class="t10-card">
+      <div class="t10-card-head">
+        <div class="t10-num t10-n1">1</div>
+        <div class="t10-card-right">
+          <p class="t10-card-title">Arendelle: A Frozen Dining Adventure</p>
+          <p class="t10-card-deck">Deck 5 Aft · rotational dining ya asignado · experiencia #1 del barco según todos los blogs</p>
+        </div>
+      </div>
+      <div class="t10-badges"><span class="t10-bf">Incluido</span><span class="t10-be">Las niñas lo amarán</span></div>
+      <div class="t10-chips">
+        <div class="t10-chip"><div class="t10-cl">Costo extra</div><div class="t10-cv">$0</div></div>
+        <div class="t10-chip"><div class="t10-cl">Duración</div><div class="t10-cv">~90 min</div></div>
+        <div class="t10-chip"><div class="t10-cl">Personajes</div><div class="t10-cv">Anna · Elsa · Kristoff · Olaf</div></div>
+        <div class="t10-chip"><div class="t10-cl">Horario cenas</div><div class="t10-cv">~6pm o ~8:30pm</div></div>
+      </div>
+      <div class="t10-tips">
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Llega 10 min antes — el pasillo de retratos reales de Arendelle es la foto antes del show. Pide mesa cerca del escenario central en Guest Services el día de embarque.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">El momento cumbre: fibra óptica en techo y paredes + "Let It Go" en vivo. Las niñas van a querer repetirlo.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Postres estrella: Elsa's Coronation Sundae + Rock Chocolate Bar de los trolls. Puedes pedir varios sin costo extra.</div></div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="t10-card">
+      <div class="t10-card-head">
+        <div class="t10-num t10-n2">2</div>
+        <div class="t10-card-right">
+          <p class="t10-card-title">Pirate Night + Halloween on the High Seas</p>
+          <p class="t10-card-deck">Cubierta principal · Sáb 31 oct · deck party + fuegos artificiales en mar abierto</p>
+        </div>
+      </div>
+      <div class="t10-badges"><span class="t10-bf">Incluido</span><span class="t10-bb">Sin reserva</span><span class="t10-be">Las niñas: doble disfraz en una noche</span></div>
+      <div class="t10-chips">
+        <div class="t10-chip"><div class="t10-cl">Costo extra</div><div class="t10-cv">$0</div></div>
+        <div class="t10-chip"><div class="t10-cl">Deck party</div><div class="t10-cv">~10:15pm</div></div>
+        <div class="t10-chip"><div class="t10-cl">Fuegos artificiales</div><div class="t10-cv">~11pm (mar abierto)</div></div>
+        <div class="t10-chip"><div class="t10-cl">Trick-or-treat</div><div class="t10-cv">Antes / durante party</div></div>
+      </div>
+      <div class="t10-tips">
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Preparar 2 disfraces por niña — pirata para Pirate Night y Halloween para el deck party. Pueden hacer el cambio entre la cena y el evento.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Fuegos artificiales desde un barco en mar abierto — Disney es uno de los pocos cruceros que los hace en el agua.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Llegar a la cubierta 20 min antes para lugar con vista directa al escenario y al cielo.</div></div>
+      </div>
+      <div class="t10-alert-teal"><strong>Halloween especial:</strong> este crucero es la edición Halloween on the High Seas — decoraciones temáticas, menú especial y personajes en disfraz toda la noche.</div>
+    </div>
+
+    <!-- 3 -->
+    <div class="t10-card">
+      <div class="t10-card-head">
+        <div class="t10-num t10-n3">3</div>
+        <div class="t10-card-right">
+          <p class="t10-card-title">Broadway shows en el Walt Disney Theatre</p>
+          <p class="t10-card-deck">Deck 2–4 Forward · 3 shows distintos en 3 noches · exclusivos del Disney Wish</p>
+        </div>
+      </div>
+      <div class="t10-badges"><span class="t10-bf">Incluido</span><span class="t10-bb">Sin reserva</span></div>
+      <div class="t10-chips">
+        <div class="t10-chip"><div class="t10-cl">Costo extra</div><div class="t10-cv">$0</div></div>
+        <div class="t10-chip"><div class="t10-cl">Shows</div><div class="t10-cv">Little Mermaid · Aladdin · Seas the Adventure</div></div>
+        <div class="t10-chip"><div class="t10-cl">Funciones</div><div class="t10-cv">~6:30pm y ~8:30pm</div></div>
+        <div class="t10-chip"><div class="t10-cl">Duración</div><div class="t10-cv">30–50 min c/u</div></div>
+      </div>
+      <div class="t10-tips">
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Llega 20–30 min antes para asientos centrales. Tu función = opuesta a tu turno de cena.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">The Little Mermaid: projection mapping 360° transforma TODO el teatro en el fondo del mar. El #1 según blogs especializados.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Seas the Adventure (embarque Vie 30): Elsa, Moana, Merida, Tiana, Crush y Squirt. Perfecta para arrancar el viaje.</div></div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="t10-card">
+      <div class="t10-card-head">
+        <div class="t10-num t10-n4">4</div>
+        <div class="t10-card-right">
+          <p class="t10-card-title">Royal Gathering — meet &amp; greet con 4–5 princesas</p>
+          <p class="t10-card-deck">Grand Hall Atrium · gratis pero la reserva más difícil del barco · abre exactamente 30 días antes</p>
+        </div>
+      </div>
+      <div class="t10-badges"><span class="t10-bf">Gratis</span><span class="t10-be">Las niñas (6 y 7 años): la experiencia de su vida</span><span class="t10-bp">Reservar 30 sep · medianoche ET</span></div>
+      <div class="t10-chips">
+        <div class="t10-chip"><div class="t10-cl">Costo extra</div><div class="t10-cv">$0</div></div>
+        <div class="t10-chip"><div class="t10-cl">Abre reservas</div><div class="t10-cv">30 sep · medianoche hora ET</div></div>
+        <div class="t10-chip"><div class="t10-cl">Princesas típicas</div><div class="t10-cv">Belle · Rapunzel · Tiana · Moana · Cinderella</div></div>
+        <div class="t10-chip"><div class="t10-cl">Duración</div><div class="t10-cv">~7–10 min total</div></div>
+      </div>
+      <div class="t10-tips">
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Abre para TODOS exactamente 30 días antes del crucero — sin importar nivel Castaway. Reservar en la DCL Navigator App.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Viste a las niñas con sus vestidos de princesa para la foto con cada una — es el momento más recordado por las niñas.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Anna y Elsa NO aparecen aquí — están en Arendelle (cena rotacional). Estas son las princesas clásicas.</div></div>
+      </div>
+      <div class="t10-alert"><strong>⏰ Alarma urgente:</strong> pon recordatorio ahora para el 30 de septiembre exactamente a medianoche hora del Este (ET). Se agota en minutos.</div>
+    </div>
+
+    <!-- 5 -->
+    <div class="t10-card">
+      <div class="t10-card-head">
+        <div class="t10-num t10-n5">5</div>
+        <div class="t10-card-right">
+          <p class="t10-card-title">AquaMouse — primera atracción Disney en alta mar</p>
+          <p class="t10-card-deck">Deck 11 · tobogán 760 pies con show animado de Mickey + tramo transparente sobre el mar</p>
+        </div>
+      </div>
+      <div class="t10-badges"><span class="t10-bf">Incluido</span><span class="t10-bb">Sin reserva</span><span class="t10-be">Niñas: verificar talla mínima 42" / 107cm</span></div>
+      <div class="t10-chips">
+        <div class="t10-chip"><div class="t10-cl">Costo extra</div><div class="t10-cv">$0</div></div>
+        <div class="t10-chip"><div class="t10-cl">Mejor horario</div><div class="t10-cv">Embarque ~1pm · o post-cena ~8–9pm</div></div>
+        <div class="t10-chip"><div class="t10-cl">Espera típica</div><div class="t10-cv">5–60 min según hora</div></div>
+        <div class="t10-chip"><div class="t10-cl">Talla mínima</div><div class="t10-cv">42" / 107 cm</div></div>
+      </div>
+      <div class="t10-tips">
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">El día de embarque (Vie 30) abre ~1pm con filas mínimas — úsalo mientras las maletas llegan al camarote.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Post-cena (~8–9pm) las filas caen a 5 min. Pueden subir varias veces seguidas.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">El tramo en tubo transparente sobre el borde del barco con vista al mar es el momento más fotografiado del crucero.</div></div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="t10-card">
+      <div class="t10-card-head">
+        <div class="t10-num t10-n6">6</div>
+        <div class="t10-card-right">
+          <p class="t10-card-title">Toy Story Splash Zone + Slide-a-Saurus Rex</p>
+          <p class="t10-card-deck">Deck 11 · zona acuática familiar · toboganes y juegos de agua para toda la familia</p>
+        </div>
+      </div>
+      <div class="t10-badges"><span class="t10-bf">Incluido</span><span class="t10-be">Niñas (6 y 7): aptas para toboganes y splash</span></div>
+      <div class="t10-chips">
+        <div class="t10-chip"><div class="t10-cl">Área principal</div><div class="t10-cv">$0</div></div>
+        <div class="t10-chip"><div class="t10-cl">Wheezy's Freezies</div><div class="t10-cv">Smoothies $3.50 · Dole Whip $6</div></div>
+        <div class="t10-chip"><div class="t10-cl">Slide mín. niñas</div><div class="t10-cv">38" / 97 cm</div></div>
+        <div class="t10-chip"><div class="t10-cl">Mejor momento</div><div class="t10-cv">Mañana temprano o después de cena</div></div>
+      </div>
+      <div class="t10-tips">
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Ambas niñas de 6 y 7 años califican para los toboganes (mín. 38") y toda el área de juegos de agua.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Wheezy's Freezies al lado: el Dole Whip a $6 es el snack más popular de la cubierta — siempre hay fila.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">La zona es más tranquila en las mañanas antes de las 10am y después de las 4pm.</div></div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="t10-card">
+      <div class="t10-card-head">
+        <div class="t10-num t10-n7">7</div>
+        <div class="t10-card-right">
+          <p class="t10-card-title">Worlds of Marvel · Avengers Quantum Encounter</p>
+          <p class="t10-card-deck">Deck 4 Aft · tercer restaurante rotacional · cena interactiva con tecnología Pym</p>
+        </div>
+      </div>
+      <div class="t10-badges"><span class="t10-bf">Incluido en rotación</span><span class="t10-bb">Ant-Man en vivo</span></div>
+      <div class="t10-chips">
+        <div class="t10-chip"><div class="t10-cl">Costo extra</div><div class="t10-cv">$0</div></div>
+        <div class="t10-chip"><div class="t10-cl">Interacción</div><div class="t10-cv">Botón en mesa · efectos Pym</div></div>
+        <div class="t10-chip"><div class="t10-cl">Souvenir estrella</div><div class="t10-cv">Quantum Core sipper cup ~$20</div></div>
+        <div class="t10-chip"><div class="t10-cl">Personajes</div><div class="t10-cv">Ant-Man + Wasp caminan por el salón</div></div>
+      </div>
+      <div class="t10-tips">
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">La mesa tiene un botón que activa efectos de reducción/agrandamiento — lo primero que las niñas querrán probar.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Ant-Man y Wasp caminan en persona por el salón pero NO se detienen para fotos — sí saludan a los niños.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Quantum Core sipper cup: solo se vende aquí, es el souvenir más popular del barco.</div></div>
+      </div>
+    </div>
+
+    <div class="t10-section-lbl">Experiencias de pago — add-ons opcionales recomendados</div>
+
+    <!-- 8 -->
+    <div class="t10-card">
+      <div class="t10-card-head">
+        <div class="t10-num t10-n8">8</div>
+        <div class="t10-card-right">
+          <p class="t10-card-title">Bibbidi Bobbidi Boutique — transformación de princesa</p>
+          <p class="t10-card-deck">Deck 3 · para niñas de 3–12 años · reservar antes del embarque en DCL Navigator App</p>
+        </div>
+      </div>
+      <div class="t10-badges"><span class="t10-bp">Add-on de pago</span><span class="t10-be">Ambas niñas aptas (6 y 7 años)</span><span class="t10-bb">Reservar ~16 ago (75 días antes)</span></div>
+      <div class="t10-chips">
+        <div class="t10-chip"><div class="t10-cl">Paquete básico</div><div class="t10-cv">~$100/niña (peinado + maquillaje)</div></div>
+        <div class="t10-chip"><div class="t10-cl">Con vestido incluido</div><div class="t10-cv">~$200–$230/niña</div></div>
+        <div class="t10-chip"><div class="t10-cl">Ahorro clave</div><div class="t10-cv">Llevar vestido propio → $100 menos</div></div>
+        <div class="t10-chip"><div class="t10-cl">También hay</div><div class="t10-cv">Paquete pirata (perfecto para el 31 oct)</div></div>
+      </div>
+      <div class="t10-tips">
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Si llevan vestidos de princesa propios, el paquete básico (~$100/niña) da peinado + maquillaje + accesorios.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Táctica ganadora: reservar BBB justo antes del Royal Gathering — las niñas entran a conocer las princesas ya transformadas.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">También hay paquete pirata — perfecto para preparar a las niñas para Pirate Night + Halloween del 31 oct.</div></div>
+      </div>
+      <div class="t10-alert-teal"><strong>Combo mágico:</strong> BBB (~$100/niña) + Royal Gathering ($0) = experiencia princess completa. Si van con ambas niñas: ~$200 total para las dos.</div>
+    </div>
+
+    <!-- 9 -->
+    <div class="t10-card">
+      <div class="t10-card-head">
+        <div class="t10-num t10-n9">9</div>
+        <div class="t10-card-right">
+          <p class="t10-card-title">Star Wars: Hyperspace Lounge</p>
+          <p class="t10-card-deck">Deck 3 Starboard · exclusivo del Disney Wish · viewport con saltos al hiperespacio en tiempo real</p>
+        </div>
+      </div>
+      <div class="t10-badges"><span class="t10-bp">Bebidas de pago</span><span class="t10-bb">Reservar al embarcar · 45 min/slot</span><span class="t10-be">Niñas bienvenidas antes de 9pm</span></div>
+      <div class="t10-chips">
+        <div class="t10-chip"><div class="t10-cl">Bebidas kids</div><div class="t10-cv">$10–$24 (Temple Twist con boba)</div></div>
+        <div class="t10-chip"><div class="t10-cl">Cocktails adultos</div><div class="t10-cv">$10.50–$52</div></div>
+        <div class="t10-chip"><div class="t10-cl">Duración slot</div><div class="t10-cv">45 min</div></div>
+        <div class="t10-chip"><div class="t10-cl">Reserva</div><div class="t10-cv">Solo a bordo · día de embarque</div></div>
+      </div>
+      <div class="t10-tips">
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Reservar en cuanto suban al barco el día de embarque — tiene lista de espera casi inmediata.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">El viewport muestra saltos al hiperespacio a Tatooine, Coruscant y Mustafar con audio surround y hologramas de naves.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Temple Twist (bebida kids con boba verde): las bolitas de boba son fuente de diversión extra para las niñas.</div></div>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="t10-card">
+      <div class="t10-card-head">
+        <div class="t10-num t10-n10">10</div>
+        <div class="t10-card-right">
+          <p class="t10-card-title">Oceaneer Club — kids club gratis ilimitado</p>
+          <p class="t10-card-deck">Deck 2 · ambas niñas (3–12 años) · 5 salas temáticas exclusivas del Wish</p>
+        </div>
+      </div>
+      <div class="t10-badges"><span class="t10-bf">Ambas niñas: gratis ilimitado</span><span class="t10-bb">Registrar día de embarque</span></div>
+      <div class="t10-chips">
+        <div class="t10-chip"><div class="t10-cl">Costo</div><div class="t10-cv">$0 · uso ilimitado</div></div>
+        <div class="t10-chip"><div class="t10-cl">Edad</div><div class="t10-cv">3–12 años · ambas aplican</div></div>
+        <div class="t10-chip"><div class="t10-cl">Salas del club</div><div class="t10-cv">Star Wars · Marvel · Princesas · Sommerhaus Frozen</div></div>
+        <div class="t10-chip"><div class="t10-cl">Registro</div><div class="t10-cv">Día de embarque · imprescindible</div></div>
+      </div>
+      <div class="t10-tips">
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">El Sommerhaus de Frozen es exclusivo del Wish — conecta perfecto con la temática de Arendelle del crucero.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">El Oceaneer Club es la ventana para una cena de adultos en pareja — Palo Steakhouse Deck 12 (~$45/persona) mientras las niñas están en el club.</div></div>
+        <div class="t10-ti"><div class="t10-td"></div><div class="t10-tt">Registrar a ambas niñas el día de embarque — necesitan completar papelería antes del primer uso.</div></div>
+      </div>
+      <div class="t10-alert-teal"><strong>Dato útil:</strong> el club tiene un sistema de pulsera para que las niñas puedan salir solo con sus padres. Los counselors son los mismos de todos los barcos DCL — muy bien evaluados.</div>
+    </div>
+
+    <!-- RESUMEN COSTOS -->
+    <div class="t10-cost">
+      <h3>Resumen de costos — top 10 completo</h3>
+      <div class="t10-cost-row"><span class="t10-cost-name">#1–7 · Arendelle, Pirate Night, Shows, Royal Gathering, AquaMouse, Toy Story, Marvel</span><span class="t10-cost-free">$0</span></div>
+      <div class="t10-cost-row"><span class="t10-cost-name">#8 · Bibbidi Bobbidi Boutique — paquete básico × 2 niñas (llevar vestidos propios)</span><span class="t10-cost-paid">~$200</span></div>
+      <div class="t10-cost-row"><span class="t10-cost-name">#9 · Hyperspace Lounge — 2 bebidas adultos + 2 kids Temple Twist</span><span class="t10-cost-paid">~$45–$65</span></div>
+      <div class="t10-cost-row"><span class="t10-cost-name">#10 · Oceaneer Club — ambas niñas gratis, ilimitado</span><span class="t10-cost-free">$0</span></div>
+      <div class="t10-cost-row"><span class="t10-cost-name">Total estimado add-ons del top 10</span><span class="t10-cost-total">~$245–$265</span></div>
+    </div>
+
+    <div class="t10-source">Validado con TouringPlans · MouseHacking · AllEars · Disney Food Blog · The Magic for Less · Bright Color Mom · Chasing Experiences · Eat Sleep Cruise</div>
+
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <button class="nav-item active" id="nav-fechas" onclick="setPage('fechas')">
+    <span class="nav-icon">📅</span>
+    <span>Fechas</span>
+  </button>
+  <button class="nav-item" id="nav-guia" onclick="setPage('guia')">
+    <span class="nav-icon">🗺</span>
+    <span>Guía</span>
+  </button>
+  <button class="nav-item" id="nav-top10" onclick="setPage('top10')">
+    <span class="nav-icon">⭐</span>
+    <span>Top 10</span>
+  </button>
+</nav>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script>
+// ── FIREBASE ──
+firebase.initializeApp({
+  apiKey:'AIzaSyC76T8y6Qm3GwcbzDD6qTZGfSSgi4qduAQ',
+  authDomain:'checklist-dc.firebaseapp.com',
+  databaseURL:'https://checklist-dc-default-rtdb.firebaseio.com',
+  projectId:'checklist-dc',
+  storageBucket:'checklist-dc.firebasestorage.app',
+  messagingSenderId:'1058090239983',
+  appId:'1:1058090239983:web:478f28757d9eb0eb76581a'
+});
+var db=firebase.database();
+var DATES_PATH='dcl_wish_oct2026_shared/dates';
+
+// ── STATE ──
+var datesDone={};
+var dateGroupOpen={};
+var guideDayOpen={};
+var currentUser=localStorage.getItem('dcl_shared_user')||null;
+var darkMode=localStorage.getItem('dcl_dark')==='1';
+var initialized=false;
+
+// ── DARK MODE ──
+if(darkMode){document.documentElement.setAttribute('data-theme','dark');document.getElementById('dark-btn').textContent='☾';}
+function toggleDark(){
+  darkMode=!darkMode;
+  document.documentElement.setAttribute('data-theme',darkMode?'dark':'light');
+  document.getElementById('dark-btn').textContent=darkMode?'☾':'☀';
+  localStorage.setItem('dcl_dark',darkMode?'1':'0');
+}
+
+// ── USER ──
+function showUserModal(){document.getElementById('user-modal').classList.add('show');}
+function selectUser(u){
+  currentUser=u;
+  localStorage.setItem('dcl_shared_user',u);
+  updateUserUI();
+  document.getElementById('user-modal').classList.remove('show');
+}
+function updateUserUI(){
+  var dot=document.getElementById('user-dot');
+  var lbl=document.getElementById('user-name-lbl');
+  if(currentUser==='a1'){dot.style.background='#7f77dd';lbl.textContent='Adulto 1';}
+  else if(currentUser==='a2'){dot.style.background='#1D9E75';lbl.textContent='Adulto 2';}
+  else{dot.style.background='#9b9890';lbl.textContent='?';}
+}
+updateUserUI();
+if(!currentUser){setTimeout(showUserModal,600);}
+
+// ── SYNC STATUS ──
+function setSS(s,t){var d=document.getElementById('sdot'),l=document.getElementById('slbl');d.className='sdot '+s;l.textContent=t;}
+
+// ── PAGE NAV ──
+function setPage(p){
+  document.querySelectorAll('.page').forEach(function(x){x.classList.remove('active');});
+  document.querySelectorAll('.nav-item').forEach(function(x){x.classList.remove('active');});
+  document.getElementById('page-'+p).classList.add('active');
+  document.getElementById('nav-'+p).classList.add('active');
+}
+
+// ── DATES DATA ──
+var DATES_DATA=[
+  {group:'Disponible ya — hacer pronto',items:[
+    {id:'d1',urgent:true,date:'Ahora',title:'Descargar app DCL Navigator',desc:'Bajarla en el teléfono de ambos adultos. Vincular la reserva del crucero. Es el centro de control a bordo — check-in, actividades, menús, horarios de shows.'},
+    {id:'d2',urgent:true,date:'Ahora',title:'Confirmar seguro de viaje',desc:'Verificar que la póliza cubra a los 4 viajeros. Guardar el número de emergencia impreso en la billetera antes de salir.'},
+    {id:'d3',urgent:false,date:'Ahora',title:'Vincular MagicBands+ al crucero',desc:'Entrar a disneycruise.com → Mi reserva → DisneyBand+. Vincular ambas bands antes de zarpar — funcionan para abrir el camarote y hacer cargos al folio.'},
+  ]},
+  {group:'Agosto 2026',items:[
+    {id:'d4',urgent:true,date:'16 ago',title:'Reserva de actividades a bordo abre',desc:'Specialty dining (Palo, Enchante), spa, excursiones, y Bibbidi Bobbidi Boutique para las niñas. Entrar a la app DCL Navigator a medianoche hora del Este — los mejores horarios se llenan en minutos.'},
+  ]},
+  {group:'Septiembre 2026',items:[
+    {id:'d5',urgent:true,date:'30 sep · medianoche ET',title:'Royal Gathering — reservar a medianoche ⚠',desc:'CRÍTICO para las niñas. La experiencia gratuita de princesas se agota en minutos. Entrar a la app DCL Navigator exactamente a medianoche hora del Este. Para Guatemala: 11pm del 29 sep.'},
+    {id:'d6',urgent:true,date:'30 sep · medianoche ET',title:'Check-in online abre',desc:'Hacer check-in en cuanto abra en disneycruise.com. El Port Arrival Time (PAT) más temprano disponible llena rápido — entre más temprano lleguen al puerto, más tiempo en el barco antes de zarpar.'},
+    {id:'d7',urgent:false,date:'Sep 2026',title:'Subir fotos de seguridad en el check-in',desc:'El check-in pide foto reciente de cada miembro de la familia. Tenerlas listas en el teléfono para subir al momento.'},
+    {id:'d8',urgent:false,date:'Sep 2026',title:'Confirmar datos de vuelos en el check-in',desc:'El check-in pide número de vuelo de llegada y salida. Tenerlos a mano al hacer el check-in online.'},
+  ]},
+  {group:'Octubre 2026 — semana del crucero',items:[
+    {id:'d9',urgent:false,date:'Días antes',title:'Cargar MagicBands+ completamente',desc:'Conectar ambas bands la noche antes de salir. El cargador propietario (diferente al del teléfono) va en el carry-on. Sin carga, las bands siguen funcionando para puertas y cargos — solo se pierden los efectos de luz.'},
+    {id:'d10',urgent:false,date:'30 oct · mañana',title:'Embarque — Port Canaveral',desc:'Llegar a la hora del PAT más temprano posible. El barco está casi vacío en las primeras horas — AquaMouse sin cola, piscinas disponibles. Registrar a las niñas en el Oceaneer Club apenas suban al barco.'},
+    {id:'d11',urgent:false,date:'31 oct',title:'Nassau — plan del día',desc:'3 barcos en puerto (~16,000 pasajeros). Estrategia: quedarse a bordo hasta las 11am. Luego: Straw Market (11–11:45) · Pirates of Nassau Museum ($14 adultos, $7 niños) · Rip Ty\'d Tap Room (1:15–2pm). Regreso al barco 2pm. Por la noche: Pirate Night + fuegos artificiales.'},
+    {id:'d12',urgent:false,date:'1 nov',title:'Castaway Cay — isla privada Disney',desc:'Bajar a las 9–9:30am para fotos con personajes (poca cola). Pelican Plunge para las niñas (mín. 38"). Cookie\'s BBQ a las 11:30am. Playa y Scuttle\'s Cove (kids club en la isla, gratis). Regresar al barco 3:30–4pm. Cerrar maletas esa noche.'},
+    {id:'d13',urgent:false,date:'2 nov · mañana',title:'Desembarque',desc:'Temprano en la mañana. Revisar el folio del camarote la noche anterior. Antes de salir: revisar fotos profesionales en el sistema (se eliminan al terminar el crucero). Tener ropa cómoda accesible en el carry-on desde la noche anterior.'},
+  ]},
+];
+
+// ── GUIA DATA ──
+var GUIA_DATA=[
+  {icon:'🚢',name:'Vie 30 oct — Embarque',sub:'Port Canaveral · Disney Wish',badge:'b-crucero',tips:[
+    {hi:true,icon:'⭐',text:'<strong>Llegar a la hora del PAT más temprano posible.</strong> Entre antes entren, más tiempo de explorar el barco antes de que zarpe. El Oceaneer Club y las piscinas abren ese mismo día.'},
+    {hi:false,icon:'🎡',text:'<strong>AquaMouse:</strong> la fila es más corta al embarcar (~1pm). Ir directo si las niñas quieren montarla — después la fila puede crecer mucho. Verificar talla mínima 42" / 107cm.'},
+    {hi:false,icon:'👑',text:'Si no reservaste el Royal Gathering antes, verificar disponibilidad en la app DCL Navigator al conectarte al Wi-Fi de a bordo (DCL-Guest).'},
+    {hi:false,icon:'🍽',text:'El buffet Marceline Market es el almuerzo de embarque — llega temprano para no esperar mesa. Las niñas van a querer explorar todo.'},
+    {hi:false,icon:'🧲',text:'Las paredes del camarote son completamente magnéticas — ganchos y decoraciones magnéticas se instalan sin dañar nada.'},
+    {hi:false,icon:'🎭',text:'Registrar a las niñas en el <strong>Oceaneer Club</strong> apenas suban al barco — necesitan completar la papelería antes del primer uso. Gratis e ilimitado para niñas de 3–12 años.'},
+  ]},
+  {icon:'🏴',name:'Sáb 31 oct — Nassau + Pirate Night',sub:'Nassau 9:30am–5:30pm · Pirate Night + Halloween por la noche',badge:'b-pirata',tips:[
+    {hi:true,icon:'⚠',text:'<strong>3 barcos en puerto ese día:</strong> MSC Seaside (8am), Utopia of the Seas (9am) y Disney Wish (9:30am) — ~16,000 pasajeros en el mismo downtown Nassau. El timing lo es todo.'},
+    {hi:true,icon:'⏰',text:'<strong>Estrategia: NO bajar antes de las 11am.</strong> Quedarse a bordo de 9:30–11am — el barco está casi vacío, AquaMouse sin cola, piscinas para ustedes solos. La primera ola ya habrá bajado cuando salgan.'},
+    {hi:false,icon:'🛍',text:'<strong>11:00–11:45am — Straw Market.</strong> A la derecha al salir del muelle, 3 min a pie. Las niñas eligen un souvenir — presupuesto sugerido $10–15. Los vendedores esperan el regateo: es parte de la experiencia bahamense.'},
+    {hi:false,icon:'🏴',text:'<strong>11:45am–1:15pm — Pirates of Nassau Museum</strong> ($14 adultos, $7 niños 4–17, menores gratis). A/C dentro — respiro del calor. Museo interactivo con barco pirata réplica y preguntas V/F que las niñas van a amar.'},
+    {hi:false,icon:'🍺',text:'<strong>1:15–2:00pm — Rip Ty\'d Tap Room.</strong> Cervecería artesanal bahamense con barcaza antigua como barra, mesas comunitarias y juegos de mesa para las niñas. Tel: +1 (242) 806-8433.'},
+    {hi:false,icon:'🚶',text:'<strong>2:00pm — Regreso al barco.</strong> A 10 min caminando del muelle. Llegar a las 2pm da 3.5 horas para descansar antes de la noche más especial del crucero.'},
+    {hi:true,icon:'🎆',text:'<strong>Pirate Night + fuegos artificiales — no perderse.</strong> Subir a cubierta después de la cena. Es el momento más icónico del crucero Disney. Tener los disfraces listos y accesibles.'},
+    {hi:false,icon:'⏱',text:'Timing de la noche: cena 5:45pm → show ~8:30pm (~45 min) → Pirate Night 10:15pm. Hay tiempo de sobra entre cada cosa.'},
+  ]},
+  {icon:'🏝',name:'Dom 1 nov — Castaway Cay',sub:'Isla privada Disney · 8:30am–4:45pm',badge:'b-playa',tips:[
+    {hi:true,icon:'☀',text:'<strong>Aplicar SPF 50+ a todos ANTES de bajar al barco</strong> — el sol de Bahamas en noviembre sigue siendo intenso. Reaplicar cada 2 horas en la isla.'},
+    {hi:true,icon:'⏰',text:'<strong>Bajar a las 9:00–9:30am.</strong> A esa hora los personajes Disney están en el camino hacia la playa con poca cola. Si esperan a las 10:30am ya llega la segunda ola.'},
+    {hi:false,icon:'📸',text:'<strong>9:00–9:30am — Fotos con personajes Disney</strong> en el camino desde el barco hacia la playa. Poca cola y mejor iluminación natural que a bordo.'},
+    {hi:false,icon:'🌊',text:'<strong>9:30–11:30am — Pelican Plunge para las niñas.</strong> Los toboganes flotantes en el mar — ambas niñas de 6 y 7 años califican (mín. 38"). Gratis. Los adultos se turnan en el agua.'},
+    {hi:false,icon:'🍖',text:'<strong>11:30am — Cookie\'s BBQ</strong> (almuerzo incluido en el crucero). Ir apenas abra para evitar la fila del mediodía. Soft-serve ilimitado todo el día.'},
+    {hi:false,icon:'🏖',text:'<strong>12:30–2:30pm — Playa + Scuttle\'s Cove.</strong> Scuttle\'s Cove es el kids club en la isla — gratis, sin reserva, abre 9am–3:30pm. Si las niñas quieren ir, los adultos tienen tiempo en la playa.'},
+    {hi:false,icon:'🍦',text:'<strong>2:30–3:30pm — Última ronda en el agua.</strong> A esta hora mucha gente ya regresó al barco — la playa se vacía. Mejor momento para conseguir sillas con sombra.'},
+    {hi:true,icon:'🔙',text:'<strong>Regresar al barco a las 3:30–4:00pm.</strong> El cierre es a las 4:45pm. Tiempo para ducharse, prepararse para la última cena rotacional y cerrar maletas (desembarque mañana).'},
+    {hi:false,icon:'🛒',text:'Nota logística: hay coches/carritos gratuitos en la isla. El barco está atracado directamente — se puede volver en cualquier momento.'},
+  ]},
+  {icon:'🏰',name:'Lun 2 nov — Desembarque',sub:'Port Canaveral → destino final',badge:'b-regreso',tips:[
+    {hi:true,icon:'📋',text:'<strong>Noche anterior:</strong> revisar el folio del camarote (estado de cuenta), cerrar maletas y dejarlas en el pasillo antes de las 11pm si quieren que las lleven al área de desembarque.'},
+    {hi:false,icon:'📸',text:'Antes de salir del barco: revisar las fotos profesionales en el sistema (AquaMouse, Castaway Cay, cenas). Se eliminan automáticamente al terminar el viaje — no hay segunda oportunidad.'},
+    {hi:false,icon:'🧳',text:'Tener ropa cómoda de desembarque accesible en el carry-on desde la noche anterior — las maletas despachadas las recoges en el área de desembarque.'},
+    {hi:false,icon:'🛒',text:'Si quieren comprar souvenirs de último momento, la tienda Mickey\'s Mainsail cierra antes del desembarque — no esperar para el día de salida.'},
+    {hi:false,icon:'💳',text:'Verificar el folio antes de salir — cualquier cargo incorrecto es más fácil de resolver a bordo que después.'},
+  ]},
+];
+
+// ── RENDER DATES ──
+function renderDates(){
+  var container=document.getElementById('timeline-container');
+  container.innerHTML='';
+  DATES_DATA.forEach(function(group,gi){
+    var open=dateGroupOpen[gi]!==false;
+    var urgentCount=group.items.filter(function(i){return i.urgent&&!datesDone[i.id];}).length;
+    var doneCount=group.items.filter(function(i){return datesDone[i.id];}).length;
+    var wrap=document.createElement('div');
+    wrap.className='tl-group';
+    wrap.id='tlg-'+gi;
+    var countHtml=urgentCount>0
+      ?'<span class="tl-group-count has-urgent">'+urgentCount+' urgente'+(urgentCount>1?'s':'')+'</span>'
+      :'<span class="tl-group-count">'+doneCount+'/'+group.items.length+'</span>';
+    wrap.innerHTML='<div class="tl-group-head'+(open?' open':'')+'" onclick="toggleDateGroup('+gi+')">'
+      +'<span class="tl-group-title">'+group.group+'</span>'
+      +countHtml
+      +'<span class="tl-group-chev'+(open?' open':'')+'" id="tlgchev-'+gi+'">▼</span>'
+    +'</div>'
+    +'<div class="tl-group-body" id="tlgbody-'+gi+'"'+(open?'':' style="display:none"')+'></div>';
+    container.appendChild(wrap);
+    var body=wrap.querySelector('.tl-group-body');
+    group.items.forEach(function(item){
+      var done=!!datesDone[item.id];
+      var row=document.createElement('div');
+      row.className='tl-item'+(item.urgent&&!done?' urgent':'')+(done?' tl-done':'');
+      row.id='tl-'+item.id;
+      row.onclick=function(){toggleDate(item.id);};
+      row.innerHTML='<div class="tl-left"><div class="tl-date-badge">'+item.date+'</div></div>'
+        +'<div class="tl-content"><div class="tl-title">'+item.title+'</div><div class="tl-desc">'+item.desc+'</div></div>'
+        +'<div class="tl-cb'+(done?' done':'')+'">'+( done?'✓':'')+'</div>';
+      body.appendChild(row);
+    });
+  });
+}
+
+function toggleDateGroup(gi){
+  dateGroupOpen[gi]=dateGroupOpen[gi]===false?true:false;
+  var body=document.getElementById('tlgbody-'+gi);
+  var chev=document.getElementById('tlgchev-'+gi);
+  var head=document.querySelector('#tlg-'+gi+' .tl-group-head');
+  var open=dateGroupOpen[gi]!==false;
+  if(body)body.style.display=open?'':'none';
+  if(chev)chev.classList.toggle('open',open);
+  if(head)head.classList.toggle('open',open);
+}
+
+function toggleDate(id){
+  datesDone[id]=!datesDone[id];
+  db.ref(DATES_PATH+'/'+id).set(datesDone[id]||null).catch(function(){});
+  var row=document.getElementById('tl-'+id);
+  if(!row)return;
+  var item=null;var gi=-1;
+  DATES_DATA.forEach(function(g,gii){g.items.forEach(function(i){if(i.id===id){item=i;gi=gii;}});});
+  if(!item)return;
+  var done=datesDone[id];
+  row.className='tl-item'+(item.urgent&&!done?' urgent':'')+(done?' tl-done':'');
+  var cb=row.querySelector('.tl-cb');
+  if(cb){cb.className='tl-cb'+(done?' done':'');cb.textContent=done?'✓':'';}
+  if(gi>=0){
+    var group=DATES_DATA[gi];
+    var urgentCount=group.items.filter(function(i){return i.urgent&&!datesDone[i.id];}).length;
+    var doneCount=group.items.filter(function(i){return datesDone[i.id];}).length;
+    var badge=document.querySelector('#tlg-'+gi+' .tl-group-count');
+    if(badge){
+      if(urgentCount>0){badge.className='tl-group-count has-urgent';badge.textContent=urgentCount+' urgente'+(urgentCount>1?'s':'');}
+      else{badge.className='tl-group-count';badge.textContent=doneCount+'/'+group.items.length;}
+    }
+  }
+}
+
+// ── RENDER GUIA ──
+function renderGuia(){
+  var container=document.getElementById('guia-container');
+  container.innerHTML='';
+  GUIA_DATA.forEach(function(day,di){
+    var open=guideDayOpen[di];
+    var div=document.createElement('div');
+    div.className='guide-day';
+    div.innerHTML='<div class="guide-day-head'+(open?' open':'')+'" onclick="toggleGuideDay('+di+')">'
+      +'<span class="guide-day-icon">'+day.icon+'</span>'
+      +'<div class="guide-day-info"><div class="guide-day-name">'+day.name+'</div><div class="guide-day-sub">'+day.sub+'</div></div>'
+      +'<span class="day-badge '+day.badge+'" style="font-size:10px;padding:3px 9px;border-radius:8px">'+day.sub.split(' · ')[0]+'</span>'
+      +'<span style="font-size:10px;color:var(--ink3);transition:transform .2s;flex-shrink:0;margin-left:8px'+(open?';transform:rotate(180deg)':'')+'">▼</span>'
+    +'</div>'
+    +'<div class="guide-day-body" id="gbody-'+di+'"'+(open?'':' style="display:none"')+'>'
+      +'<div class="guide-tips">'
+      +day.tips.map(function(t){return '<div class="tip-row'+(t.hi?' highlight':'')+'"><span class="tip-icon">'+t.icon+'</span><span class="tip-text">'+t.text+'</span></div>';}).join('')
+      +'</div></div>';
+    container.appendChild(div);
+  });
+}
+
+function toggleGuideDay(di){
+  guideDayOpen[di]=!guideDayOpen[di];
+  var body=document.getElementById('gbody-'+di);
+  var head=body?body.previousElementSibling:null;
+  if(guideDayOpen[di]){
+    if(body)body.style.display='';
+    if(head){head.classList.add('open');var chev=head.querySelector('span:last-child');if(chev)chev.style.transform='rotate(180deg)';}
+  } else {
+    if(body)body.style.display='none';
+    if(head){head.classList.remove('open');var chev=head.querySelector('span:last-child');if(chev)chev.style.transform='';}
+  }
+}
+
+// ── FIREBASE LISTENER ──
+setSS('saving','conectando...');
+db.ref(DATES_PATH).on('value',function(snap){
+  var data=snap.val()||{};
+  datesDone={};
+  Object.keys(data).forEach(function(k){if(data[k])datesDone[k]=true;});
+  setSS('ok','✓');
+  if(!initialized){
+    initialized=true;
+    renderDates();
+    renderGuia();
+  } else {
+    renderDates();
+  }
+},function(){setSS('err','sin conexión');});
+</script>
+</body>
+</html>
