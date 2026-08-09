@@ -223,7 +223,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
   <div class="app-header-row">
     <div>
       <div class="app-title">Disney Wish 2026</div>
-      <div class="app-subtitle">Oct 30 – Nov 2 · Guía del crucero · Halloween on the High Seas</div>
+      <div class="app-subtitle">Oct 27 – Nov 4 · Guía del viaje · Halloween on the High Seas</div>
     </div>
     <div class="header-controls">
       <div class="sync-pill"><span class="sdot" id="sdot"></span><span id="slbl">···</span></div>
@@ -606,17 +606,34 @@ var DATES_DATA=[
     {id:'d7',urgent:false,date:'Sep 2026',title:'Subir fotos de seguridad en el check-in',desc:'El check-in pide foto reciente de cada miembro de la familia. Tenerlas listas en el teléfono para subir al momento.'},
     {id:'d8',urgent:false,date:'Sep 2026',title:'Confirmar datos de vuelos en el check-in',desc:'El check-in pide número de vuelo de llegada y salida. Tenerlos a mano al hacer el check-in online.'},
   ]},
-  {group:'Octubre 2026 — semana del crucero',items:[
+  {group:'Octubre – Noviembre 2026 — semana del viaje',items:[
     {id:'d9',urgent:false,date:'Días antes',title:'Cargar MagicBands+ completamente',desc:'Conectar ambas bands la noche antes de salir. El cargador propietario (diferente al del teléfono) va en el carry-on. Sin carga, las bands siguen funcionando para puertas y cargos — solo se pierden los efectos de luz.'},
+    {id:'d9b',urgent:false,date:'27 oct',title:'Salida de Guatemala (vuelo)',desc:'Todos en el mismo vuelo Copa Airlines hacia Orlando. Tener documentos y pasaportes a mano en el carry-on.'},
+    {id:'d9c',urgent:false,date:'28 oct',title:'Día libre en Orlando',desc:'Día de descanso y bajo presupuesto, sin reservaciones fijas. Buen momento para coordinar quién hace qué el resto de la semana.'},
+    {id:'d9d',urgent:false,date:'29 oct',title:'SEA LIFE Orlando + Premium Outlets',desc:'SEA LIFE Orlando Aquarium en ICON Park (comprar tickets online, ~$20-29 por persona). Luego Orlando Premium Outlets - International Drive (~15 min).'},
     {id:'d10',urgent:false,date:'30 oct · mañana',title:'Embarque — Port Canaveral',desc:'Llegar a la hora del PAT más temprano posible. El barco está casi vacío en las primeras horas — AquaMouse sin cola, piscinas disponibles. Registrar a las niñas en el Oceaneer Club apenas suban al barco.'},
     {id:'d11',urgent:false,date:'31 oct',title:'Nassau — plan del día',desc:'3 barcos en puerto (~16,000 pasajeros). Estrategia: quedarse a bordo hasta las 11am. Luego: Straw Market (11–11:45) · Pirates of Nassau Museum ($14 adultos, $7 niños) · Rip Ty\'d Tap Room (1:15–2pm). Regreso al barco 2pm. Por la noche: Pirate Night + fuegos artificiales.'},
     {id:'d12',urgent:false,date:'1 nov',title:'Castaway Cay — isla privada Disney',desc:'Bajar a las 9–9:30am para fotos con personajes (poca cola). Pelican Plunge para las niñas (mín. 38"). Cookie\'s BBQ a las 11:30am. Playa y Scuttle\'s Cove (kids club en la isla, gratis). Regresar al barco 3:30–4pm. Cerrar maletas esa noche.'},
     {id:'d13',urgent:false,date:'2 nov · mañana',title:'Desembarque',desc:'Temprano en la mañana. Revisar el folio del camarote la noche anterior. Antes de salir: revisar fotos profesionales en el sistema (se eliminan al terminar el crucero). Tener ropa cómoda accesible en el carry-on desde la noche anterior.'},
+    {id:'d14',urgent:false,date:'3 nov',title:'Disney Springs + Vineland Outlets',desc:'Mañana tarde libre en Disney Springs (gratis, sin ticket de parque). Luego Orlando Vineland Premium Outlets (~10-15 min), incluye Disney Character Warehouse.'},
+    {id:'d15',urgent:false,date:'4 nov',title:'Regreso a Guatemala (vuelo)',desc:'Todos en el mismo vuelo Copa Airlines de regreso. Confirmar hora de check-in según el horario del vuelo.'},
   ]},
 ];
 
 // ── GUIA DATA ──
 var GUIA_DATA=[
+  {icon:'✈',name:'Mar 27 oct — Vuelo hacia Orlando',sub:'Copa Airlines · todos juntos',badge:'b-viaje',tips:[
+    {hi:true,icon:'📋',text:'Pasaportes y documentos en carpeta en el carry-on. Nunca en maleta despachada.'},
+    {hi:false,icon:'🍪',text:'Solo snacks sellados de fábrica para aduanas en EE.UU. Sin frutas frescas, lácteos frescos ni carnes — los confiscan.'},
+    {hi:false,icon:'🧳',text:'El equipaje despachado llega horas después de embarcar el crucero. La ropa de llegada va en el carry-on.'},
+  ]},
+  {icon:'🏠',name:'Mié 28 oct — Día libre',sub:'Orlando · descanso pre-crucero',badge:'b-viaje',tips:[
+    {hi:false,icon:'☕',text:'Día de bajo presupuesto y flexible. Sin reservaciones — buen momento para descansar del vuelo y coordinar los últimos detalles antes del crucero.'},
+  ]},
+  {icon:'🐠',name:'Jue 29 oct — SEA LIFE + Outlets',sub:'ICON Park · Orlando Premium Outlets',badge:'b-viaje',tips:[
+    {hi:false,icon:'🎟',text:'<strong>SEA LIFE Orlando Aquarium</strong> en ICON Park. Comprar tickets online con anticipación (~$20-29 por persona) para mejor precio.'},
+    {hi:false,icon:'🛍',text:'<strong>Orlando Premium Outlets - International Drive</strong> (~15 min del aquarium). Buena oportunidad para compras de último momento antes del crucero.'},
+  ]},
   {icon:'🚢',name:'Vie 30 oct — Embarque',sub:'Port Canaveral · Disney Wish',badge:'b-crucero',tips:[
     {hi:true,icon:'⭐',text:'<strong>Llegar a la hora del PAT más temprano posible.</strong> Entre antes entren, más tiempo de explorar el barco antes de que zarpe. El Oceaneer Club y las piscinas abren ese mismo día.'},
     {hi:false,icon:'🎡',text:'<strong>AquaMouse:</strong> la fila es más corta al embarcar (~1pm). Ir directo si las niñas quieren montarla — después la fila puede crecer mucho. Verificar talla mínima 42" / 107cm.'},
@@ -652,6 +669,14 @@ var GUIA_DATA=[
     {hi:false,icon:'🧳',text:'Tener ropa cómoda de desembarque accesible en el carry-on desde la noche anterior — las maletas despachadas las recoges en el área de desembarque.'},
     {hi:false,icon:'🛒',text:'Si quieren comprar souvenirs de último momento, la tienda Mickey\'s Mainsail cierra antes del desembarque — no esperar para el día de salida.'},
     {hi:false,icon:'💳',text:'Verificar el folio antes de salir — cualquier cargo incorrecto es más fácil de resolver a bordo que después.'},
+  ]},
+  {icon:'🛍',name:'Mar 3 nov — Disney Springs + Outlets',sub:'Orlando · día libre post-crucero',badge:'b-regreso',tips:[
+    {hi:false,icon:'🌆',text:'<strong>Disney Springs</strong> (gratis) — mañana tarde. Tiendas, restaurantes y ambiente Disney sin necesidad de ticket de parque.'},
+    {hi:false,icon:'🛍',text:'<strong>Orlando Vineland Premium Outlets</strong> (~10-15 min de Disney Springs). Incluye Disney Character Warehouse — buena opción para souvenirs con descuento.'},
+  ]},
+  {icon:'✈',name:'Mié 4 nov — Vuelo de regreso',sub:'Copa Airlines · todos juntos',badge:'b-regreso',tips:[
+    {hi:true,icon:'🕐',text:'Confirmar hora de check-in en el aeropuerto según el horario exacto del vuelo. Para vuelos internacionales, llegar con tiempo suficiente.'},
+    {hi:false,icon:'🧳',text:'Última revisión de equipaje — repartir souvenirs y compras nuevas entre las maletas antes de salir hacia el aeropuerto.'},
   ]},
 ];
 
