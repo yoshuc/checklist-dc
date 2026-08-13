@@ -424,8 +424,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
       <button class="ftab active" onclick="setFilter('all',this)">Todos</button>
       <button class="ftab" onclick="setFilter('mal1',this)">🧳 Maleta 1</button>
       <button class="ftab" onclick="setFilter('mal2',this)">🧳 Maleta 2</button>
-      <button class="ftab" onclick="setFilter('carry',this)">🎒 Carry-on 1</button>
-      <button class="ftab" onclick="setFilter('carry2',this)">🎒 Carry-on 2</button>
+      <button class="ftab" onclick="setFilter('carry',this)">🎒 Carry-on</button>
       <button class="ftab" onclick="setFilter('mochilas',this)">👜 Mochilas</button>
       <button class="ftab" onclick="setFilter('panialera',this)">🍼 Pañalera</button>
       <button class="ftab" onclick="setFilter('sueltos',this)">🧴 Neceser</button>
@@ -456,11 +455,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
       <div id="vcbody" style="display:none">
         <div class="vcounter-body">
           <div class="counter-grid">
-            <div class="counter-cell"><div class="csz csz-s">Small · 29</div><div class="cdims">18.5 × 25.2"</div><div class="cmal"><span>M1: <b>0</b></span><span>M2: <b>4</b></span><span>C2: <b>0</b></span></div><div class="ctotal">4</div><div class="csub">ropa bebé por días</div></div>
-            <div class="counter-cell"><div class="csz csz-m">Medium · 34</div><div class="cdims">21.2 × 29.1"</div><div class="cmal"><span>M1: <b>4</b></span><span>M2: <b>2</b></span><span>C2: <b>1</b></span></div><div class="ctotal">7</div><div class="csub">adultos + niñas + Halloween</div></div>
-            <div class="counter-cell"><div class="csz csz-l">Large · 39</div><div class="cdims">24 × 33"</div><div class="cmal"><span>M1: <b>2</b></span><span>M2: <b>3</b></span><span>C2: <b>2</b></span></div><div class="ctotal">7</div><div class="csub">disfraces + gala + pañales</div></div>
+            <div class="counter-cell"><div class="csz csz-s">Small · 29</div><div class="cdims">18.5 × 25.2"</div><div class="cmal"><span>M1: <b>0</b></span><span>M2: <b>4</b></span></div><div class="ctotal">4</div><div class="csub">ropa bebé</div></div>
+            <div class="counter-cell"><div class="csz csz-m">Medium · 34</div><div class="cdims">21.2 × 29.1"</div><div class="cmal"><span>M1: <b>4</b></span><span>M2: <b>2</b></span></div><div class="ctotal">6</div><div class="csub">adultos + niña</div></div>
+            <div class="counter-cell"><div class="csz csz-l">Large · 39</div><div class="cdims">24 × 33"</div><div class="cmal"><span>M1: <b>3</b></span><span>M2: <b>3</b></span></div><div class="ctotal">6</div><div class="csub">disfraces + pañales</div></div>
           </div>
-          <div class="rec-box"><strong>18 bolsas en total — pack completo utilizado.</strong> 4S + 7M + 7L = 18 bolsas. Sin backup — verificar que todas sellen bien antes de cerrar. <strong>No van en bolsa de vacío:</strong> accesorios cabina (cortina, bañera, máquina ruido, ganchos, decoraciones), neceser, botiquín.</div>
+          <div class="rec-box"><strong>16 bolsas en total</strong> — pack de 18 alcanza, sobran 2 de backup. <strong>No van en bolsa:</strong> máquina ruido blanco, ganchos magnéticos, bañera inflable, organizador puerta, cortina blackout, neceser, botiquín.</div>
         </div>
       </div>
     </div>
@@ -641,6 +640,10 @@ var MAL1=[
   {date:'Vie 30 oct · Embarque',label:'Día 1 a bordo · Port Canaveral',badge:'crucero',bags:[
     {size:'L',who:'Yosh + Joss',items:['Outfit embarque Yosh','Outfit embarque Joss','Traje de baño Yosh (1er juego)','Traje de baño Joss (1er juego)','Pareo Yosh','Pareo Joss','Outfit cena rotacional casual noche Vie 30']}
   ]},
+  {date:'Sáb 31 oct · Nassau',label:'Pirate Night + Halloween — misma noche',badge:'pirata',bags:[
+    {size:'L',who:'Disfraz Pirata (ambos)',items:['Disfraz pirata Yosh','Disfraz pirata Joss','Accesorios pirata Yosh (parche, bandana, cinturón)','Accesorios pirata Joss (parche, bandana, cinturón)']},
+    {size:'M',who:'Disfraz Halloween (ambos)',items:['Disfraz Halloween Yosh','Disfraz Halloween Joss','Accesorios Halloween Yosh','Accesorios Halloween Joss']}
+  ]},
   {date:'Dom 1 nov · Castaway Cay',label:'Día 4 · Isla privada Disney',badge:'playa',bags:[
     {size:'M',who:'Yosh + Joss',items:['Traje de baño Yosh (2do juego)','Traje de baño Joss (2do juego)','Pareo Yosh (2do)','Pareo Joss (2do)','Shorts cambio Yosh','Shorts cambio Joss','Outfit cena rotacional casual noche Dom 1']}
   ]},
@@ -663,6 +666,9 @@ var MAL2=[
     {size:'M',who:'Emma (7a)',items:['Outfit embarque niña','Traje de baño niña (1er juego)','Shorts de cambio niña','Outfit cena rotacional casual noche Vie 30','Ropa interior niña']},
     {size:'S',who:'Nina (1a9m)',items:['Onesies / rompers bebé (3-4 mudadas)','Traje de baño UPF bebé','Swim diapers día embarque (3-4 uds.)','Baberos (3)']}
   ]},
+  {date:'Sáb 31 oct · Nassau',label:'Pirate Night + Halloween — misma noche',badge:'pirata',bags:[
+    {size:'L',who:'Emma + Nina · disfraces',items:['Disfraz pirata completo niña','Disfraz Halloween completo niña','Mini disfraz Halloween bebé','Mini accesorios pirata bebé','3 mudadas bebé del día','Ropa interior niña']}
+  ]},
   {date:'Dom 1 nov · Castaway Cay',label:'Día 4 · Isla privada Disney',badge:'playa',bags:[
     {size:'L',who:'Emma + Nina · playa',items:['Traje de baño niña (2do juego)','Shorts de cambio niña','Outfit cena noche Dom 1 niña','Ropa UPF bebé (top + bottom)','Swim diapers bebé (5-6 uds.)','Sombrero de sol bebé','Cambio seco bebé']}
   ]},
@@ -678,6 +684,9 @@ var MAL2=[
   {date:'Todo el viaje',label:'Pañales regulares comprimidos',badge:'crucero',bags:[
     {size:'L',who:'Nina (1a9m)',items:['~60-80 pañales regulares (todo el viaje)','Toallitas húmedas extra (2 paquetes)']}
   ]},
+  {date:'Maleta 2 — accesorios cabina',label:'Sólidos · sin bolsa de vacío',badge:'viaje',bags:[
+    {size:'x',who:'Entre bolsas comprimidas',items:['Máquina de ruido blanco','Ganchos magnéticos (bolsita zip)','Bañera inflable bebé (en empaque)','Organizador de puerta (enrollado)','Cortina blackout (doblada)','Decoraciones magnéticas Disney + Halloween']}
+  ]},
 ];
 var MAL_CARRY=[
   {date:'Día de viaje',label:'Ropa de llegada (4 personas)',badge:'viaje',bags:[
@@ -691,18 +700,6 @@ var MAL_CARRY=[
   ]},
   {date:'Acceso rápido · cabina',label:'Salud y protección solar',badge:'crucero',bags:[
     {size:'x',who:'Familia',items:['Protector solar SPF 50+ (≤100ml para cabina)','Ibuprofeno (adultos + niños)','Antiemético para mareo','Pastillas mareo bebé','Alcohol gel','Tiritas básicas']}
-  ]},
-];
-var MAL_CARRY2=[
-  {date:'Sáb 31 oct · Nassau · Pirate Night',label:'Disfraces adultos — comprimidos en Vacbird',badge:'pirata',bags:[
-    {size:'L',who:'Yosh + Joss · disfraz pirata',items:['Disfraz pirata Yosh','Disfraz pirata Joss','Accesorios pirata Yosh (parche, bandana, cinturón)','Accesorios pirata Joss (parche, bandana, cinturón)']},
-    {size:'M',who:'Yosh + Joss · disfraz Halloween',items:['Disfraz Halloween Yosh','Disfraz Halloween Joss','Accesorios Halloween Yosh','Accesorios Halloween Joss']}
-  ]},
-  {date:'Sáb 31 oct · Nassau · Pirate Night',label:'Disfraces niñas — comprimidos en Vacbird',badge:'pirata',bags:[
-    {size:'L',who:'Emma + Nina · disfraces',items:['Disfraz pirata completo Emma','Disfraz Halloween completo Emma','Mini disfraz Halloween Nina','Mini accesorios pirata Nina','3 mudadas bebé del día (Nassau)','Ropa interior niña (día Nassau)']}
-  ]},
-  {date:'Carry-on 2 — accesorios cabina',label:'Sólidos · sin bolsa de vacío · instalar al embarcar',badge:'crucero',bags:[
-    {size:'x',who:'Entre disfraces comprimidos',items:['Cortina blackout (doblada — instalar día 1)','Bañera inflable bebé (en empaque)','Máquina de ruido blanco','Organizador de puerta (enrollado)','Ganchos magnéticos (bolsita zip)','Decoraciones magnéticas Disney + Halloween']}
   ]},
 ];
 var MAL_MOCHILAS=[
@@ -752,10 +749,9 @@ var MAL_SUELTOS=[
   ]},
 ];
 var ALL_GRIDS=[
-  {id:'mal1',icon:'🧳',title:'Maleta 1 — Yosh &amp; Joss',sub:'6 bolsas · 4M+2L',data:MAL1},
+  {id:'mal1',icon:'🧳',title:'Maleta 1 — Yosh &amp; Joss',sub:'7 bolsas · 4M+3L',data:MAL1},
   {id:'mal2',icon:'🧳',title:'Maleta 2 — Emma &amp; Nina',sub:'9 bolsas · 4S+2M+3L',data:MAL2},
-  {id:'carry',icon:'🎒',title:'Carry-on 1 — documentos y llegada',sub:'sin bolsas de vacío · NUNCA en bodega',data:MAL_CARRY},
-  {id:'carry2',icon:'🎒',title:'Carry-on 2 — disfraces y cabina',sub:'3 bolsas Vacbird · viajan en cabina',data:MAL_CARRY2},
+  {id:'carry',icon:'🎒',title:'Carry-on — cabina',sub:'sin bolsas de vacío',data:MAL_CARRY},
   {id:'mochilas',icon:'👜',title:'Mochilas — 4 personal items',sub:'cabina · bajo el asiento',data:MAL_MOCHILAS},
   {id:'panialera',icon:'🍼',title:'Bolsa pañalera — ítem gratuito',sub:'cabina · acceso inmediato',data:MAL_PANIALERA},
   {id:'sueltos',icon:'🧴',title:'Neceser + Botiquín + Sólidos',sub:'sin bolsa de vacío',data:MAL_SUELTOS},
@@ -769,26 +765,22 @@ var DATES_DATA=[
     {id:'d3',urgent:false,date:'Ahora',title:'Vincular MagicBands+ al crucero',desc:'Entrar a disneycruise.com → Mi reserva → DisneyBand+. Vincular ambas bands antes de zarpar.'},
   ]},
   {group:'Agosto 2026',items:[
-    {id:'d4',urgent:true,date:'16 ago',title:'Reserva de actividades a bordo abre',desc:'Specialty dining (Palo, Enchante), spa, Port Adventures, Bibbidi Bobbidi Boutique para Emma. Entrar a medianoche EST para los mejores horarios.'},
+    {id:'d4',urgent:true,date:'15 ago · 10:00 PM (hora GT)',title:'Reserva de actividades a bordo abre',desc:'Specialty dining (Palo, Enchanté), spa, Port Adventures, Bibbidi Bobbidi Boutique para Emma. Abre a medianoche hora del Este (16 ago) = 10:00 PM hora de Guatemala LA NOCHE ANTERIOR (15 ago). Guatemala está 2h detrás de Eastern (EDT UTC-4 vs Guatemala UTC-6, fijo todo el año).'},
   ]},
   {group:'Septiembre 2026',items:[
-    {id:'d5',urgent:true,date:'30 sep · medianoche',title:'Royal Gathering — reservar a medianoche',desc:'¡CRÍTICO para Emma! La experiencia gratuita de princesas se agota en minutos. Entrar a disneycruise.com exactamente a medianoche hora del Este (22:00 Guatemala).'},
-    {id:'d6',urgent:true,date:'30 sep · medianoche',title:'Check-in online abre',desc:'Hacer check-in en cuanto abra. El Port Arrival Time (PAT) más temprano disponible llena rápido — entre más temprano, más tiempo en el barco el día de embarque.'},
+    {id:'d5',urgent:true,date:'29 sep · 10:00 PM (hora GT)',title:'Royal Gathering — reservar a medianoche ET',desc:'¡CRÍTICO para Emma! La experiencia gratuita de princesas se agota en minutos. Entrar a disneycruise.com exactamente a medianoche hora del Este (30 sep) = 10:00 PM hora de Guatemala LA NOCHE ANTERIOR (29 sep).'},
+    {id:'d6',urgent:true,date:'29 sep · 10:00 PM (hora GT)',title:'Check-in online abre',desc:'Abre a medianoche hora del Este (30 sep) = 10:00 PM hora de Guatemala LA NOCHE ANTERIOR (29 sep). Hacer check-in en cuanto abra. El Port Arrival Time (PAT) más temprano disponible llena rápido — entre más temprano, más tiempo en el barco el día de embarque.'},
     {id:'d7',urgent:false,date:'Sep 2026',title:'Subir fotos de seguridad en el check-in',desc:'El sistema pide foto de cada miembro de la familia. Tener fotos recientes de Yosh, Joss, Emma y Nina listas para subir.'},
     {id:'d8',urgent:false,date:'Sep 2026',title:'Confirmar datos de vuelos en check-in',desc:'El check-in pide detalles de vuelo de llegada y salida. Tener número de vuelo Copa a mano.'},
   ]},
   {group:'Octubre 2026 — semana del crucero',items:[
     {id:'d9',urgent:false,date:'Antes del 27 oct',title:'Cargar MagicBands+ completamente',desc:'Conectar ambas bands la noche antes de salir de Guatemala. El cargador propietario va en el carry-on.'},
-    {id:'d10',urgent:false,date:'27 oct',title:'Preparar folder de documentos',desc:'Pasaportes (4), actas de nacimiento Emma y Nina, registro de vacunas Nina, póliza seguro, itinerario impreso, tickets de vuelo. En carpeta o sobre plástico en carry-on.'},
-    {id:'d11',urgent:false,date:'27 oct',title:'Salida de Guatemala (vuelo)',desc:'Copa Airlines GUA → PTY → MCO. Declarar fórmula/leche bebé en seguridad TSA. No llevar frutas frescas. Recoger Rental #1 (Premium SUV) en MCO al llegar.'},
-    {id:'d11b',urgent:false,date:'28 oct',title:'Día libre con la tía',desc:'Día de bajo presupuesto y flexible en casa de la tía de Yosh en Orlando. Sin reservaciones.'},
-    {id:'d11c',urgent:false,date:'29 oct',title:'SEA LIFE Orlando + Premium Outlets',desc:'SEA LIFE Orlando Aquarium en ICON Park (comprar tickets online ~$20-29pp). Luego Orlando Premium Outlets - International Drive (~15 min).'},
-    {id:'d12',urgent:false,date:'30 oct',title:'Manejar a Port Canaveral',desc:'Manejar Rental #1 (Premium SUV) de Casa Orlando a Port Canaveral (~1h, 53 millas). Devolver vehículo en 710 Mullet Rd. Hora de devolución depende del PAT asignado (disponible 30 sep). El equipaje va directo a la cabina al llegar al puerto. Llevar swim diapers de Nina en el carry-on por si el splash pad llama al embarcar.'},
-    {id:'d13',urgent:false,date:'31 oct',title:'Nassau — día en puerto',desc:'3 barcos en puerto ese día (~16,000 pasajeros). Estrategia: quedarse a bordo hasta las 11am (AquaMouse sin cola). Bajar 11am · Straw Market (11–11:45) · Pirates of Nassau Museum (11:45–1:15 · $14 adultos, $7 niños) · Rip Ty\'d Tap Room (1:15–2pm). Regreso al barco a las 2pm. Por la noche: Pirate Night + fuegos artificiales — disfraces listos y accesibles.'},
+    {id:'d10',urgent:false,date:'26 oct',title:'Preparar folder de documentos',desc:'Pasaportes (4), actas de nacimiento Emma y Nina, registro de vacunas Nina, póliza seguro, itinerario impreso, tickets de vuelo. En carpeta o sobre plástico en carry-on.'},
+    {id:'d11',urgent:false,date:'27 oct',title:'Salida de Guatemala (vuelo)',desc:'GUA → PTY → MCO. Declarar fórmula/leche bebé en seguridad TSA. No llevar frutas frescas.'},
+    {id:'d12',urgent:false,date:'30 oct · 11am EST',title:'Llegada al puerto Port Canaveral',desc:'DCL Transfer desde MCO ($45 × 4 = $180). El equipaje va directo a la cabina. Llevar swim diapers de Nina en el carry-on por si el splash pad llama al embarcar.'},
+    {id:'d13',urgent:false,date:'31 oct',title:'Nassau — itinerario coordinado con familiares del Utopia',desc:'3 barcos en puerto ese día (~16,000 pasajeros). Estrategia: quedarse a bordo hasta las 11am (AquaMouse sin cola). Bajar 11am · Straw Market (11–11:45) · Pirates of Nassau Museum (11:45–1:15 · $14 adultos, $7 niños) · Rip Ty\'d Tap Room (1:15–2pm). Regreso al barco a las 2pm. Por la noche: Pirate Night + fuegos artificiales — disfraces listos y accesibles.'},
     {id:'d14',urgent:false,date:'1 nov',title:'Castaway Cay — plan completo del día',desc:'Bajar 9:00–9:30am. Fotos con personajes temprano (poca cola). Spring-a-Leak para Nina + Pelican Plunge para Emma (9:30–11:30am). Cookie\'s BBQ almuerzo a las 11:30am. Playa + siesta Nina + Scuttle\'s Cove Emma (12:30–2:30pm). Última ronda en agua (2:30–3:30pm — playa más vacía). Regresar al barco a las 3:30–4:00pm. Cerrar maletas esa noche — desembarque mañana.'},
-    {id:'d15',urgent:false,date:'2 nov · mañana',title:'Desembarque',desc:'Temprano en la mañana. Recoger Rental #2 (Full Size SUV) a las 9:30am en 710 Mullet Rd, Port Canaveral. Silla de bebé incluida en el rental. Manejar a Casa Orlando (~1h, 53 millas). Equipaje a recoger en área de desembarque.'},
-    {id:'d16',urgent:false,date:'3 nov',title:'Disney Springs + Vineland Outlets',desc:'Mañana tarde libre en Disney Springs (gratis). Luego Orlando Vineland Premium Outlets (~10-15 min), incluye Disney Character Warehouse.'},
-    {id:'d17',urgent:false,date:'4 nov',title:'Regreso a Guatemala (vuelo)',desc:'Devolver Rental #2 en MCO. Copa Airlines MCO → PTY → GUA. Hora de check-in depende del horario del vuelo.'},
+    {id:'d15',urgent:false,date:'2 nov · mañana',title:'Desembarque',desc:'Temprano en la mañana. Uber XL Port Canaveral → Casa Orlando (~$108). Llevar silla de carro Nina para el Uber. Equipaje a recoger en área de desembarque.'},
   ]},
 ];
 
@@ -807,7 +799,7 @@ var BUYS_DATA=[
     {id:'b8',name:'Disfraz pirata completo Emma',note:'',price:'',pri:'alta'},
     {id:'b9',name:'Disfraz Halloween Emma',note:'',price:'',pri:'alta'},
     {id:'b10',name:'Mini disfraz Halloween / pirata Nina',note:'Algo cómodo y seguro para bebé de 1a9m.',price:'',pri:'media'},
-    {id:'b11',name:'Vestido de princesa Emma (Royal Gathering)',note:'Para el evento de princesas — reservar 30 sep a medianoche.',price:'',pri:'alta'},
+    {id:'b11',name:'Vestido de princesa Emma (Royal Gathering)',note:'Para el evento de princesas — reservar 29 sep 10pm hora GT (medianoche ET 30 sep).',price:'',pri:'alta'},
   ]},
   {section:'Accesorios de cabina',items:[
     {id:'b12',name:'Decoraciones magnéticas Halloween para puerta',note:'Pedir en Amazon o Etsy. Paredes y puertas del camarote son magnéticas.',price:'~$15',pri:'media'},
@@ -834,17 +826,21 @@ var GUIA_DATA=[
     {hi:false,icon:'🍪',text:'Solo snacks sellados de fábrica para aduanas MCO. Sin frutas frescas, lácteos frescos ni carnes — los confiscan.'},
     {hi:false,icon:'📋',text:'Pasaportes y documentos en carpeta en carry-on. Nunca en maleta despachada.'},
     {hi:false,icon:'🧳',text:'El equipaje llega al camarote horas después de embarcar. La ropa de llegada va en el carry-on.'},
-    {hi:false,icon:'🚗',text:'Recoger Rental #1 (Premium SUV) en el aeropuerto MCO al llegar. Servirá para los días pre-crucero y para manejar a Port Canaveral el día del embarque.'},
   ]},
-  {icon:'🏠',name:'Mié 28 oct — Día libre',sub:'Con la tía de Yosh · Orlando',badge:'b-viaje',tips:[
-    {hi:false,icon:'☕',text:'Día de bajo presupuesto y flexible en casa de la tía de Yosh. Sin reservaciones — descansar del vuelo y prepararse para el crucero.'},
+  {icon:'👨‍👩‍👧‍👦',name:'Mié 28 oct — Día libre con la tía',sub:'Orlando · según su disponibilidad',badge:'b-viaje',tips:[
+    {hi:true,icon:'💰',text:'<strong>Día de presupuesto bajo.</strong> Actividad flexible según lo que proponga tu tía — sin reservas ni tickets que comprar con anticipación.'},
+    {hi:false,icon:'👶',text:'Llevar snacks, pañales y tener en mente el horario de siesta de Nina, ya que el plan puede cambiar sobre la marcha.'},
+    {hi:false,icon:'🧳',text:'Buen día de colchón para terminar pendientes de compras de disfraces si algo quedó suelto.'},
   ]},
-  {icon:'🐠',name:'Jue 29 oct — SEA LIFE + Outlets',sub:'ICON Park · Orlando Premium Outlets',badge:'b-viaje',tips:[
-    {hi:false,icon:'🎟',text:'<strong>SEA LIFE Orlando Aquarium</strong> en ICON Park. Comprar tickets online con anticipación (~$20-29 por persona) para mejor precio.'},
-    {hi:false,icon:'🛍',text:'<strong>Orlando Premium Outlets - International Drive</strong> (~15 min del aquarium). Buena oportunidad para compras de último momento antes del crucero.'},
+  {icon:'🐠',name:'Jue 29 oct — SEA LIFE + Compras',sub:'ICON Park · International Drive',badge:'b-viaje',tips:[
+    {hi:true,icon:'🎟',text:'<strong>Comprar tickets de SEA LIFE en línea antes de ir</strong> — desde $20-29 pp (Friends & Family) vs. más caro en taquilla. Abre 10am, última entrada 7pm.'},
+    {hi:false,icon:'🕙',text:'Llegar cerca de la apertura (10-10:30am) para evitar el calor de mediodía y aprovechar el A/C del acuario con Nina.'},
+    {hi:false,icon:'🍽',text:'Almorzar en ICON Park o alrededores de International Drive antes de ir a los outlets.'},
+    {hi:false,icon:'🛍',text:'Orlando Premium Outlets - International Drive está a ~15 min en carro. Abierto hasta 9pm. Buen lugar para piezas de disfraces (pirata/Halloween) a buen precio.'},
+    {hi:false,icon:'👶',text:'Considerar coche/stroller para Nina en los outlets — es un recorrido largo caminando entre tiendas.'},
   ]},
   {icon:'🚢',name:'Vie 30 oct — Embarque',sub:'Port Canaveral · Disney Wish',badge:'b-crucero',tips:[
-    {hi:true,icon:'🚗',text:'<strong>Manejar Rental #1 de Casa Orlando a Port Canaveral</strong> (~1h, 53 millas). Devolver el vehículo en 710 Mullet Rd, Cape Canaveral. La hora de devolución depende del PAT asignado — devolver con margen suficiente antes del PAT.'},
+    {hi:true,icon:'⏳',text:'<strong>No programar actividades la mañana del 30</strong> hasta tener el PAT confirmado (se asigna en el check-in online que abre 29 sep 10:00 PM hora de Guatemala = medianoche hora del Este 30 sep). Usar el tiempo libre para empacar y hacer check-out de la renta compartida.'},
     {hi:true,icon:'⭐',text:'<strong>Llegar a la hora del PAT más temprano posible.</strong> Entre antes entren, más tiempo de explorar el barco antes de que zarpe. La sala de animación de Nina y el Oceaneer Club de Emma abren ese día.'},
     {hi:false,icon:'🎡',text:'<strong>AquaMouse:</strong> la fila es más corta al embarcar. Ir directo si Emma quiere montarla.'},
     {hi:false,icon:'👑',text:'Si no reservaste el Royal Gathering antes, verificar disponibilidad en la app DCL Navigator al conectarte a DCL-Guest Wi-Fi a bordo.'},
@@ -855,9 +851,10 @@ var GUIA_DATA=[
   {icon:'🏴',name:'Sáb 31 oct — Nassau + Pirate Night',sub:'Nassau 9:30am–5:30pm · Pirate Night + Halloween por la noche',badge:'b-pirata',tips:[
     {hi:true,icon:'⚠',text:'<strong>Ese día hay 3 barcos en puerto simultáneamente:</strong> MSC Seaside (8am), Utopia of the Seas (9am) y Disney Wish (9:30am) — aproximadamente 16,000 pasajeros en el mismo downtown Nassau. El timing es todo.'},
     {hi:true,icon:'⏰',text:'<strong>Estrategia: NO bajar antes de las 11am.</strong> Quedarse a bordo de 9:30–11am — el Wish está casi vacío, AquaMouse sin cola, piscinas para ustedes solos. La primera ola ya habrá pasado cuando bajen.'},
-    {hi:false,icon:'🛍',text:'<strong>11:00–11:45am — Straw Market.</strong> Justo a la derecha al salir del muelle, 3 min a pie. Emma elige un souvenir. Los vendedores esperan el regateo — es parte de la experiencia. Presupuesto sugerido: $10–15.'},
-    {hi:false,icon:'🏴',text:'<strong>11:45am–1:15pm — Pirates of Nassau Museum</strong> ($14 adultos, $7 niños 4–17, menores gratis). A/C dentro — un respiro del calor de Bahamas. Museo interactivo con barco pirata réplica, preguntas V/F que los niños adoran, efectos de sonido. Duración real: ~1h–1h15. Dirección: King Street, 4 min caminando del Straw Market.'},
-    {hi:false,icon:'🍺',text:'<strong>1:15–2:00pm — Rip Ty\'d Tap Room.</strong> Cervecería artesanal bahamense con barcaza antigua como barra central, mesas comunitarias y juegos de mesa para los niños.'},
+    {hi:false,icon:'👨‍👩‍👧‍👦',text:'<strong>Encuentro con familiares del Utopia of the Seas</strong> (llega 9am, sale 5pm). Coordinar bajarse todos a las 11am desde sus respectivos barcos. Punto de encuentro: entrada del Straw Market a las 11:15am. Si a las 11:30am alguien no llegó, el otro empieza y se reúne en el museo. Teléfono Rip Ty\'d: +1 (242) 806-8433.'},
+    {hi:false,icon:'🛍',text:'<strong>11:00–11:45am — Straw Market</strong> (todos juntos). Justo a la derecha al salir del muelle, 3 min a pie. Emma y los niños eligen un souvenir. Los vendedores esperan el regateo — es parte de la experiencia. Presupuesto sugerido por niño: $10–15.'},
+    {hi:false,icon:'🏴',text:'<strong>11:45am–1:15pm — Pirates of Nassau Museum</strong> (todos juntos · $14 adultos, $7 niños 4–17, menores gratis). A/C dentro — un respiro del calor de Bahamas. Museo interactivo con barco pirata réplica, preguntas V/F que los niños adoran, efectos de sonido. Duración real: ~1h–1h15. Dirección: King Street, 4 min caminando del Straw Market.'},
+    {hi:false,icon:'🍺',text:'<strong>1:15–2:00pm — Rip Ty\'d Tap Room</strong> (todos juntos). Cervecería artesanal bahamense con barcaza antigua como barra central, mesas comunitarias y juegos de mesa para los niños. La despedida perfecta antes de que cada familia regrese a su barco.'},
     {hi:false,icon:'🚶',text:'<strong>2:00pm — Regreso al barco.</strong> Rip Ty\'d está a 10 min caminando del muelle. De vuelta a las 2pm — 3.5 horas antes de que zarpe el Wish. Nina puede hacer siesta. Tiempo completo para prepararse para la noche.'},
     {hi:true,icon:'🎆',text:'<strong>Pirate Night + fuegos artificiales — no perderse.</strong> Subir a cubierta después de la cena. Es el momento más icónico del crucero. Tener los disfraces listos y accesibles desde temprano — no guardados en maleta comprimida.'},
     {hi:false,icon:'🎃',text:'Son dos disfraces distintos esa noche: pirata primero (Pirate Night), Halloween después. Coordinar cuándo cambiarse o combinar elementos de ambos si prefieren un solo look.'},
@@ -876,16 +873,17 @@ var GUIA_DATA=[
     {hi:false,icon:'🛒',text:'Nota logística: hay coches/carritos gratuitos en la isla para Nina. No necesitan traer el suyo. El barco está atracado directamente — se puede volver en cualquier momento si Nina necesita siesta o cambio de pañal.'},
   ]},
   {icon:'🏰',name:'Lun 2 nov — Desembarque',sub:'Port Canaveral → Casa Orlando',badge:'b-regreso',tips:[
-    {hi:true,icon:'🚗',text:'<strong>Recoger Rental #2 (Full Size SUV) a las 9:30am</strong> en 710 Mullet Rd, Port Canaveral — media hora de margen después del desembarque. Silla de bebé para Nina incluida en el rental. Manejar a Casa Orlando (~1h, 53 millas).'},
+    {hi:true,icon:'🚗',text:'<strong>Uber XL Port Canaveral → Casa Orlando (~$108).</strong> Llevar silla de carro de Nina instalada o lista para instalar — es obligatorio por ley para bebés en EE.UU.'},
     {hi:false,icon:'🧳',text:'El desembarque es temprano en la mañana — tener ropa cómoda de desembarque accesible en el carry-on desde la noche anterior.'},
     {hi:false,icon:'📸',text:'Antes de salir del barco: revisar que no queden fotos sin comprar en el sistema. Las fotos profesionales se eliminan al terminar el viaje.'},
     {hi:false,icon:'💳',text:'Verificar el folio del camarote (estado de cuenta) la noche anterior para revisar cargos.'},
     {hi:false,icon:'🛒',text:'Si quieren comprar souvenirs de último momento, la tienda Mickey\'s Mainsail cierra antes del desembarque.'},
   ]},
-  {icon:'🛍',name:'Mar 3 nov — Disney Springs + Outlets',sub:'Orlando · día libre post-crucero',badge:'b-regreso',tips:[
-    {hi:false,icon:'🌆',text:'<strong>Disney Springs</strong> (gratis) — mañana tarde. Tiendas, restaurantes y ambiente Disney sin necesidad de ticket de parque.'},
-    {hi:false,icon:'🛍',text:'<strong>Orlando Vineland Premium Outlets</strong> (~10-15 min de Disney Springs). Incluye Disney Character Warehouse — buena opción para souvenirs con descuento.'},
-    {hi:false,icon:'🚗',text:'Usar Rental #2 para moverse. Devolver el vehículo en MCO al día siguiente (mié 4 nov) antes del vuelo de regreso.'},
+  {icon:'🛍',name:'Mar 3 nov — Disney Springs + Vineland Outlets',sub:'Post-crucero · Lake Buena Vista',badge:'b-regreso',tips:[
+    {hi:true,icon:'🆓',text:'<strong>Disney Springs es gratis</strong> — sin boletos, sin reservas. Abierto 10am-11pm. Estacionamiento gratuito en los garajes.'},
+    {hi:false,icon:'🚶',text:'Pasear por Marketplace, Landing y West Side — buen ritmo tranquilo después del crucero. Almorzar ahí mismo.'},
+    {hi:false,icon:'🛍',text:'Orlando Vineland Premium Outlets está a ~10-15 min. Incluye Disney Character Warehouse — bueno para souvenirs o ropa Disney con descuento.'},
+    {hi:false,icon:'🅿',text:'Vineland tiene parqueo techado (más rápido que I-Drive en horas pico) — conviene ir ahí antes de las 3pm si el grupo quiere evitar filas.'},
   ]},
 ];
 
@@ -1263,13 +1261,14 @@ function toggleGuideDay(di){
 var BUDGET_SECTIONS=[
   {id:'crucero',icon:'🚢',title:'Crucero Disney Wish',items:[
     {id:'bg1',name:'Disney Wish — Grand Total (4 pasajeros)',note:'Yosh $1,215 · Joss $1,215 · Emma $567.36 · Nina $321.18 · Taxes $464.12',amount:3782.66,paid:165.93,estimated:false},
+    {id:'bg4',name:'DCL Transfer MCO → Port Canaveral',note:'$45 × 4 personas · 30 oct',amount:180,paid:0,estimated:false},
     {id:'bg5',name:'Propinas stateroom host',note:'~$14/noche × 3 noches × 2 adultos · recomendado',amount:84,paid:0,estimated:true},
   ]},
   {id:'vuelos',icon:'✈',title:'Vuelos y transporte terrestre',items:[
-    {id:'bg6',name:'Vuelos Copa — ida GUA→PTY→MCO',note:'4 pasajeros · Copa Classic · Mar 27 oct · cotizado $1,650.52 total (jul 29)',amount:825,paid:0,estimated:true},
-    {id:'bg7',name:'Vuelos Copa — vuelta MCO→PTY→GUA',note:'4 pasajeros · Copa Classic · Mié 4 nov · incluido en cotización RT',amount:825,paid:0,estimated:true},
-    {id:'bg4',name:'Rental #1 — Premium SUV',note:'MCO → Port Canaveral · Oct 27-30 · incl. seguro + silla infantil',amount:377.69,paid:0,estimated:false},
-    {id:'bg8',name:'Rental #2 — Full Size SUV',note:'Port Canaveral → MCO · Nov 2-4 · pickup 9:30am · incl. silla infantil',amount:360.01,paid:0,estimated:false},
+    {id:'bg6',name:'Vuelos Copa — ida GUA→PTY→MCO',note:'4 pasajeros · Copa Classic · Mar 27 oct',amount:0,paid:0,estimated:true},
+    {id:'bg7',name:'Vuelos Copa — vuelta MCO→PTY→GUA',note:'4 pasajeros · Copa Classic · Mié 4 nov',amount:0,paid:0,estimated:true},
+    {id:'bg8',name:'Uber XL Port Canaveral → Casa Orlando',note:'Lun 2 nov · ~53 millas',amount:108,paid:0,estimated:true},
+    {id:'bg9',name:'Transporte MCO ↔ Casa (conocido)',note:'Llegada 27 oct y salida 4 nov · gratuito',amount:0,paid:0,estimated:false},
   ]},
   {id:'precompras',icon:'🛒',title:'Compras pre-viaje',items:[
     {id:'bg10',name:'Bolsas Vacbird 18-pack (6S+6M+6L)',note:'Con bomba inalámbrica · Amazon ~$36.98',amount:37,paid:0,estimated:false},
@@ -1277,7 +1276,7 @@ var BUDGET_SECTIONS=[
     {id:'bg12',name:'Parasol / mini tienda playa Nina',note:'Pop-up UPF 50+ ~$30',amount:30,paid:0,estimated:false},
     {id:'bg13',name:'Disfraces pirata x4 (familia)',note:'Pirate Night 31 oct',amount:0,paid:0,estimated:true},
     {id:'bg14',name:'Disfraces Halloween x4 (familia)',note:'Halloween Night 31 oct',amount:0,paid:0,estimated:true},
-    {id:'bg15',name:'Vestido de princesa Emma',note:'Royal Gathering — reservar 30 sep a medianoche',amount:0,paid:0,estimated:true},
+    {id:'bg15',name:'Vestido de princesa Emma',note:'Royal Gathering — reservar 29 sep 10pm hora GT (medianoche ET 30 sep)',amount:0,paid:0,estimated:true},
     {id:'bg16',name:'Decoraciones magnéticas puerta cabina',note:'Disney + Halloween · ~$15 c/u',amount:30,paid:0,estimated:false},
     {id:'bg17',name:'Libretas de autógrafos x4',note:'Una por persona incluyendo Nina',amount:20,paid:0,estimated:false},
     {id:'bg18',name:'Snacks sellados para vuelo',note:'Emma + Nina + adultos',amount:0,paid:0,estimated:true},
@@ -1300,10 +1299,8 @@ var BUDGET_SECTIONS=[
     {id:'bg29',name:'Souvenirs Mickey\'s Mainsail',note:'Ears, ropa Disney Wish exclusivos',amount:0,paid:0,estimated:true},
   ]},
   {id:'orlando',icon:'🏠',title:'Pre / Post crucero — Orlando',items:[
-    {id:'bg30',name:'Comidas Oct 28–29 (pre-crucero)',note:'Casa de la tía de Yosh · presupuesto para salir a comer',amount:0,paid:0,estimated:true},
-    {id:'bg34',name:'SEA LIFE Orlando Aquarium',note:'ICON Park · ~$20-29 por persona · 29 oct',amount:0,paid:0,estimated:true},
-    {id:'bg35',name:'Compras Premium Outlets (International Dr + Vineland)',note:'29 oct y 3 nov',amount:0,paid:0,estimated:true},
-    {id:'bg31',name:'Comidas Nov 3–4 (post-crucero)',note:'Casa de la tía de Yosh · presupuesto para salir a comer',amount:0,paid:0,estimated:true},
+    {id:'bg30',name:'Comidas Oct 27–29 (pre-crucero)',note:'Casa de conocidos · presupuesto para salir a comer',amount:0,paid:0,estimated:true},
+    {id:'bg31',name:'Comidas Nov 3–4 (post-crucero)',note:'Casa de conocidos · presupuesto para salir a comer',amount:0,paid:0,estimated:true},
     {id:'bg32',name:'Supermercado / snacks en Orlando',note:'Pañales, fórmula extra, snacks para la casa',amount:0,paid:0,estimated:true},
     {id:'bg33',name:'Imprevistos / emergencias',note:'Reserva para gastos no planificados',amount:0,paid:0,estimated:true},
   ]},
