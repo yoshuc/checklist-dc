@@ -462,7 +462,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
       <button class="ftab" onclick="setFilter('carry2',this)">🎒 Carry-on 2</button>
       <button class="ftab" onclick="setFilter('mochilas',this)">👜 Mochilas</button>
       <button class="ftab" onclick="setFilter('panialera',this)">🍼 Pañalera</button>
-      <button class="ftab" onclick="setFilter('sueltos',this)">🧴 Neceser</button>
+      <button class="ftab" onclick="setFilter('castaway',this)">🏝 Castaway</button>
       <div class="fsep"></div>
       <button class="faction" onclick="expandAll()">↕ Expandir</button>
       <button class="faction" onclick="collapseAll()">↕ Colapsar</button>
@@ -494,7 +494,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
             <div class="counter-cell"><div class="csz csz-m">Medium · 34</div><div class="cdims">21.2 × 29.1"</div><div class="cmal"><span>M1: <b>4</b></span><span>M2: <b>2</b></span><span>C2: <b>1</b></span></div><div class="ctotal">7</div><div class="csub">adultos + niñas + Halloween</div></div>
             <div class="counter-cell"><div class="csz csz-l">Large · 39</div><div class="cdims">24 × 33"</div><div class="cmal"><span>M1: <b>2</b></span><span>M2: <b>3</b></span><span>C2: <b>2</b></span></div><div class="ctotal">7</div><div class="csub">disfraces + gala + pañales</div></div>
           </div>
-          <div class="rec-box"><strong>18 bolsas en total — pack completo utilizado.</strong> 4S + 7M + 7L = 18 bolsas. Sin backup — verificar que todas sellen bien antes de cerrar. <strong>No van en bolsa de vacío:</strong> accesorios cabina (cortina, bañera, máquina ruido, ganchos, decoraciones), neceser, botiquín.</div>
+          <div class="rec-box"><strong>18 bolsas en total — pack completo utilizado.</strong> 4S + 7M + 7L = 18 bolsas. Sin backup — verificar que todas sellen bien antes de cerrar. <strong>No van en bolsa de vacío:</strong> accesorios cabina (cortina, bañera, máquina ruido, ganchos, decoraciones). Neceser y botiquín van empacados sueltos dentro de Maleta 1 y Maleta 2.</div>
         </div>
       </div>
     </div>
@@ -927,13 +927,13 @@ function setPage(p){
 // ── CHECKLIST DATA ──
 var MAL1=[
   {date:'Mar 27–Jue 29 oct',label:'Vuelo GUA→MCO + Pre-crucero',badge:'viaje',bags:[
-    {size:'L',who:'Yosh + Joss',items:['Camisa/blusa casual Yosh (día vuelo)','Pantalón/shorts casual Yosh (día vuelo)','Ropa interior Yosh (2 mudadas)','Calcetines Yosh (2 pares)','Camisa/blusa casual Joss (día vuelo)','Pantalón/shorts casual Joss (día vuelo)','Ropa interior Joss (2 mudadas)','Calcetines Joss (2 pares)','Pijamas Yosh + Joss (1 juego cada uno)']}
+    {size:'L',who:'Yosh + Joss',items:['Camisa casual Yosh (día vuelo)','Pantalón/shorts casual Yosh (día vuelo)','Ropa interior Yosh (2 mudadas)','Calcetines Yosh (2 pares)','Blusa casual Joss (día vuelo)','Pantalón/shorts casual Joss (día vuelo)','Ropa interior Joss (2 mudadas)','Calcetines Joss (2 pares)','Pijamas Yosh + Joss (1 juego cada uno)']}
   ]},
   {date:'Vie 30 oct · Embarque',label:'Día 1 a bordo · Port Canaveral',badge:'crucero',bags:[
-    {size:'L',who:'Yosh + Joss',items:['Outfit embarque Yosh','Outfit embarque Joss','Traje de baño Yosh (1er juego)','Traje de baño Joss (1er juego)','Pareo Yosh','Pareo Joss','Outfit cena rotacional casual noche Vie 30']}
+    {size:'L',who:'Yosh + Joss',items:['Outfit embarque Yosh','Outfit embarque Joss','Traje de baño Yosh (1er juego)','Traje de baño Joss (1er juego)','Camisa Yosh','Blusa/Pareo Joss','Outfit cena rotacional casual noche Vie 30']}
   ]},
   {date:'Dom 1 nov · Castaway Cay',label:'Día 4 · Isla privada Disney',badge:'playa',bags:[
-    {size:'M',who:'Yosh + Joss',items:['Traje de baño Yosh (2do juego)','Traje de baño Joss (2do juego)','Pareo Yosh (2do)','Pareo Joss (2do)','Shorts cambio Yosh','Shorts cambio Joss','Outfit cena rotacional casual noche Dom 1']}
+    {size:'M',who:'Yosh + Joss',items:['Traje de baño Yosh (2do juego)','Traje de baño Joss (2do juego)','Camisa Yosh (2do)','Blusa/Pareo Joss (2do)','Shorts cambio Yosh','Shorts cambio Joss','Outfit cena rotacional casual noche Dom 1']}
   ]},
   {date:'Var. noches a bordo',label:'Cena de gala · rotational dining',badge:'crucero',bags:[
     {size:'M',who:'Yosh + Joss',items:['Outfit elegante Yosh','Outfit elegante Joss','Zapatos vestir Yosh','Zapatos vestir Joss','Accesorios (joyería, cinturón, etc.)']}
@@ -943,6 +943,13 @@ var MAL1=[
   ]},
   {date:'Mar 3 – Mié 4 nov',label:'Post-crucero · Orlando → vuelo Mié 4',badge:'regreso',bags:[
     {size:'M',who:'Yosh + Joss',items:['Outfit casual Mar 3 Yosh + Joss','Outfit vuelo regreso Mié 4 Yosh + Joss','Ropa interior Yosh + Joss (2 mudadas)','Calcetines Yosh + Joss (2 pares)']}
+  ]},
+  {date:'Maleta 1 · Neceser adultos',label:'Cuidado personal — Yosh y Joss',badge:'crucero',bags:[
+    {size:'x',who:'Neceser de tela',items:['Shampoo + acondicionador','Pasta dental + cepillos Yosh + Joss','Desodorante Yosh + Joss','Rasuradora','Crema hidratante','After-sun / aloe vera','Protector solar SPF 50+ extra']},
+    {size:'x',who:'Bolsa higiene femenina',items:['Toallas sanitarias de emergencia','Tampones','Otros productos higiene femenina']}
+  ]},
+  {date:'Maleta 1 · Botiquín familiar',label:'Medicamentos y primeros auxilios',badge:'viaje',bags:[
+    {size:'x',who:'Bolsa rígida',items:['Ibuprofeno adultos (tabletas)','Ibuprofeno / paracetamol niños (líquido)','Antihistamínico (adultos + niños)','Pastillas antimareo','Antiácido','Alcohol gel (frasco grande)','Toallitas desinfectantes','Curitas variadas (10-15)','Micropore (cinta médica)','Gasas esterilizadas (3-4)','Termómetro','Tijeras de uñas bebé']}
   ]},
 ];
 var MAL2=[
@@ -969,6 +976,15 @@ var MAL2=[
   {date:'Todo el viaje',label:'Pañales regulares comprimidos',badge:'crucero',bags:[
     {size:'L',who:'Nina (1a9m)',items:['~60-80 pañales regulares (todo el viaje)','Toallitas húmedas extra (2 paquetes)']}
   ]},
+  {date:'Maleta 2 · Neceser bebé',label:'Cuidado personal — Nina',badge:'crucero',bags:[
+    {size:'x',who:'Neceser bebé',items:['Champú + jabón bebé','Crema hidratante bebé','Crema de pañal','Cepillo de cabello suave','Cortauñas bebé','Protector solar bebé SPF 50+']}
+  ]},
+  {date:'Maleta 2 · Neceser niña',label:'Cuidado personal — Emma',badge:'crucero',bags:[
+    {size:'x',who:'Bolsita niña',items:['Cepillo de cabello + ligas + accesorios','Cepillo de dientes Emma','Pasta dental Emma','Shampoo Emma (si prefiere el suyo)']}
+  ]},
+  {date:'Maleta 2 · Accesorios playa Nina',label:'Protección solar bebé · Castaway Cay',badge:'playa',bags:[
+    {size:'x',who:'Entre accesorios M2',items:['Parasol o mini tienda playa pop-up para Nina','Esterilla o mat de playa pequeña para Nina']}
+  ]},
 ];
 var MAL_CARRY=[
   {date:'Día de viaje',label:'Ropa de llegada (4 personas)',badge:'viaje',bags:[
@@ -977,25 +993,20 @@ var MAL_CARRY=[
     {size:'x',who:'Emma',items:['Mudada completa niña','Ropa interior niña','Calcetines niña']},
     {size:'x',who:'Nina',items:['2-3 mudadas extra bebé','Swim diapers (3-4) — por si el splash pad llama']}
   ]},
-  {date:'NUNCA en maleta despachada',label:'Documentos y valores',badge:'viaje',bags:[
-    {size:'x',who:'Todos',items:['Pasaporte Yosh (Guatemala, vigente)','Pasaporte Joss (Guatemala, vigente)','Pasaporte Emma (Guatemala, vigente)','Pasaporte Nina (Guatemala, vigente)','Acta de nacimiento Emma (copia certificada)','Acta de nacimiento Nina (copia certificada)','Registro de vacunas Nina','MagicBand+ Yosh (cargado antes del viaje)','MagicBand+ Joss (cargado antes del viaje)','Cargador propietario MagicBand+ × 2','Tarjetas del crucero (Key to the World)','Itinerario impreso del crucero','Tickets de vuelo (impreso + digital)','Documentos silla de carro Nina','Tarjetas de crédito / débito','Efectivo USD','Número emergencia seguro de viaje (impreso)','Póliza seguro de viaje (digital + impresa)']}
-  ]},
-  {date:'Acceso rápido · cabina',label:'Salud y protección solar',badge:'crucero',bags:[
-    {size:'x',who:'Familia',items:['Protector solar SPF 50+ (≤100ml para cabina)','Ibuprofeno (adultos + niños)','Antiemético para mareo','Pastillas mareo bebé','Alcohol gel','Tiritas básicas']}
+  {date:'Acceso rápido · vuelo y cabina',label:'Esenciales de salud en mano',badge:'crucero',bags:[
+    {size:'x',who:'Familia',items:['Protector solar SPF 50+ (≤100ml para cabina)','Ibuprofeno (adultos + niños)','Pastillas antimareo (adultos)','Pastillas mareo bebé','Alcohol gel','Curitas y Micropore']}
   ]},
 ];
 var MAL_MOCHILAS=[
-  {date:'Mochila Yosh',label:'Electrónicos + fotos',badge:'viaje',bags:[
-    {size:'x',who:'Yosh carga',items:['Cámara + lentes + accesorios','Power bank cargado','Cargador Yosh (teléfono)','Audífonos Yosh','Lentes de sol Yosh','Gorra Yosh','Disney Ears Yosh','Tumbler / termo Yosh (reutilizable)','Copia física documentos','Cargador multi-puerto USB/USB-C cubo (sin surge protector)']}
+  {date:'Mochila Yosh',label:'Electrónicos + documentos importantes',badge:'viaje',bags:[
+    {size:'x',who:'Yosh carga · tech',items:['Cámara + lentes + accesorios','Power bank cargado','Cargador Yosh (teléfono)','Cargador multi-puerto USB/USB-C cubo (sin surge protector)','Audífonos Yosh','Lentes de sol Yosh','Gorra Yosh','Disney Ears Yosh','Tumbler / termo Yosh (reutilizable)']},
+    {size:'x',who:'Yosh carga · documentos (NUNCA en bodega)',items:['Pasaporte Yosh (Guatemala, vigente)','Pasaporte Joss (Guatemala, vigente)','Pasaporte Emma (Guatemala, vigente)','Pasaporte Nina (Guatemala, vigente)','Acta de nacimiento Emma (copia certificada)','Acta de nacimiento Nina (copia certificada)','Registro de vacunas Nina','Fotocopias backup de pasaportes','MagicBand+ Yosh (cargado antes del viaje)','MagicBand+ Joss (cargado antes del viaje)','Cargador propietario MagicBand+ × 2','Tarjetas del crucero (Key to the World)','Itinerario impreso del crucero','Tickets de vuelo (impreso + digital)','Tarjetas de crédito / débito','Efectivo USD','Número emergencia seguro de viaje (impreso)','Póliza seguro de viaje impresa']}
   ]},
   {date:'Mochila Joss',label:'Playa + organización',badge:'playa',bags:[
     {size:'x',who:'Joss carga',items:['Gorra Joss','Lentes de sol Joss','Disney Ears Joss','Tumbler / termo Joss (reutilizable)','Libretas de autógrafos (4) + Sharpies','Lanyards porta-tarjeta (3)','Snacks adultos para el vuelo','Protector solar Joss','Bolsa colapsible para playa']}
   ]},
   {date:'Mochila Emma (7a)',label:'Sus cosas + snacks',badge:'viaje',bags:[
     {size:'x',who:'Emma carga su mochila',items:['Disney Ears Emma','Tumbler / termo Emma (reutilizable)','Galletas / crackers (sellados de fábrica)','Barras de cereal / granola','Fruta deshidratada','Gomitas / gummies','Nueces o chips de maíz','Juguete o libro favorito','Audífonos Emma','Peluche pequeño','NO frutas frescas — pueden confiscarse en customs MCO']}
-  ]},
-  {date:'Mochila de playa · Castaway Cay',label:'Día de isla privada Disney',badge:'playa',bags:[
-    {size:'x',who:'Yosh o Joss carga',items:['Toallas (DCL las provee en el barco)','Botellas de agua reutilizables Yosh + Joss','Tumbler Emma (rellenar a bordo)','Protector solar extra SPF 50+','Trajes de baño de repuesto','Snacks playa (sellados)','Juguetes de arena para Nina','Parasol / mini tienda de playa para Nina','Bolsa impermeable para toallas mojadas']}
   ]},
 ];
 var MAL_PANIALERA=[
@@ -1009,25 +1020,11 @@ var MAL_PANIALERA=[
     {size:'x',who:'Nina',items:['8-10 pañales regulares para el día','4-5 swim diapers','Toallitas húmedas','Bolsas con aroma para desechar pañales','Crema de pañal','Muda de emergencia bebé','Baberos (3-4)','Swaddle / sábana ligera para vuelo + siestas']}
   ]},
 ];
-var MAL_SUELTOS=[
-  {date:'Maleta 1 · neceser adultos',label:'Cuidado personal adultos',badge:'crucero',bags:[
-    {size:'x',who:'Neceser de tela (M1)',items:['Shampoo + acondicionador','Pasta dental + cepillos Yosh + Joss','Desodorante Yosh + Joss','Rasuradora','Crema hidratante','After-sun / aloe vera','Protector solar SPF 50+ extra']},
-    {size:'x',who:'Bolsa higiene femenina (M1)',items:['Toallas sanitarias de emergencia','Tampones','Otros productos higiene femenina']}
-  ]},
-  {date:'Maleta 1 · botiquín',label:'Botiquín familiar',badge:'viaje',bags:[
-    {size:'x',who:'Bolsa rígida (M1)',items:['Ibuprofeno adultos (tabletas)','Ibuprofeno / paracetamol niños (líquido)','Antihistamínico (adultos + niños)','Pastillas para el mareo','Antiácido','Alcohol gel (frasco grande)','Toallitas desinfectantes','Curitas variadas (10-15)','Gasas esterilizadas (3-4)','Cinta adhesiva médica','Termómetro','Tijeras de uñas bebé','Crema de pañal extra (calor Bahamas)']}
-  ]},
-  {date:'Maleta 2 · neceser bebé',label:'Cuidado personal bebé',badge:'crucero',bags:[
-    {size:'x',who:'Neceser bebé (M2)',items:['Champú + jabón bebé','Crema hidratante bebé','Crema de pañal','Cepillo de cabello suave','Cortauñas bebé','Protector solar bebé SPF 50+']}
-  ]},
-  {date:'Maleta 2 · neceser niña',label:'Cuidado personal niña',badge:'crucero',bags:[
-    {size:'x',who:'Bolsita niña (M2)',items:['Cepillo de cabello + ligas + accesorios','Cepillo de dientes Emma','Pasta dental Emma','Shampoo Emma (si prefiere el suyo)']}
-  ]},
-  {date:'Maleta 2 · playa Nina',label:'Protección solar bebé · Castaway Cay',badge:'playa',bags:[
-    {size:'x',who:'Entre accesorios M2',items:['Parasol o mini tienda playa pop-up para Nina','Esterilla o mat de playa pequeña para Nina']}
-  ]},
-  {date:'Maleta 1 · extras sueltos',label:'Accesorios electrónicos + seguro',badge:'viaje',bags:[
-    {size:'x',who:'M1 (entre bolsas comprimidas)',items:['Cargador multi-puerto USB/USB-C tipo cubo (SIN surge protector)','Número emergencia seguro de viaje (tarjeta para billetera)','Póliza seguro de viaje impresa','Mickey Ears Yosh + Joss (si ya los tienen de WDW)','Mickey Ears Emma']}
+var KIT_CASTAWAY=[
+  {date:'🏝 Armar a bordo — noche previa (dom 31 oct)',label:'No viene de Guatemala — preparar en camarote',badge:'playa',bags:[
+    {size:'x',who:'⚠ NOTA',items:['Esta sección NO es una bolsa que viaja desde casa','Se arma en el camarote la noche antes de Castaway Cay','Es un recordatorio de qué sacar de otras maletas y mochilas']},
+    {size:'x',who:'Del barco / isla (no empacar)',items:['Toallas de playa — pedir al stateroom host la tarde anterior','Sombrillas y sillas de playa — incluidas en Castaway Cay',"Soft-serve ilimitado todo el día en Cookie's BBQ"]},
+    {size:'x',who:'Sacar de maletas y mochilas',items:['Botellas de agua Yosh + Joss (de mochilas)','Tumbler Emma (de mochila Emma — rellenar a bordo)','Protector solar SPF 50+ extra (del botiquín en Maleta 1)','Trajes de baño de repuesto (de M1 y M2 bolsa Castaway Cay)','Parasol / mini tienda playa para Nina (de Maleta 2)','Esterilla de playa para Nina (de Maleta 2)','Snacks playa sellados (de pañalera / mochilas)','Juguetes de arena para Nina (compra pre-viaje → en maleta)','Bolsa impermeable para toallas mojadas (Ziploc grande)']}
   ]},
 ];
 var MAL_CARRY2=[
@@ -1043,13 +1040,13 @@ var MAL_CARRY2=[
   ]},
 ];
 var ALL_GRIDS=[
-  {id:'mal1',icon:'🧳',title:'Maleta 1 — Yosh &amp; Joss',sub:'6 bolsas · 4M+2L',data:MAL1},
-  {id:'mal2',icon:'🧳',title:'Maleta 2 — Emma &amp; Nina',sub:'9 bolsas · 4S+2M+3L',data:MAL2},
-  {id:'carry',icon:'🎒',title:'Carry-on 1 — documentos y llegada',sub:'sin bolsas de vacío · NUNCA en bodega',data:MAL_CARRY},
+  {id:'mal1',icon:'🧳',title:'Maleta 1 — Yosh &amp; Joss',sub:'6 bolsas · 4M+2L · neceser y botiquín incluidos',data:MAL1},
+  {id:'mal2',icon:'🧳',title:'Maleta 2 — Emma &amp; Nina',sub:'9 bolsas · 4S+2M+3L · neceser niñas incluido',data:MAL2},
+  {id:'carry',icon:'🎒',title:'Carry-on 1 — ropa de llegada',sub:'sin bolsas de vacío · NUNCA en bodega',data:MAL_CARRY},
   {id:'carry2',icon:'🎒',title:'Carry-on 2 — disfraces y cabina',sub:'3 bolsas Vacbird · viajan en cabina',data:MAL_CARRY2},
-  {id:'mochilas',icon:'👜',title:'Mochilas — 4 personal items',sub:'cabina · bajo el asiento',data:MAL_MOCHILAS},
+  {id:'mochilas',icon:'👜',title:'Mochilas — 3 mochilas de Guatemala',sub:'docs en Mochila Yosh · cabina · bajo el asiento',data:MAL_MOCHILAS},
   {id:'panialera',icon:'🍼',title:'Bolsa pañalera — ítem gratuito',sub:'cabina · acceso inmediato',data:MAL_PANIALERA},
-  {id:'sueltos',icon:'🧴',title:'Neceser + Botiquín + Sólidos',sub:'sin bolsa de vacío',data:MAL_SUELTOS},
+  {id:'castaway',icon:'🏝',title:'Kit Castaway Cay',sub:'armar a bordo · no viene de Guatemala',data:KIT_CASTAWAY},
 ];
 
 // ── DATES DATA ──
@@ -1069,8 +1066,8 @@ var DATES_DATA=[
     {id:'d8',urgent:false,date:'Sep 2026',title:'Confirmar datos de vuelos en check-in',desc:'El check-in pide detalles de vuelo de llegada y salida. Vuelos confirmados: ida CM389/CM478 (27 oct, llegada MCO 4:35pm), vuelta CM459/CM182 (4 nov, salida MCO 3:57pm).'},
   ]},
   {group:'Octubre 2026 — semana del crucero',items:[
-    {id:'d9',urgent:false,date:'Antes del 27 oct',title:'Cargar MagicBands+ completamente',desc:'Conectar ambas bands la noche antes de salir de Guatemala. El cargador propietario va en el carry-on.'},
-    {id:'d10',urgent:false,date:'26 oct',title:'Preparar folder de documentos',desc:'Pasaportes (4), actas de nacimiento Emma y Nina, registro de vacunas Nina, póliza seguro, itinerario impreso, tickets de vuelo. En carpeta o sobre plástico en carry-on.'},
+    {id:'d9',urgent:false,date:'Antes del 27 oct',title:'Cargar MagicBands+ completamente',desc:'Conectar ambas bands la noche antes de salir de Guatemala. El cargador propietario va en la Mochila Yosh (con los documentos).'},
+    {id:'d10',urgent:false,date:'26 oct',title:'Preparar folder de documentos',desc:'Pasaportes (4), actas de nacimiento Emma y Nina, registro de vacunas Nina, póliza seguro, itinerario impreso, tickets de vuelo. En la Mochila Yosh (sub-bolsa de documentos) — nunca en maleta despachada.'},
     {id:'d11',urgent:false,date:'27 oct',title:'Salida de Guatemala (vuelo) — confirmado',desc:'CM389 GUA 7:17am → PTY 10:47am · CM478 PTY 12:01pm → MCO 4:35pm (llegada Orlando). Declarar fórmula/leche bebé en seguridad TSA. No llevar frutas frescas.'},
     {id:'d11a2',urgent:false,date:'27 oct · 5:30pm',title:'Rental #1 confirmado — Mini Van compartida (Thrifty)',desc:'Reserva confirmada — resuelve el riesgo de no-show: Thrifty Mini Van 8-Pass (Kia Carnival), pickup MCO 27 oct 5:30pm — ya ajustado a la llegada real del vuelo (4:35pm). Vehículo compartido con la familia de Luis (8 pasajeros, 5 maletas), reserva #L714EA68374 a nombre de Luis. Devolución en Cape Canaveral Cruise Port Shuttle 30 oct 12:00pm. Total $231.45 dividido 50/50 con Luis (nuestra parte ~$115.73). Incluye silla de bebé para Nina.'},
     {id:'d11a3',urgent:false,date:'27 oct',title:'Silla de bebé confirmada en la Mini Van',desc:'Confirmado en el voucher de Thrifty: opcional "1 - Child Seat" incluido en la reserva. No es necesario llevar la silla de Nina para este tramo.'},
@@ -1128,7 +1125,7 @@ var GUIA_DATA=[
     {hi:false,icon:'👶',text:'Silla de bebé para Nina incluida en la reserva (opcional "Child Seat" marcado) — no hace falta llevar la propia para este tramo.'},
     {hi:false,icon:'🍼',text:'Swim diapers de Nina en carry-on — por si el splash pad llama el día de embarque (Vie 30).'},
     {hi:false,icon:'🍪',text:'Solo snacks sellados de fábrica para aduanas MCO. Sin frutas frescas, lácteos frescos ni carnes.'},
-    {hi:false,icon:'📋',text:'Pasaportes y documentos en carpeta en carry-on. Nunca en maleta despachada.'},
+    {hi:false,icon:'📋',text:'Pasaportes y documentos en la Mochila Yosh (sección documentos). Nunca en maleta despachada.'},
     {hi:false,icon:'🧳',text:'El equipaje llega al camarote horas después de embarcar. La ropa de llegada va en el carry-on.'},
   ]},
   {icon:'👨‍👩‍👧‍👦',name:'Mié 28 oct — Día libre con la tía',sub:'Orlando · según su disponibilidad',badge:'b-viaje',tips:[
