@@ -1072,14 +1072,15 @@ var DATES_DATA=[
     {id:'d9',urgent:false,date:'Antes del 27 oct',title:'Cargar MagicBands+ completamente',desc:'Conectar ambas bands la noche antes de salir de Guatemala. El cargador propietario va en el carry-on.'},
     {id:'d10',urgent:false,date:'26 oct',title:'Preparar folder de documentos',desc:'Pasaportes (4), actas de nacimiento Emma y Nina, registro de vacunas Nina, póliza seguro, itinerario impreso, tickets de vuelo. En carpeta o sobre plástico en carry-on.'},
     {id:'d11',urgent:false,date:'27 oct',title:'Salida de Guatemala (vuelo) — confirmado',desc:'CM389 GUA 7:17am → PTY 10:47am · CM478 PTY 12:01pm → MCO 4:35pm (llegada Orlando). Declarar fórmula/leche bebé en seguridad TSA. No llevar frutas frescas.'},
-    {id:'d11a2',urgent:true,date:'27 oct · al aterrizar',title:'Ajustar hora de pickup del rental #1',desc:'Llegada real a MCO es 4:35pm, no mediodía. Modificar la reserva del Premium SUV (Alamo) para pickup ~5:00–5:30pm — considerando inmigración y equipaje — y evitar cancelación por no-show.'},
+    {id:'d11a2',urgent:false,date:'27 oct · 5:30pm',title:'Rental #1 confirmado — Mini Van compartida (Thrifty)',desc:'Reserva confirmada — resuelve el riesgo de no-show: Thrifty Mini Van 8-Pass (Kia Carnival), pickup MCO 27 oct 5:30pm — ya ajustado a la llegada real del vuelo (4:35pm). Vehículo compartido con la familia de Luis (8 pasajeros, 5 maletas), reserva #L714EA68374 a nombre de Luis. Devolución en Cape Canaveral Cruise Port Shuttle 30 oct 12:00pm. Total $231.45 dividido 50/50 con Luis (nuestra parte ~$115.73). Incluye silla de bebé para Nina.'},
+    {id:'d11a3',urgent:false,date:'27 oct',title:'Silla de bebé confirmada en la Mini Van',desc:'Confirmado en el voucher de Thrifty: opcional "1 - Child Seat" incluido en la reserva. No es necesario llevar la silla de Nina para este tramo.'},
     {id:'d11b',urgent:false,date:'28 oct',title:'Día libre con la tía',desc:'Orlando · actividad flexible según su disponibilidad. Presupuesto bajo, sin reservas ni tickets que comprar con anticipación.'},
     {id:'d11c',urgent:false,date:'29 oct',title:'SEA LIFE + Madame Tussauds + Compras',desc:'"2 Attraction Ticket" en ICON Park ($30 pp Friends & Family, grupo 3-5, Nina gratis <2 años). SEA LIFE primero, Madame Tussauds después (mismo complejo). Luego Orlando Premium Outlets - International Drive (~15 min).'},
-    {id:'d12',urgent:false,date:'30 oct · 11am EST',title:'Llegada al puerto Port Canaveral',desc:'Manejar la Premium SUV rentada (Alamo, recogida en MCO el 27 oct ~5:00–5:30pm) hasta Port Canaveral y devolverla ahí (710 Mullet Rd). El equipaje va directo a la cabina. Llevar swim diapers de Nina en el carry-on por si el splash pad llama al embarcar.'},
+    {id:'d12',urgent:false,date:'30 oct · devolución 12:00pm',title:'Llegada al puerto Port Canaveral',desc:'Manejar la Mini Van compartida (Thrifty, Kia Carnival, recogida en MCO el 27 oct 5:30pm) hasta Port Canaveral y devolverla ahí (Cape Canaveral Cruise Port Shuttle, 8963 Astronaut Blvd, devolución 30 oct 12:00pm). El equipaje va directo a la cabina. Llevar swim diapers de Nina en el carry-on por si el splash pad llama al embarcar.'},
     {id:'d13',urgent:false,date:'31 oct',title:'Nassau — plan del día',desc:'3 barcos en puerto ese día (~16,000 pasajeros). Estrategia: quedarse a bordo hasta las 11am (AquaMouse sin cola). Bajar 11am · Straw Market (11–11:45) · Pirates of Nassau Museum ($14 adultos, $7 niños) · Rip Ty\'d Tap Room. Regreso 2pm. Pirate Night + fuegos artificiales por la noche.'},
     {id:'d14',urgent:false,date:'1 nov',title:'Castaway Cay — plan completo del día',desc:'Bajar 9:00–9:30am. Fotos personajes temprano. Spring-a-Leak para Nina + Pelican Plunge Emma (9:30–11:30am). Cookie\'s BBQ almuerzo 11:30am. Playa + siesta Nina (12:30–3:30pm). Regreso al barco 3:30–4pm. Cerrar maletas esa noche.'},
     {id:'d15',urgent:false,date:'2 nov · mañana',title:'Desembarque',desc:'Temprano en la mañana. Recoger la Full Size SUV rentada (Alamo) en Port Canaveral ~9:30am (30 min después de desembarcar). Llevar silla de carro Nina para instalarla en el rental. Equipaje a recoger en área de desembarque.'},
-    {id:'d15b',urgent:false,date:'3 nov',title:'Disney Springs + Vineland Outlets',desc:'Mañana tarde libre en Disney Springs (gratis, sin ticket de parque, abierto 10am-11pm). Luego Orlando Vineland Premium Outlets (~10-15 min), incluye Disney Character Warehouse.'},
+    {id:'d15b',urgent:false,date:'3 nov',title:'Magic Kingdom — con la familia de Luis',desc:'Entradas a mitad de precio ya confirmadas para ambas familias. Llegar ~8:15-8:30am. Princess Fairytale Hall, fotos con el castillo, atracciones suaves, Festival of Fantasy Parade 3pm. Salida ~5:30-6pm (sin fuegos artificiales de las 10pm).'},
     {id:'d15c',urgent:false,date:'4 nov',title:'Regreso a Guatemala (vuelo) — confirmado',desc:'CM459 MCO 3:57pm → PTY 7:28pm · CM182 PTY 9:45pm → GUA 11:06pm. Devolver la Full Size SUV rentada (Alamo) en MCO con tiempo suficiente antes del vuelo (check-in internacional ~3h antes = llegar a MCO ~12:45pm).'},
   ]},
 ];
@@ -1123,7 +1124,8 @@ var GUIA_DATA=[
   {icon:'✈',name:'Mar 27 oct — Vuelo GUA→MCO',sub:'CM389 · CM478 · Copa Airlines',badge:'b-viaje',tips:[
     {hi:true,icon:'🛫',text:'<strong>Itinerario confirmado:</strong> CM389 GUA 7:17am → PTY 10:47am (2h30m) · CM478 PTY 12:01pm → MCO 4:35pm (3h34m). Llegada a Orlando a las 4:35pm.'},
     {hi:true,icon:'⚠',text:'<strong>Declarar en seguridad TSA:</strong> fórmula/leche de Nina está exenta del límite de 100ml pero DEBE declararse. Decir "tengo alimento para bebé" al llegar al control de seguridad.'},
-    {hi:true,icon:'🚗',text:'<strong>Ajustar el pickup del Rental #1 (Premium SUV, Alamo) a ~5:00–5:30pm</strong> — la reserva original asumía mediodía, pero la llegada real es 4:35pm. Contando inmigración y equipaje, llegar al mostrador antes de las 6pm para evitar que Alamo cancele por no-show.'},
+    {hi:true,icon:'🚗',text:'<strong>Rental #1 confirmado: Mini Van Thrifty (Kia Carnival) — pickup MCO 5:30pm.</strong> Vehículo compartido con la familia de Luis (8 pasajeros, 5 maletas), reserva #L714EA68374 a nombre de Luis. Devolución en Cape Canaveral Cruise Port Shuttle 30 oct 12:00pm. Total $231.45 dividido 50/50 (nuestra parte ~$115.73).'},
+    {hi:false,icon:'👶',text:'Silla de bebé para Nina incluida en la reserva (opcional "Child Seat" marcado) — no hace falta llevar la propia para este tramo.'},
     {hi:false,icon:'🍼',text:'Swim diapers de Nina en carry-on — por si el splash pad llama el día de embarque (Vie 30).'},
     {hi:false,icon:'🍪',text:'Solo snacks sellados de fábrica para aduanas MCO. Sin frutas frescas, lácteos frescos ni carnes.'},
     {hi:false,icon:'📋',text:'Pasaportes y documentos en carpeta en carry-on. Nunca en maleta despachada.'},
@@ -1180,11 +1182,17 @@ var GUIA_DATA=[
     {hi:false,icon:'📸',text:'Antes de salir del barco: revisar que no queden fotos sin comprar en el sistema.'},
     {hi:false,icon:'💳',text:'Verificar el folio del camarote la noche anterior para revisar cargos.'},
   ]},
-  {icon:'🛍',name:'Mar 3 nov — Disney Springs + Vineland Outlets',sub:'Post-crucero · Lake Buena Vista',badge:'b-regreso',tips:[
-    {hi:true,icon:'🆓',text:'<strong>Disney Springs es gratis</strong> — sin boletos, sin reservas. Abierto 10am-11pm. Estacionamiento gratuito en los garajes.'},
-    {hi:false,icon:'🚶',text:'Pasear por Marketplace, Landing y West Side — buen ritmo tranquilo después del crucero. Almorzar ahí mismo.'},
-    {hi:false,icon:'🛍',text:'Orlando Vineland Premium Outlets está a ~10-15 min. Incluye Disney Character Warehouse — bueno para souvenirs o ropa Disney con descuento.'},
-    {hi:false,icon:'🅿',text:'Vineland tiene parqueo techado (más rápido que I-Drive en horas pico) — conviene ir ahí antes de las 3pm si el grupo quiere evitar filas.'},
+  {icon:'🏰',name:'Mar 3 nov — Magic Kingdom',sub:'Con Luis y familia · entradas a mitad de precio',badge:'b-regreso',tips:[
+    {hi:true,icon:'🎟',text:'<strong>Entradas a mitad de precio ya confirmadas</strong> para ambas familias (Yosh y Luis).'},
+    {hi:true,icon:'⏰',text:'<strong>Llegar ~8:15-8:30am</strong> — el parque abre a las 9:00am, así que conviene estar listos en la entrada apenas abran.'},
+    {hi:false,icon:'👑',text:'Princess Fairytale Hall primero — fotos con las princesas y el castillo mientras hay menos fila.'},
+    {hi:false,icon:'📸',text:'Fotos frente al castillo temprano en la mañana, antes de que se llene de gente.'},
+    {hi:false,icon:'🎠',text:'Atracciones suaves para las niñas: It\'s a Small World, Peter Pan\'s Flight, Under the Sea, Carousel.'},
+    {hi:false,icon:'🌟',text:'Opcional si da el tiempo: Enchanted Tales with Belle.'},
+    {hi:false,icon:'🍽',text:'Almuerzo ~11:30am, antes de que se llenen los restaurantes.'},
+    {hi:false,icon:'😴',text:'Bloque de descanso después del almuerzo — buen momento para bajar el ritmo o que Nina duerma la siesta.'},
+    {hi:true,icon:'🎉',text:'<strong>Festival of Fantasy Parade — 3:00pm.</strong> Buen cierre de tarde en familia con Luis y los suyos.'},
+    {hi:false,icon:'🚪',text:'<strong>Salida ~5:30-6:00pm</strong> — no se planea quedarse a los fuegos artificiales de las 10pm, dado lo tarde que sería para las niñas (Nina es bebé).'},
   ]},
   {icon:'✈',name:'Mié 4 nov — Vuelo de regreso',sub:'CM459 · CM182 · Copa Airlines',badge:'b-regreso',tips:[
     {hi:true,icon:'🛬',text:'<strong>Itinerario confirmado:</strong> CM459 MCO 3:57pm → PTY 7:28pm (3h31m) · CM182 PTY 9:45pm → GUA 11:06pm (2h21m). Llegada a Guatemala a las 11:06pm.'},
@@ -1561,7 +1569,7 @@ function toggleGuideDay(di){
 var BUDGET_SECTIONS=[
   {id:'crucero',icon:'🚢',title:'Crucero Disney Wish',items:[
     {id:'bg1',name:'Disney Wish — Grand Total (4 pasajeros)',note:'Yosh $1,215 · Joss $1,215 · Emma $567.36 · Nina $321.18 · Taxes $464.12',amount:3782.66,paid:165.93,estimated:false},
-    {id:'bg4',name:'Rental car #1 — Premium SUV (Alamo)',note:'MCO 27 oct (~5:00-5:30pm, ajustado a llegada real del vuelo) → Port Canaveral 30 oct · incluye silla de bebé Nina',amount:377.69,paid:0,estimated:true},
+    {id:'bg4',name:'Rental car #1 — Mini Van 8-Pass (Thrifty, compartido con Luis)',note:'Kia Carnival · MCO 27 oct 5:30pm → Cape Canaveral Cruise Port 30 oct 12:00pm · 8 pax/5 maletas · incluye silla de bebé · reserva #L714EA68374 (a nombre de Luis) · costo total $231.45 dividido 50/50 — monto abajo es solo nuestra parte',amount:115.73,paid:0,estimated:false},
     {id:'bg5',name:'Propinas stateroom host',note:'~$14/noche × 3 noches × 2 adultos · recomendado',amount:84,paid:0,estimated:true},
   ]},
   {id:'vuelos',icon:'✈',title:'Vuelos y transporte terrestre',items:[
@@ -1604,6 +1612,7 @@ var BUDGET_SECTIONS=[
     {id:'bg33',name:'Imprevistos / emergencias',note:'Reserva para gastos no planificados',amount:0,paid:0,estimated:true},
     {id:'bg34',name:'SEA LIFE + Madame Tussauds (2 Attraction Ticket)',note:'29 oct · $30 pp Friends & Family × 3 (Nina gratis <2a) ≈ $90',amount:90,paid:0,estimated:true},
     {id:'bg35',name:'Compras Orlando Premium Outlets',note:'29 oct · presupuesto para disfraces / ropa',amount:0,paid:0,estimated:true},
+    {id:'bg36',name:'Entradas Magic Kingdom (3 nov)',note:'Mitad de precio · ya confirmadas para ambas familias · monto por confirmar',amount:0,paid:0,estimated:true},
   ]},
 ];
 
