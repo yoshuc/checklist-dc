@@ -1813,7 +1813,7 @@ db.ref(BUYS_PATH).on('value',function(snap){
   buysDone={};
   Object.keys(data).forEach(function(k){if(data[k])buysDone[k]=data[k];});
   if(initialized)renderCompras();
-});
+}); 
 </script>
 </body>
 </html>
